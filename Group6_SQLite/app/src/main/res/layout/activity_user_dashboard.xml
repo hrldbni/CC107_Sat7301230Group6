@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgroundordinary"
+    tools:context="com.example.Group6_SQLite.UserDashboard">
+
+    <TextView
+        android:id="@+id/usernameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageButton"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="25dp"
+        android:text="Username" />
+
+    <TextView
+        android:id="@+id/fullNameText"
+        android:layout_width="match_parent"
+        android:layout_below="@id/usernameText"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageButton"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="COMPLETE NAME"/>
+    <TextView
+        android:id="@+id/birthDateText"
+        android:layout_width="match_parent"
+        android:layout_below="@id/fullNameText"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageButton"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:text="Birth Date"/>
+    <TextView
+        android:id="@+id/emailAddressText"
+        android:layout_width="match_parent"
+        android:layout_below="@id/birthDateText"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageButton"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:text="Email"/>
+    <TextView
+        android:id="@+id/uidText"
+        android:layout_width="match_parent"
+        android:layout_below="@id/emailAddressText"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/imageButton"
+        android:textColor="@color/white"
+        android:textAllCaps="true"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:text="UID:"/>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/avatar3" />
+
+    <Button
+        android:id="@+id/deleteProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:layout_below="@id/uidText"
+        android:layout_toRightOf="@id/imageButton"/>
+
+    <Button
+        android:id="@+id/logOut"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/uidText"
+        android:layout_toRightOf="@id/deleteProfile"
+        android:layout_marginLeft="5dp"
+        android:text="Log out" />
+
+    <Button
+        android:id="@+id/textView4"
+        android:layout_below="@id/deleteProfile"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:textSize="27dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My diary" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/editDiaryBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="15dp"
+        app:srcCompat="@drawable/edit" />
+
+    <EditText
+        android:id="@+id/contentText"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/dearDiary"
+        android:ems="10"
+        android:textSize="16dp"
+        android:editable="false"
+        android:gravity="start|top"
+        android:textColor="#505050"
+        android:padding="15dp"
+        android:text=""
+        android:inputType="textMultiLine" />
+
+    <TextView
+        android:id="@+id/dateUpdate"
+        android:textSize="12dp"
+        android:textStyle="bold"
+       android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:layout_below="@id/textView4"
+        android:layout_height="wrap_content"
+        android:text="Last Update : March 15 2021" />
+
+    <TextView
+        android:id="@+id/dearDiary"
+        android:textSize="17dp"
+        android:padding="15dp"
+        android:textColor="#505050"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_below="@id/dateUpdate"
+        android:layout_height="wrap_content"
+        android:text="Dear Diary, " />
+
+
+
+</RelativeLayout>

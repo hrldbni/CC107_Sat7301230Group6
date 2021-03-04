@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    android:background="@drawable/backgroundordinary"
+    tools:context="com.example.Group6_SQLite.SignUpActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SIGN UP"
+        android:textStyle="bold"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <Button
+        android:id="@+id/returnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log in"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="0dp"
+         />
+
+    <Button
+        android:id="@+id/signUpNow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/userPasswordTwo"
+        android:paddingRight="30dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Preferred Username"
+        android:layout_below="@id/textView"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/firstName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="First Name"
+        android:layout_below="@id/userName"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Last Name"
+        android:layout_below="@id/firstName"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/birthDateText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Birth Date"
+        android:clickable="true"
+        android:editable="false"
+        android:layout_below="@id/lastName"
+        android:layout_centerHorizontal="true"
+        android:focusable="true" />
+
+    <EditText
+        android:id="@+id/emailAddressText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:layout_below="@id/birthDateText"
+        android:hint="Email"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/userPasswordOne"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@id/emailAddressText"
+        android:hint="Password"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/userPasswordTwo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        android:layout_below="@id/userPasswordOne"
+        android:hint="Cofirm Password"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
