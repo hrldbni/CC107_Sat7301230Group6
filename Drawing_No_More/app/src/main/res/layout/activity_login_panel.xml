@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="50dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    tools:context=".LoginPanel">
+
+    <TextView
+        android:id="@+id/LoginText"
+        android:layout_width="match_parent"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="#00A6E4"
+        android:layout_height="wrap_content"
+        android:text="LOG IN" />
+
+
+    <EditText
+        android:id="@+id/emailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/LoginText"
+        android:hint="Email"
+        android:drawableStart="@drawable/email_logo"
+        android:drawableLeft="@drawable/email_logo"
+        android:drawablePadding="5dp"
+        android:inputType="textEmailAddress"
+
+       />
+
+    <EditText
+        android:id="@+id/userPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/emailAddress"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="5dp"
+
+        />
+
+
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        android:layout_below="@id/userPassword"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="330dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password"
+        android:layout_below="@id/loginButton"
+        android:clickable="true" />
+
+    <TextView
+        android:id="@+id/signUpNow"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:text="Click here to Sign Up"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:textColor="#00A6E4"
+        />
+
+
+</RelativeLayout>

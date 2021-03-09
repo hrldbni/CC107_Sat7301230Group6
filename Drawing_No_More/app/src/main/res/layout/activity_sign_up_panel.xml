@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="50dp"
+    android:paddingLeft="30dp"
+    android:paddingRight="30dp"
+    tools:context=".SignUpPanel">
+
+
+    <TextView
+        android:id="@+id/signUpText"
+        android:layout_width="match_parent"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        android:textColor="#00A6E4"
+        android:layout_height="wrap_content"
+        android:text="Sign Up" />
+
+
+
+    <EditText
+        android:id="@+id/firstNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/signUpText"
+        android:hint="First Name"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="5dp" />
+    <EditText
+        android:id="@+id/lastNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/firstNameText"
+        android:hint="Last Name"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="5dp" />
+
+    <EditText
+        android:id="@+id/dateOfBirth"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/lastNameText"
+        android:hint="Date of Birth"
+        android:drawableStart="@drawable/ic_baseline_calendar_today_24"
+        android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
+        android:drawablePadding="5dp"
+        />
+
+    <EditText
+        android:id="@+id/userAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/dateOfBirth"
+        android:ems="10"
+        android:hint="Home Address"
+        android:drawableStart="@drawable/ic_baseline_home_24"
+        android:drawableLeft="@drawable/ic_baseline_home_24"
+        android:drawablePadding="5dp"
+
+        />
+
+    <EditText
+        android:id="@+id/emailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/userAddress"
+        android:hint="Email"
+        android:drawableStart="@drawable/email_logo"
+        android:drawableLeft="@drawable/email_logo"
+        android:drawablePadding="5dp"
+        />
+
+    <EditText
+        android:id="@+id/userPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/emailAddress"
+        android:inputType="textPassword"
+        android:hint="Password"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="5dp"
+        />
+    <EditText
+        android:id="@+id/userPasswordConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/userPassword"
+        android:inputType="textPassword"
+        android:hint="Re-enter Password"
+        android:drawableStart="@drawable/ic_baseline_lock_24"
+        android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:drawablePadding="5dp"
+        />
+
+
+
+    <Button
+        android:id="@+id/signUpButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOG IN"
+        android:layout_below="@id/userPasswordConfirm"
+        tools:layout_editor_absoluteX="162dp"
+        tools:layout_editor_absoluteY="330dp" />
+
+
+    <TextView
+        android:id="@+id/logInNow"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"
+        android:text="Click here to Log In"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:textColor="#00A6E4"
+        />
+
+</RelativeLayout>
