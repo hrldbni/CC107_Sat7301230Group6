@@ -19,11 +19,13 @@ public class LoginPanel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent newIntent;
-                newIntent = new Intent(LoginPanel.this, SignUpPanel.class);
+                newIntent = new Intent(LoginPanel.this, NavigationDrawer.class);
                 startActivity(newIntent);
                 finish();
             }
         });
+
+
 
     }
 }
