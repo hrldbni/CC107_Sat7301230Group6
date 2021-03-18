@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,8 +7,17 @@
     android:paddingTop="50dp"
     android:paddingLeft="30dp"
     android:paddingRight="30dp"
-    tools:context=".SignUpPanel">
+    android:paddingBottom="30dp"
+    tools:context=".SignUpPanel"
+    android:orientation="vertical">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/signUpText"
@@ -20,23 +29,33 @@
         android:text="Sign Up" />
 
 
-
     <EditText
-        android:id="@+id/firstNameText"
+        android:id="@+id/usernameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:layout_below="@id/signUpText"
+        android:hint="Username"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawableLeft="@drawable/ic_baseline_person_24"
+        android:drawablePadding="5dp" />
+
+
+    <EditText
+        android:id="@+id/firstnameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_below="@id/usernameText"
         android:hint="First Name"
         android:drawableStart="@drawable/ic_baseline_person_24"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="5dp" />
     <EditText
-        android:id="@+id/lastNameText"
+        android:id="@+id/lastnameText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_below="@id/firstNameText"
         android:hint="Last Name"
         android:drawableStart="@drawable/ic_baseline_person_24"
         android:drawableLeft="@drawable/ic_baseline_person_24"
@@ -44,18 +63,20 @@
 
     <EditText
         android:id="@+id/dateOfBirth"
-        android:layout_width="200dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_below="@id/lastNameText"
+        android:layout_below="@id/lastnameText"
         android:hint="Date of Birth"
+        android:editable="false"
+        android:clickable="true"
         android:drawableStart="@drawable/ic_baseline_calendar_today_24"
         android:drawableLeft="@drawable/ic_baseline_calendar_today_24"
         android:drawablePadding="5dp"
         />
 
     <EditText
-        android:id="@+id/userAddress"
+        android:id="@+id/addressText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/dateOfBirth"
@@ -68,11 +89,10 @@
         />
 
     <EditText
-        android:id="@+id/emailAddress"
+        android:id="@+id/emailText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_below="@id/userAddress"
         android:hint="Email"
         android:drawableStart="@drawable/email_logo"
         android:drawableLeft="@drawable/email_logo"
@@ -80,7 +100,7 @@
         />
 
     <EditText
-        android:id="@+id/userPassword"
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -92,11 +112,11 @@
         android:drawablePadding="5dp"
         />
     <EditText
-        android:id="@+id/userPasswordConfirm"
+        android:id="@+id/passwordConfirm"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_below="@id/userPassword"
+        android:layout_below="@id/password"
         android:inputType="textPassword"
         android:hint="Re-enter Password"
         android:drawableStart="@drawable/ic_baseline_lock_24"
@@ -104,14 +124,11 @@
         android:drawablePadding="5dp"
         />
 
-
-
     <Button
-        android:id="@+id/signUpButton"
+        android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="LOG IN"
-        android:layout_below="@id/userPasswordConfirm"
+        android:text="REGISTER NOW"
         tools:layout_editor_absoluteX="162dp"
         tools:layout_editor_absoluteY="330dp" />
 
@@ -127,5 +144,6 @@
         android:clickable="true"
         android:textColor="#00A6E4"
         />
-
-</RelativeLayout>
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>
