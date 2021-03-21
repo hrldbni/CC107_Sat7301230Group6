@@ -2,8 +2,10 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -31,10 +33,11 @@ import java.util.Map;
 
 public class SignUpPanel extends AppCompatActivity implements View.OnClickListener {
 
-    private EditText dobText, usernameText, firstnameText, lastnameText, addressText, emailText, passwordText;
+    private EditText dobText, usernameText, firstnameText, lastnameText, addressText, emailText, passwordText, passwordOne;
     private Button buttonRegister;
     final Calendar myCalendar = Calendar.getInstance();
     private ProgressDialog progressDialog;
+    private AlertDialog.Builder builder;
 
 
     @Override
@@ -47,6 +50,7 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
         firstnameText = (EditText) findViewById(R.id.firstnameText);
         lastnameText = (EditText) findViewById(R.id.lastnameText);
         addressText = (EditText) findViewById(R.id.addressText);
+        passwordOne = (EditText) findViewById(R.id.passwordOne);
         emailText = (EditText) findViewById(R.id.emailText);
         passwordText = (EditText) findViewById(R.id.passwordConfirm);
 
@@ -100,7 +104,83 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
 
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), jsonObject.getString("message"), Toast.LENGTH_LONG).show();
+
+                            if (jsonObject.getString("message").equals("User registered")){
+                                builder = new AlertDialog.Builder(SignUpPanel.this);
+                                builder.setMessage(jsonObject.getString("message"))
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+                                usernameText.setText("");
+                                firstnameText.setText("");
+                                lastnameText.setText("");
+                                addressText.setText("");
+                                dobText.setText("");
+                                emailText.setText("");
+                                passwordOne.setText("");
+                                passwordText.setText("");
+
+
+
+                            } else if (jsonObject.getString("message").equals("User unable to register")){
+                                builder = new AlertDialog.Builder(SignUpPanel.this);
+                                builder.setMessage(jsonObject.getString("message"))
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+                            } else if (jsonObject.getString("message").equals("User unable to register")){
+                                builder = new AlertDialog.Builder(SignUpPanel.this);
+                                builder.setMessage(jsonObject.getString("message"))
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+                            } else if (jsonObject.getString("message").equals("Email already Exist, Please use a different Email")){
+                                builder = new AlertDialog.Builder(SignUpPanel.this);
+                                builder.setMessage(jsonObject.getString("message"))
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+                                emailText.setText("");
+                            } else if (jsonObject.getString("message").equals("Username already Exist, Please use a different Username")){
+                                builder = new AlertDialog.Builder(SignUpPanel.this);
+                                builder.setMessage(jsonObject.getString("message"))
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+
+                                            }
+                                        });
+                                AlertDialog alert = builder.create();
+                                alert.show();
+
+                                usernameText.setText("");
+                            }
+
+
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -129,8 +209,7 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
             }
         };
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
 
@@ -146,7 +225,7 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
         myCalendar.set(Calendar.MONTH, monthOfYear);
         myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "MM/dd/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         dobText.setText(sdf.format(myCalendar.getTime()));
@@ -157,7 +236,40 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         if (view == buttonRegister){
-            registerUser();
+
+            if (usernameText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(),"Please input your Username", Toast.LENGTH_SHORT).show();
+            }
+            else if (lastnameText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(),"Please input your Lastname", Toast.LENGTH_SHORT).show();
+            }
+            else if (firstnameText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(),"Please input your Firstname", Toast.LENGTH_SHORT).show();
+            }
+            else if (dobText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(),"Please select your Date of Birth", Toast.LENGTH_SHORT).show();
+            }
+            else if (addressText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(),"Please input your Address", Toast.LENGTH_SHORT).show();
+            }
+            else if (emailText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(),"Please input your Email", Toast.LENGTH_SHORT).show();
+            }
+            else if (passwordOne.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(),"Please Input your password", Toast.LENGTH_SHORT).show();
+            }
+            else if (passwordText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(),"Please Confirm your Password", Toast.LENGTH_SHORT).show();
+            }
+            else if (!(passwordOne.getText().toString().equals(passwordText.getText().toString()))){
+                Toast.makeText(getApplicationContext(),"Password does not matched", Toast.LENGTH_SHORT).show();
+                passwordText.setText("");
+            }
+            else {
+                registerUser();
+            }
+
+
         }
     }
 }
