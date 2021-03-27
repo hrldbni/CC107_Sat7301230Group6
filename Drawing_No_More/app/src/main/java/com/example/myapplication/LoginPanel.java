@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -27,6 +30,7 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
 
     private EditText usernameText, passwordText;
     private Button loginBtn;
+    private TextView textLogin;
     private ProgressDialog progressDialog;
 
     @Override
@@ -51,9 +55,17 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
             }
         });
 
+        Animation animation = AnimationUtils.loadAnimation(LoginPanel.this, R.anim.fadein);
+
+
         usernameText = (EditText) findViewById(R.id.emailAddress);
+        usernameText.setAnimation(animation);
         passwordText = (EditText) findViewById(R.id.userPassword);
+        passwordText.setAnimation(animation);
         loginBtn = (Button) findViewById(R.id.loginButton);
+        loginBtn.setAnimation(animation);
+        textLogin = (TextView) findViewById(R.id.LoginText);
+        textLogin.setAnimation(animation);
 
         loginBtn.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);
@@ -126,7 +138,14 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
     @Override
     public void onClick(View view) {
         if (view == loginBtn){
-            userLogin();
+            if (usernameText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(), "Please enter email or username", Toast.LENGTH_LONG).show();
+            } else if (passwordText.getText().toString().isEmpty()){
+                Toast.makeText(getApplicationContext(), "Please enter your password", Toast.LENGTH_LONG).show();
+            } else {
+                userLogin();
+            }
+
         }
     }
 }

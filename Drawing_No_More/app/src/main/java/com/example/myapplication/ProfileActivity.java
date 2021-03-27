@@ -28,7 +28,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         getSupportActionBar().setTitle("PROFILE");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF00A6E4")));
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#58E0BF")));
 
         if(!SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
