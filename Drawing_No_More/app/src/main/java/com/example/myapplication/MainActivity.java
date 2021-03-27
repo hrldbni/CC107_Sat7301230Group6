@@ -11,7 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
-
+//SPLASH SCREEN
     ImageView drawingText;
     com.airbnb.lottie.LottieAnimationView img;
     private static int SPLASH_TIME_OUT = 2000;
