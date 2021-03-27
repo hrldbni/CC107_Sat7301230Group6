@@ -39,6 +39,8 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
     final Calendar myCalendar = Calendar.getInstance();
     private ProgressDialog progressDialog;
     private AlertDialog.Builder builder;
+    TextView logInNow;
+
 
 
     @Override
@@ -46,6 +48,20 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_panel);
         getSupportActionBar().hide();
+
+        logInNow = (TextView) findViewById(R.id.logInNow);
+        logInNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUpPanel.this, LoginPanel.class);
+                startActivity(intent);
+
+                Toast.makeText(SignUpPanel.this,"Log in Now", Toast.LENGTH_LONG).show();
+            }
+        });
+
+
+
 
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
@@ -81,6 +97,10 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
         progressDialog = new ProgressDialog(this);
 
         buttonRegister.setOnClickListener(this) ;
+
+
+
+
 
     }
 
