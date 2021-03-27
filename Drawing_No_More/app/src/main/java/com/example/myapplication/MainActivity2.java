@@ -35,7 +35,7 @@ public class MainActivity2 extends AppCompatActivity {
         imgprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent actnew = new Intent(MainActivity2.this, profile.class);
+                Intent actnew = new Intent(MainActivity2.this, ProfileActivity.class);
                 startActivity(actnew);
             }
         });

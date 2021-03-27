@@ -3,9 +3,7 @@ package com.example.myapplication;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +33,12 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_panel);
+        getSupportActionBar().hide();
+        if (SharedPrefManager.getInstance(this).isLoggedIn()){
+            finish();
+            startActivity(new Intent(this, ProfileActivity.class));
+            return;
+        }
 
         TextView signUpNow = (TextView) findViewById(R.id.signUpNow);
         signUpNow.setOnClickListener(new View.OnClickListener() {
@@ -74,9 +78,14 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
 
                                 if (obj.getBoolean("error") == false){
 
-                                    SharedPrefManager.getInstance(getApplicationContext()).userLogin(obj.getInt("uid"), obj.getString("username"), obj.getString("email"));
+                                    SharedPrefManager.getInstance(getApplicationContext())
+                                            .userLogin(Integer.parseInt(obj.getString("uid")),
+                                                    String.valueOf(obj.getString("username")),
+                                                    String.valueOf(obj.getString("email")),
+                                                    String.valueOf(obj.getString("fullname")));
 
-                                    Toast.makeText(getApplicationContext(), obj.getString("uid") , Toast.LENGTH_LONG).show();
+                                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                                    finish();
 
                                 } else {
                                     Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
