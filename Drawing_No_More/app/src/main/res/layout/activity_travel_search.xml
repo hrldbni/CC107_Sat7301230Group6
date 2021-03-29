@@ -6,21 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity2">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/navContainer"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginLeft="-1dp"
         android:layout_marginEnd="1dp"
         android:layout_marginRight="1dp"
-        android:layout_marginBottom="606dp"
-        android:background="@color/white">
+        android:background="@color/design_default_color_on_primary">
 
         <ImageButton
             android:id="@+id/btnhome"
@@ -56,6 +48,26 @@
             app:srcCompat="@drawable/ic_baseline_person_24"
             tools:ignore="VectorDrawableCompat" />
 
-    </RelativeLayout>
+    </LinearLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="45dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+
+        </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

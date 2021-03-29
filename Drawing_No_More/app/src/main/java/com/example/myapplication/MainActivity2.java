@@ -17,7 +17,7 @@ public class MainActivity2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_travel_search);
 
         getSupportActionBar().setTitle("DRAWING NO MORE");
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FF00A6E4")));
@@ -26,7 +26,7 @@ public class MainActivity2 extends AppCompatActivity {
         imgtravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent actnew = new Intent(MainActivity2.this, travel.class);
+                Intent actnew = new Intent(MainActivity2.this, SearchTravel.class);
                 startActivity(actnew);
             }
         });

@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="303dp">
         <LinearLayout
+
             android:background="@drawable/gradientbackground"
             android:layout_width="match_parent"
             android:layout_height="252dp"
@@ -163,6 +164,26 @@
                 android:text="Date of Birth"/>
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/travelBtn"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:paddingLeft="25dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_search"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="20dp"
+                android:text="Travel "
+                android:textStyle="bold" />
+        </LinearLayout>
+        <LinearLayout
             android:layout_marginTop="25dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
@@ -200,6 +221,7 @@
                 android:paddingLeft="20dp"
                 android:text="My Travel Funds"/>
         </LinearLayout>
+
     </LinearLayout>
 
     <Button

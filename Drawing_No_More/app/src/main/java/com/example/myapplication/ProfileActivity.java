@@ -8,10 +8,9 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import org.w3c.dom.Text;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -20,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView userUidText, userText;
     TextView userNameText;
     Button logoutBtn;
+    LinearLayout travelBtn;
 
 
     @Override
@@ -46,6 +46,15 @@ public class ProfileActivity extends AppCompatActivity {
         userEmailText.setText(SharedPrefManager.getInstance(this).getUserEmail());
         userUidText.setText(String.valueOf(SharedPrefManager.getInstance(this).getUid()));
         userText.setText(SharedPrefManager.getInstance(this).getUsername());
+
+        travelBtn = (LinearLayout) findViewById(R.id.travelBtn);
+        travelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, SearchTravel.class));
+                finish();
+            }
+        });
 
 
 
