@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,13 +21,34 @@ public class SearchTravel extends AppCompatActivity {
 
     List<Places> placesList;
 
-
+    ImageButton imgtravel;
+    ImageButton imgprofile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_travel_search);
         getSupportActionBar().hide();
+
+//button to travel activity
+        imgtravel = (ImageButton) findViewById(R.id.btntravel);
+        imgtravel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent actnew = new Intent(SearchTravel.this, Mytravelactivity.class);
+                startActivity(actnew);
+            }
+        });
+//button to profile
+        imgprofile = (ImageButton) findViewById(R.id.btnprofile);
+        imgprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent actnew = new Intent(SearchTravel.this, ProfileActivity.class);
+                startActivity(actnew);
+            }
+        });
+
 
         placesList = new ArrayList<>();
 

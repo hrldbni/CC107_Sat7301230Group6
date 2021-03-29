@@ -8,6 +8,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,16 +20,35 @@ public class ProfileActivity extends AppCompatActivity {
     TextView userUidText, userText;
     TextView userNameText;
     Button logoutBtn;
-    LinearLayout travelBtn;
+    LinearLayout travelBtn, mytravel;
 
+    ImageButton imgtravel;
+    ImageButton imgprofile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        getSupportActionBar().hide();
 
-        getSupportActionBar().setTitle("PROFILE");
-        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(Color.parseColor("#58E0BF")));
+//button to travel activity
+        imgtravel = (ImageButton) findViewById(R.id.btntravel);
+        imgtravel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent actnew = new Intent(ProfileActivity.this, Mytravelactivity.class);
+                startActivity(actnew);
+            }
+        });
+//button to search travel
+        imgprofile = (ImageButton) findViewById(R.id.btnhome);
+        imgprofile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent actnew = new Intent(ProfileActivity.this, SearchTravel.class);
+                startActivity(actnew);
+            }
+        });
 
         if(!SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
@@ -52,6 +72,15 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivity.this, SearchTravel.class));
+                finish();
+            }
+        });
+
+        mytravel = (LinearLayout) findViewById(R.id.mytravels);
+        mytravel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, Mytravelactivity.class));
                 finish();
             }
         });

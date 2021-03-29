@@ -12,9 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Mytravelactivity"></activity>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SearchTravel" />
-        <activity android:name=".MainActivity2"></activity>
+        <activity android:name=".MainActivity2" />
         <activity android:name=".SignUpPanel" />
         <activity android:name=".LoginPanel" />
         <activity android:name=".MainActivity">
