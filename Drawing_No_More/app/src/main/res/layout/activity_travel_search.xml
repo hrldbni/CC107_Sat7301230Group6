@@ -53,10 +53,11 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="685dp"
+        android:layout_height="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:paddingTop="45dp">
+        android:layout_below="@+id/navContainer"
+        android:paddingTop="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
