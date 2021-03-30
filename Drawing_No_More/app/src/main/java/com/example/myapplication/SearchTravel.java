@@ -8,9 +8,12 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -22,7 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SearchTravel extends AppCompatActivity {
 
@@ -31,9 +36,10 @@ public class SearchTravel extends AppCompatActivity {
     PlacesAdapter adapter;
     private ProgressDialog progressDialog;
     List<Places> placesList;
-
+    Button searchBtn;
     ImageButton imgtravel;
     ImageButton imgprofile;
+    EditText searchText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,18 +77,96 @@ public class SearchTravel extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Searching for best places, Please Wait...");
 
+        searchText = (EditText) findViewById(R.id.searchText);
+
         loadPlaces();
+
+
+        searchBtn = (Button) findViewById(R.id.searchPlace);
+        searchBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searchPlace();
+            }
+        });
+
+
 
     }
 
+    private void searchPlace(){
+
+        final String tags = searchText.getText().toString().trim();
+
+        progressDialog.show();
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_SEARCH,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                              placesList.clear();
+                        try {
+                            JSONArray places = new JSONArray(response);
+
+                            for (int i = 0; i < places.length(); i++){
+                                JSONObject placesObject = places.getJSONObject(i);
+
+                                int placeid = placesObject.getInt("placeid");
+                                String placetitle = placesObject.getString("placetitle");
+                                String location = placesObject.getString("location");
+                                double placerating = placesObject.getDouble("placerating");
+                                String placeimage = placesObject.getString("placeimage");
+
+                                placesList.add(
+                                        new Places(
+                                                placeid,placetitle, location, placerating, "Start Drawing", placeimage));;
+
+                            }
+
+                            adapter = new PlacesAdapter(SearchTravel.this, placesList);
+                            recyclerView.setAdapter(adapter);
+
+                        } catch (JSONException e) {
+                            Toast.makeText(getApplicationContext(), "Hello "+ e, Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("tags", tags);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+    }
+
+
+
+
     private void loadPlaces() {
 
-
+        progressDialog.show();
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_PLACES,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
+                        progressDialog.dismiss();
                         try {
                             JSONArray places = new JSONArray(response);
 
