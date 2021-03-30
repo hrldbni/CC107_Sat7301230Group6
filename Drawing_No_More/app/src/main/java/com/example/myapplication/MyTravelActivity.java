@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class Mytravelactivity extends AppCompatActivity {
+public class MyTravelActivity extends AppCompatActivity {
 
     ImageButton imgtravel;
     ImageButton imgprofile;
@@ -23,7 +23,7 @@ public class Mytravelactivity extends AppCompatActivity {
         imgtravel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent actnew = new Intent(Mytravelactivity.this, ProfileActivity.class);
+                Intent actnew = new Intent(MyTravelActivity.this, ProfileActivity.class);
                 startActivity(actnew);
             }
         });
@@ -32,7 +32,7 @@ public class Mytravelactivity extends AppCompatActivity {
         imgprofile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent actnew = new Intent(Mytravelactivity.this, SearchTravel.class);
+                Intent actnew = new Intent(MyTravelActivity.this, SearchTravel.class);
                 startActivity(actnew);
             }
         });

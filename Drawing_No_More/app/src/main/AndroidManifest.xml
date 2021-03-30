@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Mytravelactivity"></activity>
+        <activity android:name=".MyTravelActivity"></activity>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".SearchTravel" />
         <activity android:name=".MainActivity2" />
