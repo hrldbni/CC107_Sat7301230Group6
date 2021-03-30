@@ -97,7 +97,7 @@ public class SearchTravel extends AppCompatActivity {
 
                                 placesList.add(
                                         new Places(
-                                                placeid,placetitle, location, placerating, "Start Draing", placeimage));;
+                                                placeid,placetitle, location, placerating, "Start Drawing", placeimage));;
 
                             }
 
