@@ -50,8 +50,6 @@ public class ProfileActivity extends AppCompatActivity {
         myFunds.setAnimation(animation);
 
 
-
-
         userFullNameText = (TextView) findViewById(R.id.fullnameText);
         userEmailText = (TextView) findViewById(R.id.userEmailText);
         userUidText = (TextView) findViewById(R.id.uidText);

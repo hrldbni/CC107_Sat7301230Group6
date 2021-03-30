@@ -5,9 +5,9 @@ public class Places {
     private String title, shortdesc;
     private double rating;
     private String button;
-    private int image;
+    private String image;
 
-    public Places(int id, String title, String shortdesc, double rating, String button, int image) {
+    public Places(int id, String title, String shortdesc, double rating, String button, String image) {
         this.id = id;
         this.title = title;
         this.shortdesc = shortdesc;
@@ -36,7 +36,7 @@ public class Places {
         return button;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 }

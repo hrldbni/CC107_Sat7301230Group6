@@ -4,19 +4,32 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class SearchTravel extends AppCompatActivity {
 
+
     RecyclerView recyclerView;
     PlacesAdapter adapter;
-
+    private ProgressDialog progressDialog;
     List<Places> placesList;
 
     ImageButton imgtravel;
@@ -55,34 +68,61 @@ public class SearchTravel extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        placesList.add(
-                new Places(
-                        1,
-                        "Hello World",
-                        "Hello World is a text for ",
-                        4.2,
-                        "Start Drawing",
-                        R.drawable.baguios));
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Searching for best places, Please Wait...");
 
-        placesList.add(
-                new Places(
-                        1,
-                        "Hello World",
-                        "Hello World is a text for ",
-                        4.2,
-                        "Start Drawing",
-                        R.drawable.baguios));
-        placesList.add(
-                new Places(
-                        1,
-                        "Hello World",
-                        "Hello World is a text for ",
-                        4.2,
-                        "Start Drawing",
-                        R.drawable.baguios));
+        loadPlaces();
 
-        adapter = new PlacesAdapter(this, placesList);
-        recyclerView.setAdapter(adapter);
+    }
+
+    private void loadPlaces() {
+
+
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Constants.URL_PLACES,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONArray places = new JSONArray(response);
+
+                            for (int i = 0; i < places.length(); i++){
+                                JSONObject placesObject = places.getJSONObject(i);
+
+                                int placeid = placesObject.getInt("placeid");
+                                String placetitle = placesObject.getString("placetitle");
+                                String location = placesObject.getString("location");
+                                double placerating = placesObject.getDouble("placerating");
+                                String placeimage = placesObject.getString("placeimage");
+
+                                placesList.add(
+                                        new Places(
+                                                placeid,placetitle, location, placerating, "Start Draing", placeimage));;
+
+                            }
+
+                            adapter = new PlacesAdapter(SearchTravel.this, placesList);
+                            recyclerView.setAdapter(adapter);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Toast.makeText(SearchTravel.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+       Volley.newRequestQueue(this).add(stringRequest);
+
 
     }
 }

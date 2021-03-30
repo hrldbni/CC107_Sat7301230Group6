@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>{
@@ -42,7 +44,10 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
         holder.textViewDesc.setText(places.getShortdesc());
         holder.textViewRating.setText(String.valueOf(places.getRating()));
         //Button is not needed
-        holder.imageView.setImageDrawable(mCtx.getResources().getDrawable(places.getImage()));
+
+        Glide.with(mCtx)
+                .load(places.getImage())
+                .into(holder.imageView);
 
     }
 
