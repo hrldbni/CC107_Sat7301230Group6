@@ -11,7 +11,9 @@
                 android:centerColor="#F8F8F8"
                 android:endColor="#F8F8F8"
                 android:type="linear"/>
+            <corners android:radius="7dp"/>
         </shape>
+
 
     </item>
 
