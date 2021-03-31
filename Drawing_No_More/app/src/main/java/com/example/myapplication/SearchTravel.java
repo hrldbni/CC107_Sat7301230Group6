@@ -36,7 +36,7 @@ public class SearchTravel extends AppCompatActivity {
     PlacesAdapter adapter;
     private ProgressDialog progressDialog;
     List<Places> placesList;
-    Button searchBtn;
+    ImageButton searchBtn;
     ImageButton imgtravel;
     ImageButton imgprofile;
     EditText searchText;
@@ -82,7 +82,7 @@ public class SearchTravel extends AppCompatActivity {
         loadPlaces();
 
 
-        searchBtn = (Button) findViewById(R.id.searchPlace);
+        searchBtn = (ImageButton) findViewById(R.id.searchPlace);
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
