@@ -65,7 +65,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:scaleType="centerCrop"
-            android:layout_weight="35"/>
+            android:layout_weight="100"/>
 
             <TextView
                 android:id="@+id/imageTitle"
@@ -132,7 +132,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/travelDate"
                 android:hint="Fund"
-                android:drawableStart="@drawable/location"
+                android:drawableStart="@drawable/ic_wallet"
                 android:gravity=""
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
