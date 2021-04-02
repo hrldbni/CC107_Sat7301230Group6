@@ -97,7 +97,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="UserId"
-                android:drawableStart="@drawable/location"
                 android:gravity=""
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
