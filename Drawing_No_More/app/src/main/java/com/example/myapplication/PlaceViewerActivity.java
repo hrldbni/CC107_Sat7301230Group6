@@ -1,10 +1,12 @@
 package com.example.myapplication;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -28,13 +30,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 
 public class PlaceViewerActivity extends AppCompatActivity {
-
+    final Calendar myCalendar = Calendar.getInstance();
     ImageButton imgtravel;
     ImageButton imgprofile;
     EditText userid ,travelDate, travelFund, travelDestination;
@@ -47,6 +52,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place_viewer);
+        travelDate = findViewById(R.id.travelDate);
         getSupportActionBar().hide();
         getIncomingIntent();
 //button to travel activity
@@ -76,6 +82,16 @@ public class PlaceViewerActivity extends AppCompatActivity {
         travelDestination.setText(place);
 
         travelDate = (EditText) findViewById(R.id.travelDate);
+        DatePickerDialog.OnDateSetListener date = this::onDateSet;
+
+        travelDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new DatePickerDialog(PlaceViewerActivity.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
         travelFund  = (EditText) findViewById(R.id.travelFund);
 
         insertBtn = (Button) findViewById(R.id.insertBtn);
@@ -151,6 +167,19 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
 
         }
+    }
+    private void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth){
+        // TODO Auto-generated method stub
+        myCalendar.set(Calendar.YEAR, year);
+        myCalendar.set(Calendar.MONTH, monthOfYear);
+        myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        travelDate.setText(sdf.format(myCalendar.getTime()));
+
+
     }
 
 
