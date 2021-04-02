@@ -58,7 +58,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/textViewRating"
             android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="4dp"
             android:text="View Details"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:textStyle="bold" />

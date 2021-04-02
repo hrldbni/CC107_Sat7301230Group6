@@ -80,23 +80,34 @@
 
         <TextView
             android:id="@+id/imageLocation"
+            style="@style/Base.TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Location dito master"
             android:drawableStart="@drawable/location"
             android:gravity=""
-            style="@style/Base.TextAppearance.AppCompat.Small"
-            />
+            android:text="Location dito master" />
 
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="300dp">
+            <TextView
+                android:id="@+id/imageabout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="About Place"
 
-            <EditText
+                android:gravity=""
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                />
+            <TextView
                 android:id="@+id/userid"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="UserId"
+                android:hint="UserId"
+                android:layout_below="@id/imageabout"
                 android:drawableStart="@drawable/location"
                 android:gravity=""
                 style="@style/Base.TextAppearance.AppCompat.Small"
@@ -125,7 +136,7 @@
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
 
-            <EditText
+            <TextView
 
                 android:id="@+id/travelDestination"
                 android:layout_width="wrap_content"
@@ -147,7 +158,7 @@
 
 
         </RelativeLayout>
-
+</ScrollView>
     </LinearLayout>
 
 

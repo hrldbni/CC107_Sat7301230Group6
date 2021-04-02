@@ -61,6 +61,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
                 intent.putExtra("title", placesList.get(position).getTitle());
                 intent.putExtra("description", placesList.get(position).getShortdesc());
                 intent.putExtra("rating", placesList.get(position).getRating());
+
                 mCtx.startActivity(intent);
             }
         });

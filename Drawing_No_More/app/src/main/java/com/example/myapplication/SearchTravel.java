@@ -122,6 +122,7 @@ public class SearchTravel extends AppCompatActivity {
                                 String location = placesObject.getString("location");
                                 double placerating = placesObject.getDouble("placerating");
                                 String placeimage = placesObject.getString("placeimage");
+                              //  String about = placesObject.getString("placeimage");
 
                                 placesList.add(
                                         new Places(
@@ -182,6 +183,9 @@ public class SearchTravel extends AppCompatActivity {
                                 String location = placesObject.getString("location");
                                 double placerating = placesObject.getDouble("placerating");
                                 String placeimage = placesObject.getString("placeimage");
+
+                              //  String about = placesObject.getString("about");
+
 
                                 placesList.add(
                                         new Places(

@@ -42,7 +42,9 @@ public class PlaceViewerActivity extends AppCompatActivity {
     final Calendar myCalendar = Calendar.getInstance();
     ImageButton imgtravel;
     ImageButton imgprofile;
-    EditText userid ,travelDate, travelFund, travelDestination;
+    EditText travelDate, travelFund;
+    TextView userid, travelDestination;
+
     Button insertBtn;
     String place;
 
@@ -75,10 +77,12 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
 
         });
+        //about = (TextView)  findViewById(R.id.about);
 
-        userid = (EditText) findViewById(R.id.userid);
+
+        userid = (TextView) findViewById(R.id.userid);
         userid.setText(String.valueOf(SharedPrefManager.getInstance(this).getUid()));
-        travelDestination = (EditText) findViewById(R.id.travelDestination);
+        travelDestination = (TextView) findViewById(R.id.travelDestination);
         travelDestination.setText(place);
 
         travelDate = (EditText) findViewById(R.id.travelDate);
@@ -150,10 +154,13 @@ public class PlaceViewerActivity extends AppCompatActivity {
             String image_url = getIntent().getStringExtra("image");
             String image_title = getIntent().getStringExtra("title");
             String description = getIntent().getStringExtra("description");
+           // String abouts = getIntent().getStringExtra("abouts");
 
             TextView imageTitle = (TextView) findViewById(R.id.imageTitle);
             TextView imageLocation = (TextView) findViewById(R.id.imageLocation);
             ImageView imageViewer = (ImageView) findViewById(R.id.imageViewer);
+        //    TextView imageabout = (TextView) findViewById(R.id.imageabout);
+
 
             Glide.with(this)
                     .asBitmap()
