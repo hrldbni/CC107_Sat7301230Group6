@@ -88,9 +88,65 @@
             style="@style/Base.TextAppearance.AppCompat.Small"
             />
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp">
+
+            <EditText
+                android:id="@+id/userid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="UserId"
+                android:drawableStart="@drawable/location"
+                android:gravity=""
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                />
+            <EditText
+
+                android:id="@+id/travelDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:layout_below="@id/userid"
+                android:drawableStart="@drawable/location"
+                android:gravity=""
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                />
+
+            <EditText
+
+                android:id="@+id/travelFund"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/travelDate"
+                android:text="Fund"
+                android:drawableStart="@drawable/location"
+                android:gravity=""
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                />
+
+            <EditText
+
+                android:id="@+id/travelDestination"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Destination"
+                android:layout_below="@id/travelFund"
+                android:drawableStart="@drawable/location"
+                android:gravity=""
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                />
+            <Button
+                android:id="@+id/insertBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/travelDestination"
+                android:text="Insert Travel"/>
 
 
 
+
+        </RelativeLayout>
 
     </LinearLayout>
 

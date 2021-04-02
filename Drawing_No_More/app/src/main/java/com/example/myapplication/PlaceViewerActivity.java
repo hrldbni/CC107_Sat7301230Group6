@@ -37,6 +37,10 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
     ImageButton imgtravel;
     ImageButton imgprofile;
+    EditText userid ,travelDate, travelFund, travelDestination;
+    Button insertBtn;
+    String place;
+
 
 
     @Override
@@ -66,8 +70,64 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
         });
 
+        userid = (EditText) findViewById(R.id.userid);
+        userid.setText(String.valueOf(SharedPrefManager.getInstance(this).getUid()));
+        travelDestination = (EditText) findViewById(R.id.travelDestination);
+        travelDestination.setText(place);
+
+        travelDate = (EditText) findViewById(R.id.travelDate);
+        travelFund  = (EditText) findViewById(R.id.travelFund);
+
+        insertBtn = (Button) findViewById(R.id.insertBtn);
+
+        insertBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addTravel();
+            }
+        });
+    }
+
+    private void addTravel() {
+
+        final String userTravelId = userid.getText().toString().trim();
+        final String travelDateText = travelDate.getText().toString().trim();
+        final String travelFundText = travelFund.getText().toString().trim();
+        final String travelDestinationText = travelDestination.getText().toString().trim();
+
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_ADDTRAVEL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        Toast.makeText(getApplicationContext(), "Completed", Toast.LENGTH_LONG).show();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage() + "Erro", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("userTravelId", userTravelId);
+                params.put("travelDate", travelDateText);
+                params.put("travelFund", travelFundText);
+                params.put("travelDestination", travelDestinationText);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
 
     }
+
 
     private void getIncomingIntent(){
         if (getIntent().hasExtra("image") && getIntent().hasExtra("title") && getIntent().hasExtra("description") && getIntent().hasExtra("rating")){
@@ -86,6 +146,8 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
             imageTitle.setText(image_title);
             imageLocation.setText(description);
+
+            place = image_title;
 
 
         }
