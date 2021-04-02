@@ -23,6 +23,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
 
     private Context mCtx;
     private List<Places> placesList;
+    int placeId;
 
     public PlacesAdapter(Context mCtx, List<Places> placesList) {
         this.mCtx = mCtx;
@@ -57,6 +58,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mCtx, PlaceViewerActivity.class);
+                intent.putExtra("placeId", placesList.get(position).getId());
                 intent.putExtra("image", placesList.get(position).getImage());
                 intent.putExtra("title", placesList.get(position).getTitle());
                 intent.putExtra("description", placesList.get(position).getShortdesc());
@@ -86,8 +88,6 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
         public ImageView imageView;
         public TextView textViewTitle, textViewDesc, textViewRating;
         public Button textViewDraw;
-
-
 
 
         public PlacesViewHolder(@NonNull View itemView) {
