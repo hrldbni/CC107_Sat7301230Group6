@@ -1,18 +1,22 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import java.security.PublicKey;
 import java.util.List;
 
 public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesViewHolder>{
@@ -25,9 +29,9 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
         this.placesList = placesList;
     }
 
-    @NonNull
+
     @Override
-    public PlacesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PlacesViewHolder onCreateViewHolder( ViewGroup parent, int viewType) {
 
         LayoutInflater inflater = LayoutInflater.from(mCtx);
         View view = inflater.inflate(R.layout.list_layout, null);
@@ -49,7 +53,27 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
                 .load(places.getImage())
                 .into(holder.imageView);
 
+        holder.textViewDraw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mCtx, PlaceViewerActivity.class);
+                intent.putExtra("image", placesList.get(position).getImage());
+                intent.putExtra("title", placesList.get(position).getTitle());
+                intent.putExtra("description", placesList.get(position).getShortdesc());
+                intent.putExtra("rating", placesList.get(position).getRating());
+                mCtx.startActivity(intent);
+            }
+        });
+        holder.textViewTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -58,10 +82,11 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
 
     class PlacesViewHolder extends RecyclerView.ViewHolder {
 
+        public ImageView imageView;
+        public TextView textViewTitle, textViewDesc, textViewRating;
+        public Button textViewDraw;
 
-        ImageView imageView;
-        TextView textViewTitle, textViewDesc, textViewRating;
-        Button textViewDraw;
+
 
 
         public PlacesViewHolder(@NonNull View itemView) {

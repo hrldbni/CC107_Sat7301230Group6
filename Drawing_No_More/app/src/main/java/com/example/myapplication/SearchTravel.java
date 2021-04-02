@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,10 +38,12 @@ public class SearchTravel extends AppCompatActivity {
     PlacesAdapter adapter;
     private ProgressDialog progressDialog;
     List<Places> placesList;
-    ImageButton searchBtn;
+    Button searchBtn;
+    Button textViewPrice;
     ImageButton imgtravel;
     ImageButton imgprofile;
     EditText searchText;
+    Button drawingBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,14 +86,14 @@ public class SearchTravel extends AppCompatActivity {
         loadPlaces();
 
 
-        searchBtn = (ImageButton) findViewById(R.id.searchPlace);
+        searchBtn = (Button) findViewById(R.id.searchPlace);
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 searchPlace();
             }
         });
-
 
 
     }

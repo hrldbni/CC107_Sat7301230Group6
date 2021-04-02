@@ -2,15 +2,21 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MyTravelActivity extends AppCompatActivity {
 
     ImageButton imgtravel;
-    ImageButton imgprofile;
+    ImageButton imgprofile, placeImage;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,7 @@ public class MyTravelActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent actnew = new Intent(MyTravelActivity.this, ProfileActivity.class);
                 startActivity(actnew);
+                finish();
             }
         });
 //button to home search travel
@@ -34,8 +41,13 @@ public class MyTravelActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent actnew = new Intent(MyTravelActivity.this, SearchTravel.class);
                 startActivity(actnew);
+                finish();
             }
         });
+
+
+
+
 
     }
 }
