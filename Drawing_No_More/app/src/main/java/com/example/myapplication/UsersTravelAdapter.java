@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.UsersTravelViewHolder> {
@@ -44,12 +46,17 @@ public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.
         holder.travelDate.setText(userTravel.getTravelDate());
         holder.currentFund.setText(userTravel.getCurrentFund());
         holder.availableFund.setText(userTravel.getAvailableFund());
+        
         holder.viewDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(mCtx, "Hello", Toast.LENGTH_LONG).show();
             }
         });
+
+        Glide.with(mCtx)
+                .load(userTravel.getPlaceImage())
+                .into(holder.placeImage );
 
     }
 
