@@ -44,7 +44,6 @@ public class SearchTravel extends AppCompatActivity {
     ImageButton imgprofile;
     EditText searchText;
     Button drawingBtn;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

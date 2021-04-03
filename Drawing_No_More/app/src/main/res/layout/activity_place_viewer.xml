@@ -57,8 +57,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="100"
-        android:layout_marginTop="50dp"
-        >
+        android:layout_marginTop="50dp">
 
         <ImageView
             android:id="@+id/imageViewer"
@@ -67,89 +66,87 @@
             android:scaleType="centerCrop"
             android:layout_weight="100"/>
 
-            <TextView
-                android:id="@+id/imageTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:text="Title Dito Master"
-                android:gravity="center"
-                style="@style/Base.TextAppearance.AppCompat.Large"
-                />
+        <TextView
+            android:id="@+id/imageTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Title Dito Master"
+            android:gravity="center"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            />
 
         <TextView
             android:id="@+id/imageLocation"
-            style="@style/Base.TextAppearance.AppCompat.Small"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textSize="15sp"
             android:drawableStart="@drawable/location"
-            android:gravity=""
             android:text="Location dito master" />
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp">
-            <TextView
-                android:id="@+id/imageAbout"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="About Place"
-                android:gravity="center"
-                android:justificationMode="inter_word"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
+                android:layout_height="300dp">
 
-            <EditText
+                <TextView
+                    android:id="@+id/imageAbout"
+                    android:padding="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="About Place"
+                    android:gravity="center"
+                    android:justificationMode="inter_word"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    />
 
-                android:id="@+id/travelDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="  Date"
-                android:layout_below="@id/imageAbout"
-                android:drawableStart="@drawable/ic_calendar"
-                android:gravity=""
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
+                <EditText
+                    android:id="@+id/travelDate"
+                    android:layout_width="149dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageAbout"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="211dp"
+                    android:background="@android:color/transparent"
+                    android:drawableStart="@drawable/ic_calendar"
+                    android:hint=" Set Date..."
+                    android:textSize="15sp" />
 
-            <EditText
+                <EditText
+                    android:id="@+id/travelFund"
+                    android:layout_width="179dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/travelDate"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="-24dp"
+                    android:layout_marginEnd="32dp"
+                    android:background="@android:color/transparent"
+                    android:drawableStart="@drawable/ic_wallet"
+                    android:hint=" Your Travel Fund..."
+                    android:textSize="15sp" />
 
-                android:id="@+id/travelFund"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/travelDate"
-                android:hint="Fund"
-                android:drawableStart="@drawable/ic_wallet"
-                android:gravity=""
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
-
-            <TextView
-
-                android:id="@+id/travelDestination"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Destination"
-                android:layout_below="@id/travelFund"
-                android:drawableStart="@drawable/location"
-                android:gravity=""
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
-            <Button
-                android:id="@+id/insertBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/travelDestination"
-                android:text="Insert Travel"/>
-
+                <Button
+                    android:id="@+id/insertBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/travelFund"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="38dp"
+                    android:layout_marginEnd="134dp"
+                    android:text="Start Drawing" />
 
 
-
-        </RelativeLayout>
-</ScrollView>
+            </RelativeLayout>
+        </ScrollView>
     </LinearLayout>
 
 
