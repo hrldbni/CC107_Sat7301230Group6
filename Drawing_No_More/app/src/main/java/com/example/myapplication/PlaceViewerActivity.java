@@ -40,13 +40,18 @@ import java.util.Map;
 
 public class PlaceViewerActivity extends AppCompatActivity {
     final Calendar myCalendar = Calendar.getInstance();
+
+
+    public String placeIdText;
     ImageButton imgtravel;
     ImageButton imgprofile;
     EditText travelDate, travelFund;
+    TextView placeId;
     TextView userid, travelDestination;
 
     Button insertBtn;
     String place;
+
 
 
 
@@ -77,7 +82,8 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
 
         });
-        //about = (TextView)  findViewById(R.id.about);
+        //about = (TextView)  findViewById(R.id.about);25
+
 
 
         userid = (TextView) findViewById(R.id.userid);
@@ -122,13 +128,21 @@ public class PlaceViewerActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        Toast.makeText(getApplicationContext(), "Completed", Toast.LENGTH_LONG).show();
+                        try {
+                            JSONObject obj = new JSONObject(response);
+                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
                     }
                 },
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage() + "Erro", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), error.getMessage() + "Error", Toast.LENGTH_LONG).show();
                     }
                 }
 
@@ -151,10 +165,13 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
     private void getIncomingIntent(){
         if (getIntent().hasExtra("image") && getIntent().hasExtra("title") && getIntent().hasExtra("description") && getIntent().hasExtra("rating")){
+
             String image_url = getIntent().getStringExtra("image");
             String image_title = getIntent().getStringExtra("title");
             String description = getIntent().getStringExtra("description");
+            String image_id = getIntent().getStringExtra("idPlace");
            // String abouts = getIntent().getStringExtra("abouts");
+
 
             TextView imageTitle = (TextView) findViewById(R.id.imageTitle);
             TextView imageLocation = (TextView) findViewById(R.id.imageLocation);
@@ -172,6 +189,13 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
             place = image_title;
 
+            placeId = (TextView) findViewById(R.id.placeid);
+            placeId.setText(image_id);
+
+
+
+
+
 
         }
     }
@@ -181,7 +205,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
         myCalendar.set(Calendar.MONTH, monthOfYear);
         myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
-        String myFormat = "MM/dd/yy"; //In which you need put here
+        String myFormat = "MM/dd/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         travelDate.setText(sdf.format(myCalendar.getTime()));

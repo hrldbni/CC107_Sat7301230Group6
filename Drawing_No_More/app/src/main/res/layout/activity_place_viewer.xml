@@ -113,6 +113,19 @@
                 android:gravity=""
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
+            <TextView
+                android:id="@+id/placeid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="UserId"
+               android:layout_toRightOf="@+id/userid"
+                android:drawableStart="@drawable/location"
+                android:text="placeid"
+                android:layout_below="@+id/imageabout"
+                android:gravity=""
+                style="@style/Base.TextAppearance.AppCompat.Small"
+                />
+
             <EditText
 
                 android:id="@+id/travelDate"
