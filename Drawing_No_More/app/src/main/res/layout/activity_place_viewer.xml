@@ -98,8 +98,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="About Place"
+<<<<<<< Updated upstream
                 android:textAlignment="center"
                 android:gravity=""
+=======
+                android:gravity="center"
+                android:justificationMode="inter_word"
+>>>>>>> Stashed changes
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
 
@@ -112,7 +117,6 @@
 
                 android:drawableStart="@drawable/location"
                 android:text="UserId"
-                android:gravity=""
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
             <TextView

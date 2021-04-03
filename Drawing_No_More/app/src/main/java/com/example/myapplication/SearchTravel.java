@@ -126,7 +126,7 @@ public class SearchTravel extends AppCompatActivity {
 
                                 placesList.add(
                                         new Places(
-                                                placeid,placetitle, location, placerating, "View Details", placeimage));;
+                                                placeid,placetitle, location, placerating, "View Details", placeimage));
 
                             }
 
@@ -189,7 +189,7 @@ public class SearchTravel extends AppCompatActivity {
 
                                 placesList.add(
                                         new Places(
-                                                placeid,placetitle, location, placerating, "View Details", placeimage));;
+                                                placeid,placetitle, location, placerating, "View Details", placeimage));
 
                             }
 

@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -11,10 +13,16 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyTravelActivity extends AppCompatActivity {
 
+    RecyclerView recyclerView;
+    UsersTravelAdapter adapter;
     ImageButton imgtravel;
     ImageButton imgprofile, placeImage;
+    List<UserTravels> userTravelsList;
 
 
 
@@ -45,9 +53,35 @@ public class MyTravelActivity extends AppCompatActivity {
             }
         });
 
+        userTravelsList = new ArrayList<>();
+
+        recyclerView = (RecyclerView) findViewById(R.id.recyclerView2);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        userTravelsList.add(
+                new UserTravels(
+                        1, "Boracay", "basta", "Hello", "View Details", "Hi"));
+        userTravelsList.add(
+                new UserTravels(
+                        1, "Boracay", "basta", "Hello", "View Details", "Hi"));
+        userTravelsList.add(
+                new UserTravels(
+                        1, "Boracay", "basta", "Hello", "View Details", "Hi"));
+
+        userTravelsList.add(
+                new UserTravels(
+                        1, "Boracay", "basta", "Hello", "View Details", "Hi"));
+        userTravelsList.add(
+                new UserTravels(
+                        1, "Boracay", "basta", "Hello", "View Details", "Hi"));
 
 
 
+        adapter = new UsersTravelAdapter(MyTravelActivity.this, userTravelsList);
+        recyclerView.setAdapter(adapter);
 
     }
+
+
 }

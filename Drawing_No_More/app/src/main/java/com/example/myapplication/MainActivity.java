@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 //SPLASH SCREEN
     ImageView drawingText;
     com.airbnb.lottie.LottieAnimationView img;
-    private static int SPLASH_TIME_OUT = 2000;
+    private static int SPLASH_TIME_OUT = 2200;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
