@@ -165,10 +165,15 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
     private void addTravel() {
 
-        final String userTravelId = userid.getText().toString().trim();
+        final String userTravelId = String.valueOf(SharedPrefManager.getInstance(this).getUid());
         final String travelDateText = travelDate.getText().toString().trim();
         final String travelFundText = travelFund.getText().toString().trim();
+<<<<<<< Updated upstream
 //        final String travelDestinationText = travelDestination.getText().toString().trim();
+=======
+        final String travelDestinationText = travelDestination.getText().toString().trim();
+        final String travelPlaceId =  String.valueOf(placeIdText);
+>>>>>>> Stashed changes
 
 
         StringRequest stringRequest = new StringRequest(
@@ -202,7 +207,12 @@ public class PlaceViewerActivity extends AppCompatActivity {
                 params.put("userTravelId", userTravelId);
                 params.put("travelDate", travelDateText);
                 params.put("travelFund", travelFundText);
+<<<<<<< Updated upstream
  //               params.put("travelDestination", travelDestinationText);
+=======
+                params.put("travelDestination", travelDestinationText);
+                params.put("placeid", travelPlaceId);
+>>>>>>> Stashed changes
                 return params;
             }
         };
