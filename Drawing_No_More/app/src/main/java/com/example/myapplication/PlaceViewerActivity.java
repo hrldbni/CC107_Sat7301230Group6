@@ -42,12 +42,13 @@ public class PlaceViewerActivity extends AppCompatActivity {
     final Calendar myCalendar = Calendar.getInstance();
 
 
-    public String placeIdText;
+    public int placeIdText;
     ImageButton imgtravel;
     ImageButton imgprofile;
     EditText travelDate, travelFund;
     TextView placeId;
-    TextView userid, travelDestination;
+    TextView userid, travelDestination, imageAbout;
+    private ProgressDialog progressDialog;
 
     Button insertBtn;
     String place;
@@ -85,7 +86,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
         //about = (TextView)  findViewById(R.id.about);25
 
 
-
+        imageAbout = (TextView) findViewById(R.id.imageAbout);
         userid = (TextView) findViewById(R.id.userid);
         userid.setText(String.valueOf(SharedPrefManager.getInstance(this).getUid()));
         travelDestination = (TextView) findViewById(R.id.travelDestination);
@@ -112,6 +113,56 @@ public class PlaceViewerActivity extends AppCompatActivity {
                 addTravel();
             }
         });
+
+        addAboutPlace();
+
+    }
+
+    private void addAboutPlace() {
+
+        final String placeid = String.valueOf(placeIdText);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait");
+
+
+        progressDialog.show();
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_ADDABOUTPLACE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            progressDialog.dismiss();
+
+                            JSONObject obj = new JSONObject(response);
+                            imageAbout.setText(obj.getString("message"));
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage() + "Error", Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("placeid", placeid);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+
     }
 
     private void addTravel() {
@@ -192,6 +243,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
             placeId = (TextView) findViewById(R.id.placeid);
             placeId.setText(image_id);
 
+            placeIdText = Integer.parseInt(image_id);
 
 
 

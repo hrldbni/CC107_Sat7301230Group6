@@ -94,7 +94,7 @@
             android:layout_width="match_parent"
             android:layout_height="300dp">
             <TextView
-                android:id="@+id/imageabout"
+                android:id="@+id/imageAbout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="About Place"
@@ -107,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="UserId"
-                android:layout_below="@id/imageabout"
+                android:layout_below="@id/imageAbout"
                 android:drawableStart="@drawable/location"
                 android:text="UserId"
                 android:gravity=""
@@ -121,7 +121,7 @@
                android:layout_toRightOf="@+id/userid"
                 android:drawableStart="@drawable/location"
                 android:text="placeid"
-                android:layout_below="@+id/imageabout"
+                android:layout_below="@+id/imageAbout"
                 android:gravity=""
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
