@@ -87,8 +87,8 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
 
         imageAbout = (TextView) findViewById(R.id.imageAbout);
-  //    travelDestination = (TextView) findViewById(R.id.travelDestination);
- //       travelDestination.setText(place);
+        travelDestination = (TextView) findViewById(R.id.travelDestination);
+        travelDestination.setText(place);
 
         travelDate = (EditText) findViewById(R.id.travelDate);
         DatePickerDialog.OnDateSetListener date = this::onDateSet;
@@ -168,7 +168,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
         final String userTravelId = userid.getText().toString().trim();
         final String travelDateText = travelDate.getText().toString().trim();
         final String travelFundText = travelFund.getText().toString().trim();
-//        final String travelDestinationText = travelDestination.getText().toString().trim();
+        final String travelDestinationText = travelDestination.getText().toString().trim();
 
 
         StringRequest stringRequest = new StringRequest(
@@ -202,7 +202,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
                 params.put("userTravelId", userTravelId);
                 params.put("travelDate", travelDateText);
                 params.put("travelFund", travelFundText);
- //               params.put("travelDestination", travelDestinationText);
+                params.put("travelDestination", travelDestinationText);
                 return params;
             }
         };
