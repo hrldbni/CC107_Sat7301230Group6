@@ -44,6 +44,7 @@ public class SearchTravel extends AppCompatActivity {
     ImageButton imgprofile;
     EditText searchText;
     Button drawingBtn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +122,7 @@ public class SearchTravel extends AppCompatActivity {
                                 String location = placesObject.getString("location");
                                 double placerating = placesObject.getDouble("placerating");
                                 String placeimage = placesObject.getString("placeimage");
-                              //  String about = placesObject.getString("placeimage");
+
 
                                 placesList.add(
                                         new Places(
@@ -188,7 +189,7 @@ public class SearchTravel extends AppCompatActivity {
 
                                 placesList.add(
                                         new Places(
-                                                placeid,placetitle, location, placerating, "View Details", placeimage));
+                                                placeid,placetitle, location, placerating, "View Details", placeimage));;
 
                             }
 
