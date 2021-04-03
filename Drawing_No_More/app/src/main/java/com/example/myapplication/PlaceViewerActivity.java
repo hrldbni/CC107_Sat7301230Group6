@@ -87,8 +87,6 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
 
         imageAbout = (TextView) findViewById(R.id.imageAbout);
-        userid = (TextView) findViewById(R.id.userid);
-        userid.setText(String.valueOf(SharedPrefManager.getInstance(this).getUid()));
         travelDestination = (TextView) findViewById(R.id.travelDestination);
         travelDestination.setText(place);
 
@@ -239,10 +237,6 @@ public class PlaceViewerActivity extends AppCompatActivity {
             imageLocation.setText(description);
 
             place = image_title;
-
-            placeId = (TextView) findViewById(R.id.placeid);
-            placeId.setText(image_id);
-
             placeIdText = Integer.parseInt(image_id);
 
 

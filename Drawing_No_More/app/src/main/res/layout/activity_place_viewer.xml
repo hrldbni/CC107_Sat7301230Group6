@@ -98,37 +98,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="About Place"
-<<<<<<< Updated upstream
-                android:textAlignment="center"
-                android:gravity=""
-=======
                 android:gravity="center"
                 android:justificationMode="inter_word"
->>>>>>> Stashed changes
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
-
-            <TextView
-                android:id="@+id/userid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="UserId"
-                android:layout_below="@id/imageAbout"
-
-                android:drawableStart="@drawable/location"
-                android:text="UserId"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
-            <TextView
-                android:id="@+id/placeid"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="UserId"
-               android:layout_toRightOf="@+id/userid"
-                android:drawableStart="@drawable/location"
-                android:text="placeid"
-                android:layout_below="@+id/imageAbout"
-                android:gravity=""
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
 
@@ -138,7 +109,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:hint="  Date"
-                android:layout_below="@id/userid"
+                android:layout_below="@id/imageAbout"
                 android:drawableStart="@drawable/ic_calendar"
                 android:gravity=""
                 style="@style/Base.TextAppearance.AppCompat.Small"
