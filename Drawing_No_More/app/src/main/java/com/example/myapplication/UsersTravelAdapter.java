@@ -13,6 +13,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.UsersTravelViewHolder> {
@@ -50,7 +52,9 @@ public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.
                 Toast.makeText(mCtx, "Hello", Toast.LENGTH_LONG).show();
             }
         });
-
+        Glide.with(mCtx)
+                .load(userTravel.getPlaceImage())
+                .into(holder.placeImage );
     }
 
     @Override

@@ -58,6 +58,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(mCtx, PlaceViewerActivity.class);
+                intent.putExtra("placeid", placesList.get(position).getId());
                 intent.putExtra("image", placesList.get(position).getImage());
                 intent.putExtra("title", placesList.get(position).getTitle());
                 intent.putExtra("description", placesList.get(position).getShortdesc());
@@ -76,6 +77,7 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
             public void onClick(View v) {
 
                 Intent intent = new Intent(mCtx, PlaceViewerActivity.class);
+                intent.putExtra("placeid", placesList.get(position).getId());
                 intent.putExtra("image", placesList.get(position).getImage());
                 intent.putExtra("title", placesList.get(position).getTitle());
                 intent.putExtra("description", placesList.get(position).getShortdesc());
