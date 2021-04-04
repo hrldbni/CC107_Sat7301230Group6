@@ -1,6 +1,9 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,11 +49,40 @@ public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.
         holder.travelDate.setText(userTravel.getTravelDate());
         holder.currentFund.setText(userTravel.getCurrentFund());
         holder.availableFund.setText(userTravel.getAvailableFund());
-        
+
+        if(userTravel.getTravelStatus().equalsIgnoreCase("Ready to Go")){
+            holder.travelStatus.setText(userTravel.getTravelStatus());
+            holder.travelStatus.setBackgroundColor(Color.parseColor("#58E0BF"));
+        } else if (userTravel.getTravelStatus().equalsIgnoreCase("Pending")){
+            holder.travelStatus.setText(userTravel.getTravelStatus());
+            holder.travelStatus.setBackgroundColor(Color.MAGENTA);
+            //Yellow
+        } else {
+            holder.travelStatus.setText(userTravel.getTravelStatus());
+            holder.travelStatus.setBackgroundColor(Color.RED);
+            //Red
+        }
+
+
         holder.viewDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mCtx, "Hello", Toast.LENGTH_LONG).show();
+
+                int id =  userTravel.getId();
+                Intent intent = new Intent(mCtx, ConfirmTravel.class);
+                intent.putExtra("travelId", String.valueOf(id));
+                intent.putExtra("eventLocation", userTravel.getTravelLocation());
+                intent.putExtra("eventTitle", userTravel.getPlaceTitle());
+                intent.putExtra("eventDate", userTravel.getTravelDate());
+                intent.putExtra("travelStatus", userTravel.getTravelStatus());
+                intent.putExtra("currentFund", userTravel.getCurrentFund());
+                intent.putExtra("travelFund", userTravel.getAvailableFund());
+                intent.putExtra("image", userTravel.getPlaceImage());
+
+                mCtx.startActivity(intent);
+                ((Activity) mCtx).finish();
+
+
             }
         });
 
@@ -67,7 +99,7 @@ public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.
 
     class UsersTravelViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView placeTitle, travelDate, currentFund,  availableFund;
+        public TextView placeTitle, travelDate, currentFund,  availableFund,travelStatus;
         public ImageView placeImage;
         public Button viewDetails;
 
@@ -82,6 +114,8 @@ public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.
             availableFund = itemView.findViewById(R.id.availableFund);
             placeImage = itemView.findViewById(R.id.imageView);
             viewDetails = itemView.findViewById(R.id.viewDetails);
+            travelStatus = itemView.findViewById(R.id.travelStatus);
+
 
 
         }

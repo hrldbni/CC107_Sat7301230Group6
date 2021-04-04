@@ -1,78 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="70dp"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp"
-    android:paddingBottom="30dp"
-    tools:context=".MyEvent">
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Event"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:textColor="#58E0BF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <EditText
-        android:id="@+id/etTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_baseline_title_24"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint=" Title Event"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView" />
-    <EditText
-        android:id="@+id/etLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_baseline_location_on_24"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint=" Location"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etTitle" />
-    <EditText
-        android:id="@+id/etDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint="  Date"
-        android:inputType="text"
-        android:drawableStart="@drawable/ic_calendar"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etLocation" />
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:drawableStart="@drawable/description_24"
-        android:layout_marginTop="50dp"
-        android:ems="10"
-        android:hint=" Description"
-        android:inputType="text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDate" />
-    <Button
-        android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="Set Event"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etDescription" />
+    tools:context=".ConfirmTravel">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/navContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:weightSum="100"
+        android:orientation="vertical"
+        android:background="@color/design_default_color_on_primary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:layout_alignParentLeft="true"
+                android:background="@color/white"
+                android:scaleType="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                app:srcCompat="@drawable/back" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/travelCardContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="200">
+
+            <ImageView
+                android:id="@+id/imagePlace"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/location"/>
+
+            <TextView
+                android:id="@+id/travelCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TRAVEL CARD"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/white"
+                android:background="#5058E0BF"
+                android:textStyle="bold"
+                style="@style/TextAppearance.AppCompat.Large"
+                />
+            <TextView
+                android:id="@+id/placeLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="#5058E0BF"
+                android:textColor="@color/white"
+                android:text="Location"
+                android:drawableStart="@drawable/location"/>
+
+            <TextView
+                android:id="@+id/placeTitle"
+                android:layout_width="match_parent"
+                android:text="Place Title"
+                android:layout_above="@+id/placeLocation"
+                android:background="#5058E0BF"
+                android:textAllCaps="true"
+                android:paddingLeft="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/travelDate"
+                android:layout_width="wrap_content"
+                android:text="Date"
+                android:background="#5058E0BF"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_below="@+id/travelCard"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/travelStatus"
+                android:layout_width="wrap_content"
+                android:text="Travel Status"
+                android:layout_alignParentRight="true"
+                android:paddingRight="20dp"
+                android:paddingLeft="20dp"
+                android:textColor="@color/white"
+                android:layout_above="@+id/placeTitle"
+                android:background="#5058E0BF"
+                android:textStyle="bold"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_height="wrap_content"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/travelFund"
+            android:layout_width="wrap_content"
+            android:text="currentFund"
+            android:drawableStart="@drawable/ic_wallet"
+            android:padding="15dp"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/currentFund"
+            android:layout_width="wrap_content"
+            android:text=" travel Fund"
+            android:padding="15dp"
+            android:drawableStart="@drawable/plus"
+            android:layout_toRightOf="@+id/currentFund"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            >
+
+            <Button
+                android:id="@+id/cancelTravel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remove Travel"
+                android:layout_weight="50"/>
+
+            <Button
+                android:id="@+id/addCalendar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add to CALENDAR"
+                android:layout_weight="50"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

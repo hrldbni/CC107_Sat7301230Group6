@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -35,6 +36,7 @@ public class MyTravelActivity extends AppCompatActivity {
     ImageButton imgtravel;
     ImageButton imgprofile, placeImage;
     List<UserTravels> userTravelsList;
+    private ProgressDialog progressDialog;
 
 
 
@@ -81,6 +83,9 @@ public class MyTravelActivity extends AppCompatActivity {
 
         String userid = String.valueOf(SharedPrefManager.getInstance(this).getUid());
 
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait while retrieving your Travels");
+        progressDialog.show();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_GETUSERTRAVELS,
@@ -88,6 +93,7 @@ public class MyTravelActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         try {
+                            progressDialog.dismiss();
                             JSONArray places = new JSONArray(response);
 
                             for (int i = 0; i < places.length(); i++){
@@ -99,10 +105,12 @@ public class MyTravelActivity extends AppCompatActivity {
                                 String currentFund = userTravelsObject.getString("currentFund");
                                 String travelDestination = userTravelsObject.getString("travelDestination");
                                 String travelPlaceImage = userTravelsObject.getString("placeimage");
+                                String travelStatus = userTravelsObject.getString("travelStatus");
+                                String travelLocation = userTravelsObject.getString("travelLocation");
 
                                         userTravelsList.add(
                                         new UserTravels(
-                                                Integer.parseInt(travelid), travelDestination, travelDate, currentFund, travelFund, travelPlaceImage));
+                                                Integer.parseInt(travelid), travelDestination, travelDate, currentFund, travelFund, travelPlaceImage, travelStatus, travelLocation));
 
                             }
 
@@ -113,6 +121,7 @@ public class MyTravelActivity extends AppCompatActivity {
 
                         } catch (JSONException e) {
                             e.printStackTrace();
+                            progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Error Jason" + e, Toast.LENGTH_LONG).show();
                         }
 

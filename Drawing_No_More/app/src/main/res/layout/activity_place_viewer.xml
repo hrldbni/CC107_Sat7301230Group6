@@ -63,9 +63,9 @@
         <ImageView
             android:id="@+id/imageViewer"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="200dp"
             android:scaleType="centerCrop"
-            android:layout_weight="100"/>
+            />
 
             <TextView
                 android:id="@+id/imageTitle"
@@ -100,6 +100,7 @@
                 android:hint="About Place"
                 android:gravity="center"
                 android:padding="10dp"
+                android:justificationMode="inter_word"
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
 
@@ -115,11 +116,14 @@
                 android:id="@+id/travelDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:hint="  Date"
+                android:hint="TRAVEL DATE"
+                android:editable="false"
                 android:layout_below="@id/imageAbout"
                 android:drawableStart="@drawable/ic_calendar"
                 android:gravity="center"
                 android:layout_weight="50"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
 
@@ -128,11 +132,13 @@
                 android:id="@+id/travelFund"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/travelDate"
-                android:hint="Fund"
+                android:layout_below="@id/imageAbout"
+                android:hint="Ex. 1000"
                 android:drawableStart="@drawable/ic_wallet"
-                android:gravity=""
+                android:gravity="center"
                 android:layout_weight="50"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
                 style="@style/Base.TextAppearance.AppCompat.Small"
                 />
             </LinearLayout>
@@ -143,7 +149,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/dateAndFundContainer"
                 android:layout_centerHorizontal="true"
-                android:text="Insert Travel"/>
+                android:padding="10dp"
+                android:text="Start Drawing"/>
 
 
 

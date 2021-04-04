@@ -1,7 +1,9 @@
 package com.example.myapplication;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -30,9 +32,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -105,7 +109,64 @@ public class PlaceViewerActivity extends AppCompatActivity {
         insertBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addTravel();
+              if (travelDate.getText().toString().trim().isEmpty()){
+                  AlertDialog alertDialog1 = new AlertDialog.Builder(
+                          PlaceViewerActivity.this).create();
+
+
+                  alertDialog1.setTitle("Hey");
+                  alertDialog1.setMessage("You cannot Travel without a Date!");
+                  alertDialog1.setIcon(R.drawable.ic_calendar);
+                  alertDialog1.setButton("OK", new DialogInterface.OnClickListener() {
+
+                      public void onClick(DialogInterface dialog, int which) {
+
+                      }
+                  });
+
+                  alertDialog1.show();
+              } else if (travelFund.getText().toString().trim().isEmpty()){
+                  AlertDialog alertDialog1 = new AlertDialog.Builder(
+                          PlaceViewerActivity.this).create();
+
+
+                  alertDialog1.setTitle("Hey");
+                  alertDialog1.setMessage("You cannot Travel without a Budget!");
+                  alertDialog1.setIcon(R.drawable.money);
+                  alertDialog1.setButton("OK", new DialogInterface.OnClickListener() {
+
+                      public void onClick(DialogInterface dialog, int which) {
+
+                      }
+                  });
+
+                  alertDialog1.show();
+
+
+              } else {
+
+                  String date = travelDate.getText().toString().trim();
+
+                  try {
+                      if (new SimpleDateFormat("MM/dd/yyyy").parse(date).before(new Date())) {
+                          Toast.makeText(getApplicationContext(), "Please select a valid date for you to Prepare", Toast.LENGTH_SHORT).show();
+                      } else {
+                          addTravel();
+                          Intent newIntent;
+                          newIntent = new Intent(PlaceViewerActivity.this, SearchTravel.class);
+                          startActivity(newIntent);
+                          finish();
+                      }
+                  } catch (ParseException e) {
+                      e.printStackTrace();
+                  }
+
+
+
+
+              }
+
+
             }
         });
 
@@ -176,7 +237,23 @@ public class PlaceViewerActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         try {
                             JSONObject obj = new JSONObject(response);
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_LONG).show();
+
+
+                            AlertDialog alertDialog1 = new AlertDialog.Builder(
+                                    PlaceViewerActivity.this).create();
+
+
+                            alertDialog1.setTitle("Hey");
+                            alertDialog1.setMessage(obj.getString("message"));
+                            alertDialog1.setButton("OK", new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+
+                            alertDialog1.show();
+
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -206,6 +283,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
         };
 
         RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
 
     }
 

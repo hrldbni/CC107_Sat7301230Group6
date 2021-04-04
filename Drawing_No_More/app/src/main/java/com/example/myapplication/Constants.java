@@ -10,4 +10,6 @@ public class Constants {
     public static final String URL_ADDTRAVEL = ROOT_URL+"addTravel.php";
     public static final String URL_ADDABOUTPLACE = ROOT_URL+"aboutPlace.php";
     public static final String URL_GETUSERTRAVELS = ROOT_URL+"getTravels.php";
+    public static final String URL_ADDFUNDS = ROOT_URL+"addFund.php";
+    public static final String URL_REMOVETRAVEL = ROOT_URL+"removeTravel.php";
 }
