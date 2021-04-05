@@ -68,6 +68,7 @@
                 android:text="Location"
                 android:drawableStart="@drawable/location"/>
 
+
             <TextView
                 android:id="@+id/placeTitle"
                 android:layout_width="match_parent"
@@ -77,7 +78,9 @@
                 android:textAllCaps="true"
                 android:paddingLeft="20dp"
                 android:textStyle="bold"
+                android:paddingBottom="5dp"
                 android:textColor="@color/white"
+                android:textSize="20sp"
                 android:layout_height="wrap_content"/>
             <TextView
                 android:id="@+id/travelDate"
@@ -109,40 +112,53 @@
 
         <TextView
             android:id="@+id/travelFund"
-            android:layout_width="wrap_content"
-            android:text="currentFund"
+            android:layout_width="154dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
             android:drawableStart="@drawable/ic_wallet"
+            android:gravity="center"
             android:padding="15dp"
-            android:layout_height="wrap_content"/>
+            android:text="currentFund"
+            android:textSize="15dp" />
+
         <TextView
             android:id="@+id/currentFund"
-            android:layout_width="wrap_content"
-            android:text=" travel Fund"
-            android:padding="15dp"
-            android:drawableStart="@drawable/plus"
-            android:layout_toRightOf="@+id/currentFund"
-            android:layout_height="wrap_content"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="154dp"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            >
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_toRightOf="@+id/currentFund"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/plus"
+            android:padding="15dp"
+            android:text=" travel Fund"
+            android:textSize="15dp" />
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
 
             <Button
                 android:id="@+id/cancelTravel"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Remove Travel"
-                android:layout_weight="50"/>
+                android:layout_height="match_parent"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="26dp"
+                android:text="Delete Drawing"
+                app:cornerRadius="20dp" />
 
             <Button
                 android:id="@+id/addCalendar"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add to CALENDAR"
-                android:layout_weight="50"/>
-        </LinearLayout>
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:layout_gravity=""
+                android:layout_marginEnd="26dp"
+                android:text="ADD TO CALENDAR"
+                app:cornerRadius="20dp" />
+        </RelativeLayout>
 
     </LinearLayout>
 

@@ -63,20 +63,20 @@
         <ImageView
             android:id="@+id/imageViewer"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="0dp"
             android:scaleType="centerCrop"
-            />
+            android:layout_weight="100"/>
 
-            <TextView
-                android:id="@+id/imageTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:paddingBottom="10dp"
-                android:text="Title Dito Master"
-                android:gravity="center"
-                style="@style/Base.TextAppearance.AppCompat.Large"
-                />
+        <TextView
+            android:id="@+id/imageTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:text="Title Dito Master"
+            android:gravity="center"
+            style="@style/Base.TextAppearance.AppCompat.Large"
+            />
 
         <TextView
             android:id="@+id/imageLocation"
@@ -87,76 +87,70 @@
             android:gravity=""
             android:text="Location dito master" />
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-        <RelativeLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="300dp">
-            <TextView
-                android:id="@+id/imageAbout"
+            android:layout_height="wrap_content">
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:hint="About Place"
-                android:gravity="center"
-                android:padding="10dp"
-                android:justificationMode="inter_word"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
+                android:layout_height="300dp">
+                <TextView
+                    android:id="@+id/imageAbout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="About Place"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    />
 
 
-            <LinearLayout
-                android:id="@+id/dateAndFundContainer"
-                android:layout_width="match_parent"
-                android:layout_below="@id/imageAbout"
-                android:layout_height="wrap_content"
-                android:weightSum="100">
+                <LinearLayout
+                    android:id="@+id/dateAndFundContainer"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/imageAbout"
+                    android:layout_height="40dp"
+                    android:weightSum="100">
 
-            <EditText
-                android:id="@+id/travelDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="TRAVEL DATE"
-                android:editable="false"
-                android:layout_below="@id/imageAbout"
-                android:drawableStart="@drawable/ic_calendar"
-                android:gravity="center"
-                android:layout_weight="50"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
+                    <EditText
+                        android:id="@+id/travelDate"
+                        style="@style/Widget.AppCompat.AutoCompleteTextView"
+                        android:layout_width="37dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/imageAbout"
+                        android:layout_gravity="center"
+                        android:layout_weight="50"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/ic_calendar"
+                        android:hint="  Date"
+                        android:paddingLeft="15dp" />
 
-            <EditText
+                    <EditText
 
-                android:id="@+id/travelFund"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/imageAbout"
-                android:hint="Ex. 1000"
-                android:drawableStart="@drawable/ic_wallet"
-                android:gravity="center"
-                android:layout_weight="50"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                />
-            </LinearLayout>
+                        android:id="@+id/travelFund"
+                        style="@style/Widget.AppCompat.AutoCompleteTextView"
+                        android:layout_width="20dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/travelDate"
+                        android:layout_gravity="center"
+                        android:layout_weight="50"
+                        android:background="@android:color/transparent"
+                        android:drawableStart="@drawable/ic_wallet"
+                        android:hint=" Ex.1000" />
+                </LinearLayout>
 
-            <Button
-                android:id="@+id/insertBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/dateAndFundContainer"
-                android:layout_centerHorizontal="true"
-                android:padding="10dp"
-                android:text="Start Drawing"/>
+                <Button
+                    android:id="@+id/insertBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dateAndFundContainer"
+                    android:layout_centerHorizontal="true"
+                    android:text="Start drawing"/>
 
 
 
 
-        </RelativeLayout>
-</ScrollView>
+            </RelativeLayout>
+        </ScrollView>
     </LinearLayout>
 
 
