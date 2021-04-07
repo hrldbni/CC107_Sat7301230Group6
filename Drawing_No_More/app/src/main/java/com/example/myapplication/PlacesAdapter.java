@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,12 +48,31 @@ public class PlacesAdapter extends RecyclerView.Adapter<PlacesAdapter.PlacesView
         Places places = placesList.get(position);
         holder.textViewTitle.setText(places.getTitle());
         holder.textViewDesc.setText(places.getShortdesc());
+        holder.textViewDesc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+places.getShortdesc());
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                mCtx.startActivity(mapIntent);
+            }
+        });
         holder.textViewRating.setText(String.valueOf(places.getRating()));
         //Button is not needed
 
         Glide.with(mCtx)
                 .load(places.getImage())
                 .into(holder.imageView);
+
+        holder.imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+places.getShortdesc());
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                mCtx.startActivity(mapIntent);
+            }
+        });
 
         holder.textViewDraw.setOnClickListener(new View.OnClickListener() {
             @Override

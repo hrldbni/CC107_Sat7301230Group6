@@ -17,6 +17,7 @@
         android:background="@color/design_default_color_on_primary">
 
         <RelativeLayout
+            android:id="@+id/backCont"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             >
@@ -37,6 +38,8 @@
             android:id="@+id/travelCardContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="?actionBarSize"
+            android:paddingTop="20dp"
             android:layout_weight="200">
 
             <ImageView
@@ -136,31 +139,47 @@
             android:textSize="15dp" />
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp">
 
-            <Button
-                android:id="@+id/cancelTravel"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="26dp"
-                android:text="Delete Drawing"
-                app:cornerRadius="20dp" />
 
-            <Button
-                android:id="@+id/addCalendar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_gravity=""
-                android:layout_marginEnd="26dp"
-                android:text="ADD TO CALENDAR"
-                app:cornerRadius="20dp" />
-        </RelativeLayout>
+
 
     </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_marginTop="?actionBarSize"
+        android:layout_height="50dp">
+
+        <Button
+            android:id="@+id/cancelTravel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="26dp"
+            android:text="Delete"
+            app:cornerRadius="20dp" />
+
+        <Button
+            android:id="@+id/checkMap"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/cancelTravel"
+            android:text="Check Map"
+            app:cornerRadius="20dp" />
+
+        <Button
+            android:id="@+id/addCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity=""
+            android:layout_marginEnd="26dp"
+            android:text="ADD"
+            app:cornerRadius="20dp" />
+
+    </RelativeLayout>
+
+
+
 
 
 </RelativeLayout>

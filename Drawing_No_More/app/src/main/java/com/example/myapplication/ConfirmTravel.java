@@ -8,6 +8,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.text.InputType;
@@ -31,8 +32,11 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -51,6 +55,7 @@ public class ConfirmTravel extends AppCompatActivity {
     int exactFund;
     String finalTravelStatus;
     String dateText;
+    Button checkMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,6 +75,15 @@ public class ConfirmTravel extends AppCompatActivity {
            String placeImage =  getIntent().getStringExtra("image");
 
             imagePlace = (ImageView) findViewById(R.id.imagePlace);
+            imagePlace.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri gmmIntentUri = Uri.parse("geo:0,0?q="+getIntent().getStringExtra("eventLocation"));
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps");
+                    startActivity(mapIntent);
+                }
+            });
 
         Glide.with(getApplicationContext())
                 .load(placeImage)
@@ -164,28 +178,45 @@ public class ConfirmTravel extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (!title.getText().toString().isEmpty() && !location.getText().toString().isEmpty() && !description.isEmpty()) {
-                    Intent intent = new Intent(Intent.ACTION_INSERT);
-                    intent.setData(CalendarContract.Events.CONTENT_URI);
-                    intent.putExtra(CalendarContract.Events.TITLE, title.getText().toString());
-                    intent.putExtra(CalendarContract.Events.EVENT_LOCATION, location.getText().toString());
-                    intent.putExtra(CalendarContract.Events.DESCRIPTION, description);
-                    intent.putExtra(CalendarContract.Events.EXDATE, getIntent().getStringExtra("eventDate"));
-                    intent.putExtra(CalendarContract.Events.ALL_DAY, true);
+                Intent intent = new Intent(Intent.ACTION_INSERT);
+                intent.setType("vnd.android.cursor.item/event");
+                intent.putExtra(CalendarContract.Events.TITLE, getIntent().getStringExtra("eventTitle"));
+                intent.putExtra(CalendarContract.Events.EVENT_LOCATION, getIntent().getStringExtra("eventLocation"));
+                intent.putExtra(CalendarContract.Events.DESCRIPTION, description );
 
-                    if (intent.resolveActivity(getPackageManager()) != null) {
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(ConfirmTravel.this, "There is no app that support this action", Toast.LENGTH_SHORT).show();
-                    }
+                Calendar calendar = Calendar.getInstance();
+                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+                String date = dateFormat.format(calendar.getTime());
+                String currentString = date;
+                String[] separated = currentString.split("/");
 
-
-                } else {
-                    Toast.makeText(ConfirmTravel.this, "Please fill all the fields",
-                            Toast.LENGTH_SHORT).show();
-                }
+                String endDate = getIntent().getStringExtra("eventDate");
+                String[] separated2 = endDate.split("/");
 
 
+                // Setting dates
+
+                GregorianCalendar startDate =  new GregorianCalendar(Integer.valueOf(separated[0]), Integer.valueOf(separated[1])-1, Integer.valueOf(separated[2]));
+
+                GregorianCalendar calDate = new GregorianCalendar(Integer.valueOf(separated2[2]), Integer.valueOf(separated2[0])-1,  Integer.valueOf(separated2[1])+1);
+
+                intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+                        startDate.getTimeInMillis());
+
+                intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+                       calDate.getTimeInMillis());
+
+
+
+
+                // Make it a full day event
+                intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+
+                // Making it private and shown as busy
+                intent.putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE);
+                intent.putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+
+                startActivity(intent);
             }
         });
         confirmTravel = findViewById(R.id.cancelTravel);
@@ -221,6 +252,18 @@ public class ConfirmTravel extends AppCompatActivity {
             }
         });
 
+        checkMap = findViewById(R.id.checkMap);
+        checkMap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+getIntent().getStringExtra("eventLocation"));
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                startActivity(mapIntent);
+
+            }
+        });
 
 
     }

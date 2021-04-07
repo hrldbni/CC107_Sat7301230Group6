@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.media.Image;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,6 +47,15 @@ public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.
         UserTravels userTravel = userTravelsList.get(position);
 
         holder.placeTitle.setText(userTravel.getPlaceTitle());
+        holder.placeTitle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+userTravel.getTravelLocation());
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                mCtx.startActivity(mapIntent);
+            }
+        });
         holder.travelDate.setText(userTravel.getTravelDate());
         holder.currentFund.setText(userTravel.getCurrentFund());
         holder.availableFund.setText(userTravel.getAvailableFund());
@@ -89,6 +99,18 @@ public class UsersTravelAdapter extends RecyclerView.Adapter<UsersTravelAdapter.
         Glide.with(mCtx)
                 .load(userTravel.getPlaceImage())
                 .into(holder.placeImage );
+
+        holder.placeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Uri gmmIntentUri = Uri.parse("geo:0,0?q="+userTravel.getTravelLocation());
+                Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                mapIntent.setPackage("com.google.android.apps.maps");
+                mCtx.startActivity(mapIntent);
+
+            }
+        });
 
     }
 
