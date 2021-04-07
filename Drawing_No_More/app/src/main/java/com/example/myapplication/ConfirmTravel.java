@@ -196,9 +196,9 @@ public class ConfirmTravel extends AppCompatActivity {
 
                 // Setting dates
 
-                GregorianCalendar startDate =  new GregorianCalendar(Integer.valueOf(separated[0]), Integer.valueOf(separated[1])-1, Integer.valueOf(separated[2]));
+                GregorianCalendar startDate =  new GregorianCalendar(Integer.valueOf(separated2[2]), Integer.valueOf(separated2[0])-1,  Integer.valueOf(separated2[1]));
 
-                GregorianCalendar calDate = new GregorianCalendar(Integer.valueOf(separated2[2]), Integer.valueOf(separated2[0])-1,  Integer.valueOf(separated2[1])+1);
+                GregorianCalendar calDate = new GregorianCalendar(Integer.valueOf(separated2[2]), Integer.valueOf(separated2[0])-1,  Integer.valueOf(separated2[1])+2);
 
                 intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
                         startDate.getTimeInMillis());
