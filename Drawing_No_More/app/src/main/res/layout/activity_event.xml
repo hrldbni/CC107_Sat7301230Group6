@@ -156,14 +156,20 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="26dp"
             android:text="Delete"
-            app:cornerRadius="20dp" />
+            app:cornerRadius="20dp"
+            app:strokeColor="#FFFFFF" />
 
         <Button
             android:id="@+id/checkMap"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_toRightOf="@+id/cancelTravel"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginEnd="30dp"
+            android:layout_toStartOf="@+id/addCalendar"
+
             android:text="Check Map"
+            android:textSize="12sp"
             app:cornerRadius="20dp" />
 
         <Button
