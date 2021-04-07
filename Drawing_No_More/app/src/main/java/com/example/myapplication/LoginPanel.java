@@ -94,7 +94,9 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
                                             .userLogin(Integer.parseInt(obj.getString("uid")),
                                                     String.valueOf(obj.getString("username")),
                                                     String.valueOf(obj.getString("email")),
-                                                    String.valueOf(obj.getString("fullname")));
+                                                    String.valueOf(obj.getString("fullname")),
+                                                    String.valueOf(obj.getString("dob")),
+                                                    String.valueOf(Constants.URL_PROFILE+obj.getString("profile")) );
 
                                     startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
                                     finish();

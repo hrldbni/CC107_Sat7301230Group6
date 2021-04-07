@@ -9,9 +9,12 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 public class ProfileActivity extends AppCompatActivity {
 
@@ -20,6 +23,8 @@ public class ProfileActivity extends AppCompatActivity {
     TextView userUidText, userText;
     TextView userNameText;
     Button logoutBtn;
+    TextView dobText;
+    ImageView userProfile;
     LinearLayout travelBtn, mytravel, profileContainer, personalInfoContainer, myEmails, myBirth, myFunds;
 
     @Override
@@ -63,6 +68,9 @@ public class ProfileActivity extends AppCompatActivity {
         userUidText.setText(String.valueOf(SharedPrefManager.getInstance(this).getUid()));
         userText.setText(SharedPrefManager.getInstance(this).getUsername());
 
+        dobText = findViewById(R.id.dobText);
+        dobText.setText(SharedPrefManager.getDob());
+
         travelBtn = (LinearLayout) findViewById(R.id.travelBtn);
         travelBtn.setAnimation(animation);
         travelBtn.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +91,19 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
+        userProfile = findViewById(R.id.userProfile);
+        Glide.with(ProfileActivity.this)
+                .load(SharedPrefManager.getProfile())
+                .into(userProfile);
+
+        userProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent actnew = new Intent(ProfileActivity.this, ChangeProfileActivity.class);
+                actnew.putExtra("image", SharedPrefManager.getProfile());
+                startActivity(actnew);
+            }
+        });
 
 
     }

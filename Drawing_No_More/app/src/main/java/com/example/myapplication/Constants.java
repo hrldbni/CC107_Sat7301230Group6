@@ -12,4 +12,6 @@ public class Constants {
     public static final String URL_GETUSERTRAVELS = ROOT_URL+"getTravels.php";
     public static final String URL_ADDFUNDS = ROOT_URL+"addFund.php";
     public static final String URL_REMOVETRAVEL = ROOT_URL+"removeTravel.php";
+    public static final String URL_UPLOADPROFILE = ROOT_URL+"uploadProfile.php";
+    public static final String URL_PROFILE = "http://jaycabasag.online/main/v1/uploads/images/";
 }

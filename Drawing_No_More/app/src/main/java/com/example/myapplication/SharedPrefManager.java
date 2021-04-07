@@ -10,6 +10,8 @@ public class SharedPrefManager {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_FULLNAME = "fullname";
     private static final String KEY_UID = "uid";
+    private static final String KEY_PROFILE = "profile";
+    private static final String KEY_DOB = "dob";
 
 
     private static Context ctx;
@@ -27,7 +29,7 @@ public class SharedPrefManager {
     }
 
 
-    public boolean userLogin(int uid, String username, String email, String fullname) {
+    public boolean userLogin(int uid, String username, String email, String fullname, String userDob, String userProfile) {
 
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -35,7 +37,8 @@ public class SharedPrefManager {
         editor.putInt(KEY_UID, uid);
         editor.putString(KEY_USERNAME, username);
         editor.putString(KEY_EMAIL, email);
-        editor.putString(KEY_FULLNAME, fullname);
+        editor.putString(KEY_PROFILE, userProfile);
+        editor.putString(KEY_DOB, userDob);
 
         editor.apply();
 
@@ -66,6 +69,16 @@ public class SharedPrefManager {
     public String getFullname(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_FULLNAME, null);
+    }
+
+    public static String getProfile() {
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_PROFILE, null);
+    }
+
+    public static String getDob() {
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(KEY_DOB, null);
     }
 
     public String getUserEmail(){
