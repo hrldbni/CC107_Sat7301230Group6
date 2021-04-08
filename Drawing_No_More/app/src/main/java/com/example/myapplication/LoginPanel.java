@@ -51,7 +51,6 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
                 Intent newIntent;
                 newIntent = new Intent(LoginPanel.this, SignUpPanel.class);
                 startActivity(newIntent);
-                finish();
             }
         });
 

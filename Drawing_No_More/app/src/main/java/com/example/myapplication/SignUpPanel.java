@@ -55,8 +55,6 @@ public class SignUpPanel extends AppCompatActivity implements View.OnClickListen
             public void onClick(View v) {
                 Intent intent = new Intent(SignUpPanel.this, LoginPanel.class);
                 startActivity(intent);
-
-                Toast.makeText(SignUpPanel.this,"Log in Now", Toast.LENGTH_LONG).show();
             }
         });
 
