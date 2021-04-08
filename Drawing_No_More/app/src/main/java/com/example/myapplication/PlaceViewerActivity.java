@@ -103,7 +103,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
 
                   alertDialog1.setTitle("Hey");
                   alertDialog1.setMessage("You cannot Travel without a Date!");
-                  alertDialog1.setIcon(R.drawable.ic_calendar);
+                  alertDialog1.setIcon(R.drawable.pincillukisyon);
                   alertDialog1.setButton("OK", new DialogInterface.OnClickListener() {
 
                       public void onClick(DialogInterface dialog, int which) {
