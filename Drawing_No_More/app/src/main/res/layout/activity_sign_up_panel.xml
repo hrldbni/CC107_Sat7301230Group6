@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="50dp"
-    android:paddingLeft="30dp"
-    android:paddingRight="30dp"
+    android:background="@drawable/backback"
+    android:paddingTop="80dp"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     android:paddingBottom="30dp"
     tools:context=".SignUpPanel"
     android:orientation="vertical">
@@ -17,22 +18,30 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
 
-    <TextView
-        android:id="@+id/signUpText"
-        android:layout_width="match_parent"
-        android:textSize="40dp"
-        android:textStyle="bold"
-        android:textColor="#58E0BF"
-        android:layout_height="wrap_content"
-        android:text="Sign Up" />
+        android:background="@drawable/radius">
 
 
-    <EditText
+        <TextView
+            android:id="@+id/signUpText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textColor="#58E0BF"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:textAlignment="center"/>
+
+        <EditText
         android:id="@+id/usernameText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            android:layout_height="40dp"
+            android:background="@drawable/custom_input"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:paddingLeft="15dp"
         android:ems="10"
         android:layout_below="@id/signUpText"
         android:hint="Username"
@@ -44,7 +53,12 @@
     <EditText
         android:id="@+id/firstnameText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="15dp"
         android:ems="10"
         android:layout_below="@id/usernameText"
         android:hint="First Name"
@@ -54,7 +68,12 @@
     <EditText
         android:id="@+id/lastnameText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="15dp"
         android:ems="10"
         android:hint="Last Name"
         android:drawableStart="@drawable/ic_baseline_person_24"
@@ -64,7 +83,12 @@
     <EditText
         android:id="@+id/dateOfBirth"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="15dp"
         android:ems="10"
         android:layout_below="@id/lastnameText"
         android:hint="Date of Birth"
@@ -78,7 +102,12 @@
     <EditText
         android:id="@+id/addressText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="15dp"
         android:layout_below="@id/dateOfBirth"
         android:ems="10"
         android:hint="Home Address"
@@ -91,7 +120,12 @@
     <EditText
         android:id="@+id/emailText"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="15dp"
         android:ems="10"
         android:hint="Email"
         android:drawableStart="@drawable/email_logo"
@@ -99,10 +133,16 @@
         android:drawablePadding="5dp"
         />
 
+
     <EditText
         android:id="@+id/passwordOne"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="15dp"
         android:ems="10"
         android:layout_below="@id/emailAddress"
         android:inputType="textPassword"
@@ -114,7 +154,12 @@
     <EditText
         android:id="@+id/passwordConfirm"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:paddingLeft="15dp"
         android:ems="10"
         android:inputType="textPassword"
         android:hint="Re-enter Password"
@@ -126,7 +171,12 @@
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_input"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginLeft="80dp"
+        android:paddingLeft="15dp"
         android:text="REGISTER NOW"
         tools:layout_editor_absoluteX="162dp"
         tools:layout_editor_absoluteY="330dp" />
