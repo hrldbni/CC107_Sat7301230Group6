@@ -52,7 +52,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="UID"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         />
                     <TextView
                         android:id="@+id/uidText"
@@ -75,7 +75,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Username"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         />
                     <TextView
                         android:id="@+id/userText"
@@ -98,7 +98,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Travels"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         />
                     <TextView
                         android:id="@+id/numberTravel"
@@ -131,8 +131,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:src="@drawable/ic_email_black_24dp"/>
             <TextView
                 android:id="@+id/userEmailText"
@@ -148,12 +148,12 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:src="@drawable/ic_calendar"/>
 
             <TextView
@@ -174,8 +174,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:src="@drawable/ic_search"/>
 
             <TextView
@@ -191,12 +191,12 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:src="@drawable/ic_airplane"/>
 
             <TextView
@@ -208,7 +208,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/myfunds"
+            android:id="@+id/changePass"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
@@ -216,8 +216,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="36dp"
-                android:layout_height="36dp"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
                 android:src="@drawable/ic_lock"/>
             <TextView
                 android:textStyle="bold"

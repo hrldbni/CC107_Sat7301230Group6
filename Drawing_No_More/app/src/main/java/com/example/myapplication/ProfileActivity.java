@@ -37,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView dobText;
     ImageView userProfile;
     String totalTravel;
-    LinearLayout travelBtn, mytravel, profileContainer, personalInfoContainer, myEmails, myBirth, myFunds;
+    LinearLayout travelBtn, mytravel, profileContainer, personalInfoContainer, myEmails, myBirth, changePass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +63,14 @@ public class ProfileActivity extends AppCompatActivity {
         myEmails.setAnimation(animation);
         myBirth = (LinearLayout) findViewById(R.id.mybirth);
         myBirth.setAnimation(animation);
-        myFunds = (LinearLayout) findViewById(R.id.myfunds);
-        myFunds.setAnimation(animation);
+        changePass = (LinearLayout) findViewById(R.id.changePass);
+        changePass.setAnimation(animation);
+        changePass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProfileActivity.this, ChangedPasswordActivity.class));
+            }
+        });
 
         userEmailText = (TextView) findViewById(R.id.userEmailText);
         userUidText = (TextView) findViewById(R.id.uidText);
@@ -84,7 +90,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivity.this, SearchTravel.class));
-                finish();
             }
         });
 
@@ -94,7 +99,6 @@ public class ProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(ProfileActivity.this, MyTravelActivity.class));
-                finish();
             }
         });
 

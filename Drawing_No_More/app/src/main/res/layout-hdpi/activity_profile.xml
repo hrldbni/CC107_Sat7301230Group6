@@ -149,7 +149,7 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -192,7 +192,7 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -209,7 +209,7 @@
                 android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
-            android:id="@+id/myfunds"
+            android:id="@+id/changePass"
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
