@@ -14,5 +14,6 @@ public class Constants {
     public static final String URL_REMOVETRAVEL = ROOT_URL+"removeTravel.php";
     public static final String URL_UPLOADPROFILE = ROOT_URL+"uploadProfile.php";
     public static final String URL_TOTALTRAVEL = ROOT_URL+"getTotalTravel.php";
+    public static final String URL_FORGOTPASSWORD = ROOT_URL+"forgotPassword.php";
     public static final String URL_PROFILE = "http://jaycabasag.online/main/v1/uploads/images/";
 }

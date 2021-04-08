@@ -13,8 +13,6 @@
         android:layout_height="109dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="41dp"
         tools:srcCompat="@tools:sample/avatars" />
 
