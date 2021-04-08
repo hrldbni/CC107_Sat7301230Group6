@@ -2,6 +2,8 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -121,10 +123,33 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     public void logout(View view) {
-        SharedPrefManager.getInstance(this).loggedOut();
-        startActivity(new Intent(getApplicationContext(), LoginPanel.class));
-        finish();
-        Toast.makeText(getApplicationContext(), "Successfully Logged Out", Toast.LENGTH_LONG).show();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+        builder.setTitle("");
+        builder.setMessage("Log out?");
+        builder.setIcon(R.drawable.pincillukisyon);
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+                SharedPrefManager.getInstance(ProfileActivity.this).loggedOut();
+                startActivity(new Intent(getApplicationContext(), LoginPanel.class));
+                finish();
+                Toast.makeText(getApplicationContext(), "Successfully Logged Out", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+
     }
 
 

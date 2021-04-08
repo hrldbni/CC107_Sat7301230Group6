@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -71,7 +73,7 @@ public class ChangedPasswordActivity extends AppCompatActivity {
         });
 
         progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Please wait");
+        progressDialog.setMessage("Please wait while resetting your password");
 
     }
 
@@ -86,6 +88,29 @@ public class ChangedPasswordActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         try {
                             JSONObject obj = new JSONObject(response);
+
+                                    AlertDialog alertDialog1 = new AlertDialog.Builder(
+                                            ChangedPasswordActivity.this).create();
+
+                                    alertDialog1.setTitle("Hey");
+                                    alertDialog1.setMessage(obj.getString("message"));
+                                    alertDialog1.setIcon(R.drawable.pincillukisyon);
+                                    alertDialog1.setButton("OK", new DialogInterface.OnClickListener() {
+
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            newPassword.setText("");
+                                            confirmNewPassword.setText("");
+                                        }
+                                    });
+
+                                    alertDialog1.show();
+
+                                    if (obj.getString("message").equalsIgnoreCase("Password Successfully Reset")){
+                                        finish();
+                                    } else {
+                                        newPassword.setText("");
+                                        confirmNewPassword.setText("");
+                                    }
 
 
 
@@ -108,10 +133,10 @@ public class ChangedPasswordActivity extends AppCompatActivity {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
 
-                String userid = String.valueOf(SharedPrefManager.getUid());
+                String userId = String.valueOf(SharedPrefManager.getUid());
                 String userOldPassword = oldPassword.getText().toString().trim();
                 String userNewPassword = confirmNewPassword.getText().toString().trim();
-                params.put("userid", userid);
+                params.put("userId", userId);
                 params.put("userOldPassword", userOldPassword);
                 params.put("userNewPassword", userNewPassword);
                 return params;
