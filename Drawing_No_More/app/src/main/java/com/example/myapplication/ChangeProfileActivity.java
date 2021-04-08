@@ -137,7 +137,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 progressDialog.dismiss();
-                                Toast.makeText(getApplicationContext(), "Error Uploading image, \nPlease try again", Toast.LENGTH_LONG).show();
+                                Toast.makeText(getApplicationContext(), "File is too large,\n Please select low Quality Photos", Toast.LENGTH_LONG).show();
                             }
                         }
 
