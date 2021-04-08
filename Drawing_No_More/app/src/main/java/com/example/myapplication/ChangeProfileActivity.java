@@ -19,6 +19,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -41,7 +42,8 @@ import java.util.Map;
 
 public class ChangeProfileActivity extends AppCompatActivity {
 
-    Button btnChoose, btnUpload;
+    Button btnChoose;
+    ImageButton btnUpload;
     ImageView imageUpload;
     final int CODE_GALLERY_REQUEST = 999;
     Bitmap bitmap;
