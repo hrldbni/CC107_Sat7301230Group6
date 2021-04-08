@@ -14,17 +14,29 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProfileActivity extends AppCompatActivity {
 
     TextView userFullNameText;
     TextView userEmailText;
     TextView userUidText, userText;
-    TextView userNameText;
+    TextView userNameText, numberTravel;
     Button logoutBtn;
     TextView dobText;
     ImageView userProfile;
+    String totalTravel;
     LinearLayout travelBtn, mytravel, profileContainer, personalInfoContainer, myEmails, myBirth, myFunds;
 
     @Override
@@ -54,16 +66,11 @@ public class ProfileActivity extends AppCompatActivity {
         myFunds = (LinearLayout) findViewById(R.id.myfunds);
         myFunds.setAnimation(animation);
 
-
-        userFullNameText = (TextView) findViewById(R.id.fullnameText);
         userEmailText = (TextView) findViewById(R.id.userEmailText);
         userUidText = (TextView) findViewById(R.id.uidText);
         userText = (TextView) findViewById(R.id.userText);
-        userNameText = (TextView) findViewById(R.id.usernameText);
         logoutBtn = (Button) findViewById(R.id.logoutBtn);
         logoutBtn.setAnimation(animation);
-
-        userFullNameText.setText(SharedPrefManager.getInstance(this).getFullname());
         userEmailText.setText(SharedPrefManager.getInstance(this).getUserEmail());
         userUidText.setText(String.valueOf(SharedPrefManager.getInstance(this).getUid()));
         userText.setText(SharedPrefManager.getInstance(this).getUsername());
@@ -104,6 +111,7 @@ public class ProfileActivity extends AppCompatActivity {
                 startActivity(actnew);
             }
         });
+        getTotalTravel();
 
 
     }
@@ -114,4 +122,55 @@ public class ProfileActivity extends AppCompatActivity {
         finish();
         Toast.makeText(getApplicationContext(), "Successfully Logged Out", Toast.LENGTH_LONG).show();
     }
+
+
+
+    private void getTotalTravel() {
+
+        String userTravelId = String.valueOf(SharedPrefManager.getUid());
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_TOTALTRAVEL,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject object = new JSONObject(response);
+
+                            String totalTravel = object.getString("message");
+                            numberTravel = findViewById(R.id.numberTravel);
+                            numberTravel.setText(totalTravel);
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("userTravelId", userTravelId);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
+
+
+    }
+
 }

@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent homeIntent;
                 homeIntent = new Intent(MainActivity.this, LoginPanel.class);
-
                 startActivity(homeIntent);
                 finish();
             }

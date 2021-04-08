@@ -30,7 +30,7 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
 
     private EditText usernameText, passwordText;
     private Button loginBtn;
-    private TextView textLogin;
+    private TextView textLogin, forgotPasswordBtn;
     private ProgressDialog progressDialog;
 
     @Override
@@ -66,6 +66,14 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
         loginBtn.setAnimation(animation);
         textLogin = (TextView) findViewById(R.id.LoginText);
         textLogin.setAnimation(animation);
+
+        forgotPasswordBtn = findViewById(R.id.forgotPasswordBtn);
+        forgotPasswordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ForgotPasswordActivity.class));
+            }
+        });
 
         loginBtn.setOnClickListener(this);
         progressDialog = new ProgressDialog(this);

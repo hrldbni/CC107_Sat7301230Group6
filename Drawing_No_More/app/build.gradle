@@ -59,8 +59,7 @@ dependencies {
     implementation "com.airbnb.android:lottie:$lottieVersion"
     implementation "androidx.cardview:cardview:1.0.0"
     implementation 'com.airbnb.android:lottie:3.4.1'
-
-
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 
 
 

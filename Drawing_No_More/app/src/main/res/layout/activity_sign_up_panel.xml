@@ -168,18 +168,16 @@
         android:drawablePadding="5dp"
         />
 
-    <Button
-        android:id="@+id/buttonRegister"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@drawable/custom_input"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginLeft="80dp"
-        android:paddingLeft="15dp"
-        android:text="REGISTER NOW"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="330dp" />
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_height="45dp"
+            android:background="@drawable/custom_input"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="15dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:text="REGISTER NOW"
+            android:layout_width="match_parent" />
 
 
     <TextView
@@ -191,7 +189,8 @@
         android:text="Click here to Log In"
         android:layout_alignParentBottom="true"
         android:clickable="true"
-        android:textColor="#00A6E4"
+        android:textColor="@color/teal_200"
+        android:padding="5dp"
         />
     </LinearLayout>
     </ScrollView>

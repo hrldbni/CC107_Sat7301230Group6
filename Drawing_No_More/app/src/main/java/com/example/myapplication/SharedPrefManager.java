@@ -86,7 +86,7 @@ public class SharedPrefManager {
         return sharedPreferences.getString(KEY_EMAIL, null);
     }
 
-    public int getUid(){
+    public static int getUid(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getInt(KEY_UID, 0);
     }

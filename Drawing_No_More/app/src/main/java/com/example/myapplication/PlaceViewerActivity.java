@@ -152,10 +152,6 @@ public class PlaceViewerActivity extends AppCompatActivity {
                           Toast.makeText(getApplicationContext(), "Please select a valid date for you to Prepare", Toast.LENGTH_SHORT).show();
                       } else {
                           addTravel();
-                          Intent newIntent;
-                          newIntent = new Intent(PlaceViewerActivity.this, SearchTravel.class);
-                          startActivity(newIntent);
-                          finish();
                       }
                   } catch (ParseException e) {
                       e.printStackTrace();
@@ -248,7 +244,10 @@ public class PlaceViewerActivity extends AppCompatActivity {
                             alertDialog1.setButton("OK", new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface dialog, int which) {
-
+                                    Intent newIntent;
+                                    newIntent = new Intent(PlaceViewerActivity.this, SearchTravel.class);
+                                    startActivity(newIntent);
+                                    finish();
                                 }
                             });
 
