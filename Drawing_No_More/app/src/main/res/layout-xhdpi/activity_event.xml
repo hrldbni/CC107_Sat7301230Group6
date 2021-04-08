@@ -155,8 +155,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:text="Delete"
-            android:layout_marginStart="50dp"
-            app:cornerRadius="25dp"
+            android:layout_marginStart="20dp"
+            app:cornerRadius="10dp"
             app:strokeColor="#FFFFFF" />
 
         <Button
@@ -168,7 +168,7 @@
             android:layout_marginLeft="20dp"
             android:text="Check Map"
             android:textSize="13sp"
-            app:cornerRadius="25dp" />
+            app:cornerRadius="10dp" />
 
         <Button
             android:id="@+id/addCalendar"
@@ -176,7 +176,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:text="ADD"
-            app:cornerRadius="25dp" />
+            app:cornerRadius="10dp" />
 
     </LinearLayout>
 

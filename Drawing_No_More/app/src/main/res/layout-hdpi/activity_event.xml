@@ -45,9 +45,9 @@
             <ImageView
                 android:id="@+id/imagePlace"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="459dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/location"/>
+                android:src="@drawable/location" />
 
             <TextView
                 android:id="@+id/travelCard"
@@ -147,11 +147,11 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_marginTop="?actionBarSize"
-        android:layout_height="50dp">
+        android:layout_height="59dp">
 
         <Button
             android:id="@+id/cancelTravel"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:text="Delete"
@@ -161,7 +161,7 @@
 
         <Button
             android:id="@+id/checkMap"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginRight="20dp"
@@ -172,7 +172,7 @@
 
         <Button
             android:id="@+id/addCalendar"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
             android:layout_gravity="end"
             android:text="ADD"
