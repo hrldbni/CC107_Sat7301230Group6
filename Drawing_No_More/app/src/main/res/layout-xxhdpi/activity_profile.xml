@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@drawable/profile_back"
     android:orientation="vertical">
 
 
@@ -127,21 +127,23 @@
             android:id="@+id/myemails"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="36dp"
                 android:layout_height="36dp"
                 android:src="@drawable/ic_email_black_24dp"/>
+
             <TextView
                 android:id="@+id/userEmailText"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="Name@gmail.com"/>
+                android:text="Name@gmail.com"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/mybirth"
@@ -170,7 +172,7 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -212,7 +214,7 @@
             android:layout_marginTop="20dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView

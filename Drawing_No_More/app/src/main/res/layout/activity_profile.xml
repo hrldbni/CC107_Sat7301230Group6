@@ -133,22 +133,23 @@
         <LinearLayout
             android:id="@+id/myemails"
             android:orientation="horizontal"
+            android:background="@drawable/custom_input"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
                 android:layout_width="26dp"
                 android:layout_height="26dp"
                 android:src="@drawable/ic_email_black_24dp"/>
+
             <TextView
                 android:id="@+id/userEmailText"
-                android:textStyle="bold"
-                android:layout_gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:paddingLeft="20dp"
-                android:text="Name@gmail.com"/>
+                android:text="Name@gmail.com"
+                android:textStyle="bold" />
         </LinearLayout>
         <LinearLayout
             android:id="@+id/mybirth"
@@ -177,7 +178,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
@@ -219,7 +220,7 @@
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:paddingLeft="25dp"
-            android:background="@drawable/ripple"
+            android:background="@drawable/custom_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <ImageView
