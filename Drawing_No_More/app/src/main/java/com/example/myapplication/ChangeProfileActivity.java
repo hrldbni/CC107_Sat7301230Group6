@@ -45,6 +45,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
     Button btnChoose;
     ImageButton btnUpload;
     ImageView imageUpload;
+    ImageView backBtn;
     final int CODE_GALLERY_REQUEST = 999;
     Bitmap bitmap;
     private ProgressDialog progressDialog;
@@ -60,6 +61,13 @@ public class ChangeProfileActivity extends AppCompatActivity {
         btnChoose = findViewById(R.id.selectPhoto);
         btnUpload = findViewById(R.id.uploadPhoto);
         imageUpload = findViewById(R.id.profilePicture);
+        backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         Glide.with(ChangeProfileActivity.this)
                 .load(SharedPrefManager.getProfile())
