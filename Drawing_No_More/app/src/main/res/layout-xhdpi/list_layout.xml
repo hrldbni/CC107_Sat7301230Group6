@@ -12,10 +12,10 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="312dp"
-            android:layout_height="154dp"
-            android:padding="4dp"
-            android:scaleType="centerCrop" />
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:padding="4dp" />
 
         <TextView
             android:id="@+id/textViewTitle"

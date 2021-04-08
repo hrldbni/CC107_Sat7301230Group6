@@ -12,14 +12,14 @@
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="76dp"
-            android:layout_height="129dp"
-            android:padding="4dp"
-            android:scaleType="centerCrop" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:padding="4dp" />
 
         <TextView
             android:id="@+id/textViewPlace"
-            android:layout_width="228dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_toRightOf="@+id/imageView"
@@ -31,10 +31,10 @@
             android:id="@+id/travelDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/imageView"
             android:layout_below="@+id/textViewPlace"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@+id/imageView"
             android:drawableStart="@drawable/ic_calendar"
             android:text="Travel Date"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small" />
@@ -44,9 +44,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/travelDate"
+            android:layout_toRightOf="@+id/imageView"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@+id/imageView"
             android:background="@color/purple_200"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
@@ -59,9 +59,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/currentFund"
+            android:layout_toRightOf="@+id/imageView"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
-            android:layout_toRightOf="@+id/imageView"
             android:background="@color/purple_200"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
@@ -74,9 +74,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/travelDate"
+            android:layout_toRightOf="@+id/availableFund"
             android:layout_marginLeft="5dp"
             android:layout_marginTop="4dp"
-            android:layout_toRightOf="@+id/availableFund"
             android:text="View Details"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
             android:textStyle="bold" />
@@ -89,11 +89,11 @@
             android:layout_marginLeft="5dp"
             android:layout_marginTop="5dp"
             android:background="@color/purple_200"
-            android:gravity="center"
             android:paddingLeft="15dp"
             android:paddingTop="5dp"
-            android:paddingRight="15dp"
             android:paddingBottom="5dp"
+            android:gravity="center"
+            android:paddingRight="15dp"
             android:text="Drawing Status"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Small.Inverse"
             android:textStyle="bold" />
