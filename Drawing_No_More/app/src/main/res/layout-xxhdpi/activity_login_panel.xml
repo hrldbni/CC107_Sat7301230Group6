@@ -66,10 +66,7 @@
                 android:drawablePadding="5dp"
                 android:ems="10"
                 android:hint="Password"
-
                 android:inputType="textPassword" />
-
-<<<<<<< HEAD
     <TextView
         android:id="@+id/forgotPasswordBtn"
         android:layout_width="wrap_content"
@@ -106,45 +103,6 @@
             android:padding="5dp"
         />
     </LinearLayout>
-=======
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_below="@id/loginButton"
-                android:layout_marginTop="5dp"
-                android:clickable="true"
-                android:text="Forgot Password" />
 
-            <Button
-                android:id="@+id/loginButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/userPassword"
-                android:layout_marginTop="20dp"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:background="@drawable/custom_input"
-                android:text="LOG IN"
-                android:layout_marginRight="50dp"
-                android:layout_marginLeft="50dp"
-                tools:layout_editor_absoluteX="162dp"
-                tools:layout_editor_absoluteY="330dp" />
-
-            <TextView
-                android:id="@+id/signUpNow"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="20dp"
-                android:layout_height="wrap_content"
-                android:text="Click here to Sign Up"
-                android:layout_alignParentBottom="true"
-                android:clickable="true"
-                android:textColor="#00A6E4"
-                />
-        </LinearLayout>
->>>>>>> e7e45d9e47cfc5cdb4ff989c3d2370be2456e2ef
     </ScrollView>
 </LinearLayout>
