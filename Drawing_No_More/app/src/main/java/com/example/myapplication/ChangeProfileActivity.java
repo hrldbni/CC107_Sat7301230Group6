@@ -94,11 +94,10 @@ public class ChangeProfileActivity extends AppCompatActivity {
                                 progressDialog.dismiss();
                                 try {
                                     JSONObject obj = new JSONObject(response);
-                                    Toast.makeText(getApplicationContext(), "" + obj.getString("message"), Toast.LENGTH_SHORT).show();
 
                                     AlertDialog.Builder builder = new AlertDialog.Builder(ChangeProfileActivity.this);
                                     builder.setTitle("Warning");
-                                    builder.setMessage("You need to re-log in to view changes.");
+                                    builder.setMessage(obj.getString("message") + "\nYou need to re-log in to view changes.");
                                     builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
@@ -120,8 +119,16 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
                                 } catch (JSONException e) {
                                     progressDialog.dismiss();
-                                    e.printStackTrace();
-                                    Toast.makeText(getApplicationContext(), "Error uploading the image \nPlease try again!", Toast.LENGTH_SHORT).show();
+
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(ChangeProfileActivity.this);
+                                    builder.setTitle("Warning");
+                                    builder.setMessage("Uploaded Successfully" + "\nYou need to re-log in to view changes.");
+                                    builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            logout();
+                                        }
+                                    });
                                 }
 
                             }
