@@ -55,6 +55,8 @@
         android:id="@+id/searchContainer"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
         android:gravity="center"
         android:layout_below="@+id/navContainer"
         android:orientation="horizontal">
@@ -70,9 +72,10 @@
         <Button
             android:id="@+id/searchPlace"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="44dp"
             android:textAlignment="center"
-            android:text="Find" />
+            android:text="Find"
+            />
 
 
     </LinearLayout>

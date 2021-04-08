@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ForgotPasswordActivity"></activity>
+        <activity android:name=".ChangedPasswordActivity"></activity>
+        <activity android:name=".ForgotPasswordActivity" />
         <activity android:name=".ChangeProfileActivity" />
         <activity android:name=".MyTravelActivity" />
         <activity android:name=".ProfileActivity" />

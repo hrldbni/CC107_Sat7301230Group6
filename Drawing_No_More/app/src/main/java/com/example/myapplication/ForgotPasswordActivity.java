@@ -86,8 +86,6 @@ public class ForgotPasswordActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
     private void sendRecoveryPass() {

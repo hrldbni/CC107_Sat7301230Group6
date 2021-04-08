@@ -49,6 +49,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
     public int placeIdText;
     ImageButton imgtravel;
     ImageButton imgprofile;
+    ImageView backBtn;
     EditText travelDate, travelFund;
     TextView placeId;
     TextView userid, travelDestination, imageAbout;
@@ -67,28 +68,14 @@ public class PlaceViewerActivity extends AppCompatActivity {
         travelDate = findViewById(R.id.travelDate);
         getSupportActionBar().hide();
         getIncomingIntent();
-//button to travel activity
-        imgtravel = (ImageButton) findViewById(R.id.btntravel);
-        imgtravel.setOnClickListener(new View.OnClickListener() {
+
+        backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent actnew = new Intent(PlaceViewerActivity.this, MyTravelActivity.class);
-                startActivity(actnew);
+            public void onClick(View v) {
+                finish();
             }
         });
-//button to profile
-        imgprofile = (ImageButton) findViewById(R.id.btnprofile);
-        imgprofile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent actnew = new Intent(PlaceViewerActivity.this, ProfileActivity.class);
-                startActivity(actnew);
-            }
-
-
-        });
-        //about = (TextView)  findViewById(R.id.about);25
-
 
         imageAbout = (TextView) findViewById(R.id.imageAbout);
         travelDate = (EditText) findViewById(R.id.travelDate);
