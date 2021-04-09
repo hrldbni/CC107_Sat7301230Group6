@@ -85,6 +85,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
             }
         });
 
+
         progressDialog = new ProgressDialog(ChangeProfileActivity.this);
         progressDialog.setMessage("Uploading your photo \nPlease wait");
 
@@ -118,7 +119,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
                                         public void onClick(DialogInterface dialog, int which) {
                                             // Do something when No button clicked
                                             Toast.makeText(getApplicationContext(),
-                                                    "Cancelled, \nUploaded picture will not show up",Toast.LENGTH_SHORT).show();
+                                                    "Cancelled, \nUploaded picture will not show up", Toast.LENGTH_SHORT).show();
                                         }
                                     });
 
@@ -149,7 +150,7 @@ public class ChangeProfileActivity extends AppCompatActivity {
                             }
                         }
 
-                ){
+                ) {
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         Map<String, String> params = new HashMap<>();
@@ -171,23 +172,16 @@ public class ChangeProfileActivity extends AppCompatActivity {
 
     }
 
-    public void logout() {
-        SharedPrefManager.getInstance(this).loggedOut();
-        startActivity(new Intent(getApplicationContext(), LoginPanel.class));
-        finish();
-    }
-
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
 
-        if (requestCode == CODE_GALLERY_REQUEST){
+        if (requestCode == CODE_GALLERY_REQUEST) {
 
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType("image/*");
                 startActivityForResult(intent.createChooser(intent, "Select image "), CODE_GALLERY_REQUEST);
-            } else
-            {
+            } else {
                 Toast.makeText(getApplicationContext(), "Permission not Granted", Toast.LENGTH_SHORT).show();
             }
             return;
@@ -196,13 +190,15 @@ public class ChangeProfileActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == CODE_GALLERY_REQUEST && resultCode == RESULT_OK && data != null) {
             Uri filePath = data.getData();
             try {
                 InputStream inputStream = getContentResolver().openInputStream(filePath);
-                 bitmap = BitmapFactory.decodeStream(inputStream);
+                bitmap = BitmapFactory.decodeStream(inputStream);
                 imageUpload.setImageBitmap(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -212,8 +208,14 @@ public class ChangeProfileActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    private String imageToString(Bitmap bitmap){
 
+    private void logout() {
+        SharedPrefManager.getInstance(this).loggedOut();
+        startActivity(new Intent(getApplicationContext(), LoginPanel.class));
+        finish();
+    }
+
+    private String imageToString(Bitmap bitmap) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
         byte[] imageBytes = outputStream.toByteArray();
@@ -222,4 +224,6 @@ public class ChangeProfileActivity extends AppCompatActivity {
         return encodedImage;
 
     }
+
+
 }
