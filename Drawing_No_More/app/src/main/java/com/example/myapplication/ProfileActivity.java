@@ -35,7 +35,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView userEmailText;
     TextView userUidText, userText;
     TextView userNameText, numberTravel;
-    Button logoutBtn;
+    Button logoutBtn, wishTravelBtn;
     TextView dobText;
     ImageView userProfile;
     String totalTravel;
@@ -118,6 +118,15 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
         getTotalTravel();
+
+        wishTravelBtn = findViewById(R.id.createWishTravel);
+        wishTravelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent findPlace = new Intent(ProfileActivity.this, FindPlace.class);
+                startActivity(findPlace);
+            }
+        });
 
 
     }

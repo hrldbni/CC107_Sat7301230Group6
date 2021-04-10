@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+
+    android:layout_gravity="center_horizontal"
+    tools:context=".FindPlace">
+
+    <RelativeLayout
+        android:id="@+id/backCont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:background="@color/white"
+            android:paddingLeft="13dp"
+            android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:scaleType="center"
+            app:srcCompat="@drawable/back" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/findPlace"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search Place..."
+            android:padding="16dp"
+            android:drawablePadding="16dp"
+            android:drawableLeft= "@drawable/location"
+            android:gravity="center_vertical"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:imeOptions="actionSearch"
+            android:background="@android:drawable/editbox_background"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/placeImage"
+            android:layout_margin="16dp"
+            android:layout_width="match_parent"
+            android:src="@drawable/logo"
+            android:scaleType="centerCrop"
+            android:layout_height="200dp"/>
+        <TextView
+            android:id="@+id/placeTitle"
+            android:layout_below="@id/placeImage"
+            android:layout_width="match_parent"
+            android:drawablePadding="16dp"
+            android:padding="16dp"
+            android:text="Location"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/placeLocation"
+            android:layout_below="@id/placeTitle"
+            android:layout_width="match_parent"
+            android:drawablePadding="16dp"
+            android:padding="16dp"
+            android:text="Location"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/placeDescription"
+            android:layout_below="@id/placeLocation"
+            android:layout_width="match_parent"
+            android:drawablePadding="16dp"
+            android:padding="16dp"
+            android:text="Description"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/placeRating"
+            android:layout_below="@id/placeDescription"
+            android:layout_width="match_parent"
+            android:drawablePadding="16dp"
+            android:padding="16dp"
+            android:text="Rating"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addToTravel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="16dp"
+            android:layout_marginRight="16dp"
+            android:src="@drawable/plus"/>
+
+
+    </RelativeLayout>
+</LinearLayout>

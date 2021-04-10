@@ -11,4 +11,7 @@
 
     <string name="openNavDrawer">Navigation Drawer Open</string>
     <string name="closeNavDrawer">Navigation Drawer Close</string>
+
+
+    <string name="google_maps_API_key">AIzaSyDV2EkJozpBePZ-ugdvzCfyLYMe72-BRDk</string>
 </resources>

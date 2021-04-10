@@ -17,4 +17,9 @@ public class Constants {
     public static final String URL_FORGOTPASSWORD = ROOT_URL+"forgotPassword.php";
     public static final String URL_CHANGEPASSWORD = ROOT_URL+"changePassword.php";
     public static final String URL_PROFILE = "http://jaycabasag.online/main/v1/uploads/images/";
+    public static final String URL_GETPLACEIMAGE = "https://pixabay.com/api/?key=21101727-53bc50567a86bed63de23fdfe&q=";
+    public static final String URL_GETPLACEIMAGE2 = "&image_type=photo&pretty=true";
+
+
+
 }
