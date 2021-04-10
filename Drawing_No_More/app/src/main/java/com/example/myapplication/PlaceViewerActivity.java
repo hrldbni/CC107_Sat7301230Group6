@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -80,6 +81,9 @@ public class PlaceViewerActivity extends AppCompatActivity {
         imageAbout = (TextView) findViewById(R.id.imageAbout);
         travelDate = (EditText) findViewById(R.id.travelDate);
         DatePickerDialog.OnDateSetListener date = this::onDateSet;
+        travelDate.setClickable(true);
+        travelDate.setFocusable(false);
+        travelDate.setInputType(InputType.TYPE_NULL);
 
         travelDate.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +91,7 @@ public class PlaceViewerActivity extends AppCompatActivity {
                 new DatePickerDialog(PlaceViewerActivity.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+                
             }
         });
         travelFund  = (EditText) findViewById(R.id.travelFund);

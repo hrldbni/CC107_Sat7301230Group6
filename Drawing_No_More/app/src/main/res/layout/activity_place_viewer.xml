@@ -93,6 +93,9 @@
                         android:textSize="15dp"
                         android:background="@android:color/transparent"
                         android:drawableStart="@drawable/ic_calendar"
+                        android:clickable="true"
+                        android:focusable="false"
+                        android:inputType="none"
                         android:hint="  Date"
                         android:paddingLeft="15dp" />
 
