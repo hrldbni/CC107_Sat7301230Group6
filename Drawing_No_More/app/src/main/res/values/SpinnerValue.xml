@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="typeOfTravel">Type of Travel</style>
+    <string-array name="spinner_items">
+        <item>Choose type of Travel</item>
+        <item>Solo Travel</item>
+        <item>Business Travel</item>
+        <item>Travel With Friends</item>
+        <item>Family Travel</item>
+        <item>Travel With Group</item>
+        <item>Luxury Travel</item>
+        <item>Adventure Travel</item>
+    </string-array>
+
+</resources>

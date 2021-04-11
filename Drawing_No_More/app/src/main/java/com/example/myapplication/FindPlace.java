@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.app.DownloadManager;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -29,6 +30,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.Status;
@@ -62,10 +64,13 @@ public class FindPlace extends AppCompatActivity {
 
     private static final String TAG = "FindPlace";
     private static final int ERROR_DIALOG_REQUEST = 9001;
+    String currentImageUrl;
+    private ProgressDialog progressDialog;
 
     String searchText;
-    ImageView placeImage;
-    FloatingActionButton addToTravel;
+    ImageView backBtn;
+    PhotoView placeImage;
+    FloatingActionButton addToTravel, createOwnTravel;
     TextView placeDescription, placeRating, placeTitle, placeLocation;
     EditText findPlace;
     String placeTags;
@@ -76,13 +81,34 @@ public class FindPlace extends AppCompatActivity {
         setContentView(R.layout.activity_find_place);
         getSupportActionBar().hide();
 
-        placeImage = (ImageView) findViewById(R.id.placeImage);
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please wait for a moment...");
+
+        placeImage = (PhotoView) findViewById(R.id.placeImage);
         findPlace = (EditText) findViewById(R.id.findPlace);
         placeDescription = (TextView) findViewById(R.id.placeDescription);
         placeRating = (TextView) findViewById(R.id.placeRating);
         placeTitle = (TextView) findViewById(R.id.placeTitle);
         addToTravel = (FloatingActionButton) findViewById(R.id.addToTravel);
         placeLocation = (TextView) findViewById(R.id.placeLocation);
+        createOwnTravel = findViewById(R.id.createOwnTravel);
+
+        createOwnTravel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newintent;
+                newintent = new Intent(FindPlace.this, CreateOwnTravel.class);
+                startActivity(newintent);
+            }
+        });
+        backBtn = (ImageView) findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
 
         Places.initialize(getApplicationContext(), "AIzaSyDV2EkJozpBePZ-ugdvzCfyLYMe72-BRDk");
 
@@ -93,7 +119,6 @@ public class FindPlace extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     List<Place.Field> fieldList = Arrays.asList(Place.Field.ID, Place.Field.ADDRESS, Place.Field.LAT_LNG, Place.Field.NAME, Place.Field.PHOTO_METADATAS, Place.Field.RATING, Place.Field.TYPES);
-
                     Intent intent = new Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fieldList).build(FindPlace.this);
                     startActivityForResult(intent, 100);
 
@@ -109,6 +134,8 @@ public class FindPlace extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK){
 
@@ -129,12 +156,12 @@ public class FindPlace extends AppCompatActivity {
 
             if (String.valueOf(place.getRating()) == "null"){
                 placeRating.setText("No Ratings Yet");
-                placeLocation.setText(String.valueOf(place.getAddress()));
-                placeTitle.setText(String.valueOf(place.getName()));
+                placeLocation.setText("Location : "+String.valueOf(place.getAddress()));
+                placeTitle.setText("Rating : " + String.valueOf(place.getName()));
                 placeTags = place.getName();
             } else {
-                placeRating.setText(String.valueOf(place.getRating()));
-                placeLocation.setText(String.valueOf(place.getAddress()));
+                placeRating.setText("Rating : "+String.valueOf(place.getRating()));
+                placeLocation.setText("Location : "+String.valueOf(place.getAddress()));
                 placeTitle.setText(String.valueOf(place.getName()));
                 placeTags = place.getName();
 
@@ -151,6 +178,7 @@ public class FindPlace extends AppCompatActivity {
 
     private void addPhoto() {
 
+        progressDialog.show();
         String tags = placeTags;
         String finalWord = tags.replaceAll(" ", "+");
 
@@ -159,6 +187,7 @@ public class FindPlace extends AppCompatActivity {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,Constants.URL_GETPLACEIMAGE+finalWord+Constants.URL_GETPLACEIMAGE2, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
+                progressDialog.dismiss();
                 String imageUrl = "";
                 String description = "";
 
@@ -173,13 +202,13 @@ public class FindPlace extends AppCompatActivity {
                             placeDescription.setText("Description : " + jsonObject.getString("description"));
                         }
 
-
                         JSONObject jsonObjectImages = jsonObject.getJSONObject("urls");
+
+                        currentImageUrl = jsonObjectImages.getString("raw");
 
                        Glide.with(getApplicationContext())
                                 .load(jsonObjectImages.getString("raw"))
                                .placeholder(R.drawable.progress_bar)
-                               .diskCacheStrategy(DiskCacheStrategy.NONE)
                                .into(placeImage);
 
                     }
@@ -192,6 +221,7 @@ public class FindPlace extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
                 Toast.makeText(FindPlace.this, "An Error Occured while Executing Volley " + error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
