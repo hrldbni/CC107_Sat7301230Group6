@@ -28,6 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.Status;
@@ -129,13 +130,11 @@ public class FindPlace extends AppCompatActivity {
             if (String.valueOf(place.getRating()) == "null"){
                 placeRating.setText("No Ratings Yet");
                 placeLocation.setText(String.valueOf(place.getAddress()));
-                placeDescription.setText(finalDesc);
                 placeTitle.setText(String.valueOf(place.getName()));
                 placeTags = place.getName();
             } else {
                 placeRating.setText(String.valueOf(place.getRating()));
                 placeLocation.setText(String.valueOf(place.getAddress()));
-                placeDescription.setText(finalDesc);
                 placeTitle.setText(String.valueOf(place.getName()));
                 placeTags = place.getName();
 
@@ -155,30 +154,35 @@ public class FindPlace extends AppCompatActivity {
         String tags = placeTags;
         String finalWord = tags.replaceAll(" ", "+");
 
-        //Constants.URL_GETPLACEIMAGE+finalWord+Constants.URL_GETPLACEIMAGE2
+        //
 
-
-        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET, Constants.URL_GETPLACEIMAGE + finalWord+ Constants.URL_GETPLACEIMAGE2, null, new Response.Listener<JSONObject>() {
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.GET,Constants.URL_GETPLACEIMAGE+finalWord+Constants.URL_GETPLACEIMAGE2, null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 String imageUrl = "";
+                String description = "";
+
                 try {
-                    JSONArray jsonArray = response.getJSONArray("hits");
-                    for (int i = 0; i < 2; i++) {
+                    JSONArray jsonArray = response.getJSONArray("results");
+                    for (int i = 0; i < 1; i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                       imageUrl = jsonObject.getString("largeImageURL");
-                    }
+                        if (jsonObject.getString("description").isEmpty() || jsonObject.getString("description") == "null"){
+                            placeDescription.setText("Description : " + jsonObject.getString("alt_description"));
+                        } else {
+                            placeDescription.setText("Description : " + jsonObject.getString("description"));
+                        }
 
-                  if (imageUrl.isEmpty()){
-                      Glide.with(getApplicationContext())
-                              .load("https://i.pinimg.com/originals/1f/aa/3c/1faa3cda455c865f037d63a223577ab5.png")
-                              .into(placeImage);
-                  } else {
-                      Glide.with(getApplicationContext())
-                              .load(imageUrl)
-                              .into(placeImage);
-                  }
+
+                        JSONObject jsonObjectImages = jsonObject.getJSONObject("urls");
+
+                       Glide.with(getApplicationContext())
+                                .load(jsonObjectImages.getString("raw"))
+                               .placeholder(R.drawable.progress_bar)
+                               .diskCacheStrategy(DiskCacheStrategy.NONE)
+                               .into(placeImage);
+
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -195,7 +199,6 @@ public class FindPlace extends AppCompatActivity {
         RequestHandler.getInstance(this).addToRequestQueue(jsonObjectRequest);
 
     }
-
 
 
     public boolean isServicesOk(){

@@ -11,14 +11,15 @@ public class Constants {
     public static final String URL_ADDABOUTPLACE = ROOT_URL+"aboutPlace.php";
     public static final String URL_GETUSERTRAVELS = ROOT_URL+"getTravels.php";
     public static final String URL_ADDFUNDS = ROOT_URL+"addFund.php";
+
     public static final String URL_REMOVETRAVEL = ROOT_URL+"removeTravel.php";
     public static final String URL_UPLOADPROFILE = ROOT_URL+"uploadProfile.php";
     public static final String URL_TOTALTRAVEL = ROOT_URL+"getTotalTravel.php";
     public static final String URL_FORGOTPASSWORD = ROOT_URL+"forgotPassword.php";
     public static final String URL_CHANGEPASSWORD = ROOT_URL+"changePassword.php";
     public static final String URL_PROFILE = "http://jaycabasag.online/main/v1/uploads/images/";
-    public static final String URL_GETPLACEIMAGE = "https://pixabay.com/api/?key=21101727-53bc50567a86bed63de23fdfe&q=";
-    public static final String URL_GETPLACEIMAGE2 = "&image_type=photo&pretty=true";
+    public static final String URL_GETPLACEIMAGE = "https://api.unsplash.com/search/photos?query=";
+    public static final String URL_GETPLACEIMAGE2 = "&client_id=2o-SUub22IIuq-7Dw7bTr-g6NI0nyfgqssklxD7nNVQ";
 
 
 
