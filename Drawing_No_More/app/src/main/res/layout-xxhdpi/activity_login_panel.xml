@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/roadpic"
+    android:background="@drawable/mountain"
     android:paddingTop="80dp"
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
@@ -19,27 +19,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/Drawingtxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="0dp"
-                android:text="Drawing"
-                android:textAlignment="center"
-                android:textColor="#F3EFEF"
-                android:textSize="40dp" />
-            <TextView
-                android:id="@+id/Nomoretxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_alignParentTop="true"
-                android:text="NO More"
-                android:textAlignment="center"
-                android:textColor="#403F3F"
-                android:textSize="50dp" />
+            <ImageView
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:src="@drawable/drawingnomorepic"
+                android:layout_gravity="center"/>
 
             <TextView
                 android:id="@+id/LoginText"
@@ -78,6 +62,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
                 android:paddingLeft="15dp"
+                android:textColor="#ffffff"
                 android:layout_below="@id/emailAddress"
                 android:background="@drawable/custom_input"
                 android:layout_marginTop="30dp"
@@ -97,6 +82,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_below="@id/loginButton"
                 android:layout_marginTop="5dp"
+                android:background="#8B191818"
                 android:textColor="@color/white"
                 android:clickable="true"
                 android:text="Forgot Password" />

@@ -35,11 +35,13 @@ public class ProfileActivity extends AppCompatActivity {
     TextView userEmailText;
     TextView userUidText, userText;
     TextView userNameText, numberTravel;
-    Button logoutBtn, wishTravelBtn;
+    Button logoutBtn;
     TextView dobText;
     ImageView userProfile;
     String totalTravel;
-    LinearLayout travelBtn, mytravel, profileContainer, personalInfoContainer, myEmails, myBirth, changePass;
+    TextView changePass;
+    LinearLayout personalInfoContainer;
+    ImageButton travelBtn, mytravel, wishTravelBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,15 +59,9 @@ public class ProfileActivity extends AppCompatActivity {
         Animation animation3 = AnimationUtils.loadAnimation(ProfileActivity.this, R.anim.fadein);
 
 
-        profileContainer = (LinearLayout) findViewById(R.id.profileContainer);
-        profileContainer.setAnimation(animation);
         personalInfoContainer = (LinearLayout) findViewById(R.id.personalInfoContainer);
         personalInfoContainer.setAnimation(animation2);
-        myEmails = (LinearLayout) findViewById(R.id.myemails);
-        myEmails.setAnimation(animation);
-        myBirth = (LinearLayout) findViewById(R.id.mybirth);
-        myBirth.setAnimation(animation);
-        changePass = (LinearLayout) findViewById(R.id.changePass);
+        changePass = (TextView) findViewById(R.id.changePass);
         changePass.setAnimation(animation);
         changePass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,7 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
         dobText = findViewById(R.id.dobText);
         dobText.setText(SharedPrefManager.getDob());
 
-        travelBtn = (LinearLayout) findViewById(R.id.travelBtn);
+        travelBtn = (ImageButton) findViewById(R.id.travelBtn);
         travelBtn.setAnimation(animation);
         travelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +91,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        mytravel = (LinearLayout) findViewById(R.id.mytravels);
+        mytravel = (ImageButton) findViewById(R.id.mytravels);
         mytravel.setAnimation(animation);
         mytravel.setOnClickListener(new View.OnClickListener() {
             @Override

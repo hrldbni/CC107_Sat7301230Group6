@@ -4,118 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/profile_back"
+    android:background="@drawable/upper"
     android:orientation="vertical">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="165dp">
-
+        android:layout_height="303dp">
         <LinearLayout
             android:id="@+id/profileContainer"
             android:layout_width="match_parent"
-            android:layout_height="133dp"
-            android:background="@drawable/gradientbackground"
+            android:layout_height="252dp"
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
+
                 app:civ_border_width="2dp"
                 app:civ_border_color="@color/teal_200"
                 android:id="@+id/userProfile"
-                android:layout_width="65dp"
-                android:layout_height="65dp"
+                android:layout_width="165dp"
+                android:layout_height="130dp"
                 android:layout_gravity="top|center"
-                android:layout_marginTop="20dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/ic_baseline_person_24" />
+                android:layout_marginTop="50dp"
+                android:src="@drawable/ic_profile" />
+            <TextView
+                android:id="@+id/userEmailText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="5dp"
+                android:text="Name@gmail.com"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/dobText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:text="Date of Birth"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="305dp"
-            android:layout_height="60dp"
+            android:layout_width="350dp"
+            android:layout_height="100dp"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="100dp">
-
+            android:layout_marginTop="230dp">
             <LinearLayout
                 android:id="@+id/personalInfoContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 android:weightSum="3">
-
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="UID"
-                        android:textSize="15sp" />
-
+                        android:textSize="15sp"
+                        />
                     <TextView
                         android:id="@+id/uidText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
                         android:text="125"
-                        android:textColor="@color/teal_200"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:paddingTop="10dp"
+                        android:textColor="#1E7774"/>
 
                 </LinearLayout>
-
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Username"
-                        android:textSize="15sp" />
-
+                        android:textSize="15sp"
+                        />
                     <TextView
                         android:id="@+id/userText"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
                         android:text="0"
-                        android:textColor="@color/teal_200"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:paddingTop="10dp"
+                        android:textColor="#1E7774"/>
 
                 </LinearLayout>
-
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
                     android:gravity="center"
-                    android:orientation="vertical">
-
+                    android:orientation="vertical"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Travels"
-                        android:textSize="15sp" />
-
+                        android:textSize="15sp"
+                        />
                     <TextView
                         android:id="@+id/numberTravel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
                         android:text="0"
-                        android:textColor="@color/teal_200"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:paddingTop="10dp"
+                        android:textColor="#1E7774"/>
 
                 </LinearLayout>
             </LinearLayout>
@@ -127,135 +134,102 @@
 
         android:layout_width="280dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="25dp">
         <LinearLayout
-            android:id="@+id/myemails"
-            android:orientation="horizontal"
-            android:background="@drawable/custom_input"
-            android:paddingLeft="25dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:src="@drawable/ic_email_black_24dp"/>
-
-            <TextView
-                android:id="@+id/userEmailText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/mytravels"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
                 android:paddingLeft="20dp"
-                android:text="Name@gmail.com"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/mybirth"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:background="@drawable/custom_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:src="@drawable/ic_calendar"/>
+                android:paddingRight="25dp"
 
-            <TextView
-                android:id="@+id/dobText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="Date of Birth"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/travelBtn"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:background="@drawable/custom_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:src="@drawable/ic_search"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="Travel "
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/mytravels"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:background="@drawable/custom_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:src="@drawable/ic_airplane"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:paddingLeft="20dp"
-                android:text="My Travels"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/changePass"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal"
-            android:paddingLeft="25dp"
-            android:background="@drawable/custom_input"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:src="@drawable/ic_lock"/>
+                android:background="@drawable/img_btn"
+                android:layout_gravity="top|center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/travelhistory" />
             <TextView
                 android:textStyle="bold"
-
-                android:layout_gravity="center_vertical"
-                android:layout_width="wrap_content"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="20dp"
-                android:text="Change Password"/>
-        </LinearLayout>
+                android:textColor="#1E7774"
+                android:text="My Travel"/>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="80dp"
+            android:orientation="vertical">
+            <ImageButton
+                android:id="@+id/travelBtn"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:paddingTop="50dp"
+                android:paddingBottom="50dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@drawable/img_btn"
+
+                android:layout_gravity="top|center"
+                android:scaleType="centerCrop"
+                android:src="@drawable/searchtravel" />
+            <TextView
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#1E7774"
+                android:text="Travel"/>
+        </LinearLayout>
     </LinearLayout>
 
     <Button
-        android:id="@+id/logoutBtn"
-        android:layout_width="132dp"
-        android:onClick="logout"
-        android:layout_height="35dp"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:textSize="10sp"
-        android:background="@drawable/buttonstylewithgradient"
-        android:text="LOG OUT"
-        android:textColor="#fff" />
-
-    <Button
         android:id="@+id/createWishTravel"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:text="+"
+        android:textSize="40dp"
+        android:textColor="#E14F5B"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/img_btn"/>
+    <TextView
+
+        android:textStyle="bold"
+        android:textAlignment="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Wish Travel"
-        />
+        android:textColor="#1E7774"/>
+
+    <Button
+        android:id="@+id/logoutBtn"
+        android:layout_width="160dp"
+        android:onClick="logout"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/buttonstylewithgradient"
+        android:text="LOG OUT"
+        android:textColor="#fff" />
+    <TextView
+        android:id="@+id/changePass"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:layout_marginTop="5dp"
+        android:text="Change Password"/>
+
+
+
 
 </LinearLayout>
