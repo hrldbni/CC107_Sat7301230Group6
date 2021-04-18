@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="20dp"
+    android:layout_margin="8dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/requestorImage"
+            android:layout_width="90dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/mountain"/>
+        <TextView
+            android:id="@+id/requestPersonName"
+            android:textColor="#262626"
+            android:layout_toRightOf="@+id/requestorImage"
+            android:text="Person Name"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:id="@+id/confirmButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONFIRM"
+            android:layout_toRightOf="@+id/requestorImage"
+            android:layout_below="@+id/requestPersonName"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="5dp"/>
+
+        <Button
+            android:id="@+id/removeRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="REMOVE"
+            android:layout_toRightOf="@+id/confirmButton"
+            android:layout_below="@+id/requestPersonName"
+            android:textSize="10dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+</RelativeLayout>

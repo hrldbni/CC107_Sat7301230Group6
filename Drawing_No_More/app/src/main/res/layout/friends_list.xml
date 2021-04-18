@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="20dp"
+        android:layout_margin="8dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="10dp">
+
+            <ImageView
+                android:id="@+id/personImage"
+                android:layout_width="90dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="10dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/mountain"/>
+            <TextView
+                android:id="@+id/personName"
+                android:textColor="#262626"
+                android:layout_toRightOf="@+id/personImage"
+                android:text="Person Name"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/unfriendButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Unfriend"
+                android:layout_toRightOf="@+id/personImage"
+                android:layout_below="@+id/personName"
+                android:textSize="10dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"/>
+
+            <Button
+                android:id="@+id/inviteButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Invite"
+                android:layout_toRightOf="@+id/unfriendButton"
+                android:layout_below="@+id/personName"
+                android:textSize="10dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -16,7 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CreateOwnTravel"></activity>
+        <activity android:name=".AddFriendActivity"></activity>
+        <activity
+            android:name=".HomeActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" />
+        <activity android:name=".SetTravelActivity" />
+        <activity android:name=".TravelInvitationActivity" />
+        <activity android:name=".CreateOwnTravel" />
         <activity android:name=".FindPlace" />
         <activity android:name=".ChangedPasswordActivity" />
         <activity android:name=".ForgotPasswordActivity" />
@@ -43,7 +50,6 @@
         </activity>
         <activity android:name=".PlaceViewerActivity" />
         <activity android:name=".ConfirmTravel" />
-        <activity android:name=".splashscreen" />
     </application>
 
 </manifest>

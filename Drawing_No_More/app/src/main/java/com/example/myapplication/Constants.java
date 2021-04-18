@@ -20,7 +20,11 @@ public class Constants {
     public static final String URL_PROFILE = "http://jaycabasag.online/main/v1/uploads/images/";
     public static final String URL_GETPLACEIMAGE = "https://api.unsplash.com/search/photos?query=";
     public static final String URL_GETPLACEIMAGE2 = "&client_id=2o-SUub22IIuq-7Dw7bTr-g6NI0nyfgqssklxD7nNVQ";
+    public static final String URL_GETHOTTRAVELS = ROOT_URL+"getHotTravels.php";
 
+    public static final String URL_GETFRIENDS = ROOT_URL+"getFriends.php";
+    public static final String URL_GETFRIENDREQUESTS = ROOT_URL+"getFriendRequest.php";
 
-
+    public static final String URL_ACCEPTFRIENDS = ROOT_URL+"acceptRequest.php";
+    public static final String URL_SEARCHFRIEND = ROOT_URL+"searchFriend.php";
 }

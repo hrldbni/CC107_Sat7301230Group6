@@ -40,7 +40,7 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
         getSupportActionBar().hide();
         if (SharedPrefManager.getInstance(this).isLoggedIn()){
             finish();
-            startActivity(new Intent(this, ProfileActivity.class));
+            startActivity(new Intent(this, HomeActivity.class));
             return;
         }
 
@@ -105,7 +105,7 @@ public class LoginPanel extends AppCompatActivity implements View.OnClickListene
                                                     String.valueOf(obj.getString("dob")),
                                                     String.valueOf(Constants.URL_PROFILE+obj.getString("profile")) );
 
-                                    startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+                                    startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                                     finish();
 
                                 } else {

@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
@@ -10,10 +11,13 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public class CreateOwnTravel extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     Spinner travelType;
     ImageView backBtn;
+    FloatingActionButton addToTravel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +33,16 @@ public class CreateOwnTravel extends AppCompatActivity implements AdapterView.On
             @Override
             public void onClick(View v) {
                 finish();
+            }
+        });
+
+        addToTravel = findViewById(R.id.addToTravel);
+        addToTravel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent newintent;
+                newintent = new Intent(CreateOwnTravel.this, SetTravelActivity.class);
+                startActivity(newintent);
             }
         });
 

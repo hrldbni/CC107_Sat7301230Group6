@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".HomeFragment">
+
+
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:id="@+id/backCont"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentLeft="true"
+            android:background="@color/white"
+            android:paddingLeft="13dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:scaleType="center"
+            app:srcCompat="@drawable/dashboard_icon"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:text="Home"
+            android:layout_toRightOf="@+id/backBtn"
+            style="@style/TextAppearance.AppCompat.Large"
+            android:paddingLeft="13dp"
+            android:paddingRight="15dp"
+            android:textColor="@color/purple_700"
+            android:gravity="center|left"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            />
+
+    </RelativeLayout>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginTop="?actionBarSize">
+
+
+    </androidx.core.widget.NestedScrollView>
+    <RelativeLayout
+        android:id="@+id/titleContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?actionBarSize">
+
+        <TextView
+            android:id="@+id/hotTravelText"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:text="Hot Travels"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/hotTravelsPageContainer"
+        android:layout_width="match_parent"
+        android:layout_height="310dp"
+        android:layout_below="@+id/titleContainer"
+        >
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/hotTravelsPage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:foregroundGravity="center"
+            android:overScrollMode="never">
+
+
+        </androidx.viewpager.widget.ViewPager>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/whatsNewConatainerText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hotTravelsPageContainer">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:text="What's New?"
+            android:paddingLeft="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:gravity="center_vertical"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_below="@+id/whatsNewConatainerText"
+        android:paddingBottom="?actionBarSize"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/whatsNewRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+
+</RelativeLayout>
