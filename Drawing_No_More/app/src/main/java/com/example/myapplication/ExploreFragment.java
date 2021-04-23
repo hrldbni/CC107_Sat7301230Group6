@@ -1,16 +1,21 @@
 package com.example.myapplication;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.chrisbanes.photoview.PhotoView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -53,18 +58,6 @@ public class ExploreFragment extends Fragment {
         return fragment;
     }
 
-    private static final String TAG = "FindPlace";
-    private static final int ERROR_DIALOG_REQUEST = 9001;
-    String currentImageUrl;
-    private ProgressDialog progressDialog;
-
-    String searchText;
-    ImageView backBtn;
-    PhotoView placeImage;
-    FloatingActionButton addToTravel, createOwnTravel;
-    TextView placeDescription, placeRating, placeTitle, placeLocation;
-    EditText findPlace;
-    String placeTags;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -78,10 +71,24 @@ public class ExploreFragment extends Fragment {
 
     }
 
+    CardView exploreMoreBtn;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_explore, container, false);
+        View view = inflater.inflate(R.layout.fragment_explore, container, false);
+
+        exploreMoreBtn = view.findViewById(R.id.exploreMoreBtn);
+
+        exploreMoreBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), FindPlace.class));
+            }
+        });
+
+        return view;
+
     }
 }

@@ -44,9 +44,9 @@
     <RelativeLayout
         android:id="@+id/prof"
         android:layout_width="match_parent"
-        android:layout_height="712dp"
+        android:layout_height="wrap_content"
         android:layout_below="?actionBarSize"
-        android:layout_marginTop="58dp"
+        android:layout_marginTop="?actionBarSize"
         android:layout_marginBottom="?actionBarSize"
         android:orientation="horizontal">
 
@@ -55,126 +55,13 @@
             android:layout_width="match_parent"
             android:layout_height="160dp"
             android:gravity="center"
-            android:orientation="vertical">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:layout_width="130dp"
-                android:layout_height="130dp"
-                android:background="#F6F6F6">
-
-            </de.hdodenhof.circleimageview.CircleImageView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Name@gmail.com"
-                android:textColor="@color/purple_700"
-                android:textSize="20sp"
-                android:textStyle="bold">
-
-            </TextView>
-        </LinearLayout>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/travusername"
-            android:layout_width="398dp"
-            android:layout_height="78dp"
-            android:layout_below="@+id/profact"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="3dp"
-            app:cardCornerRadius="15dp">
-
-            <LinearLayout
-                android:id="@+id/personalInfoContainer"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:weightSum="3">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="UID"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/uidText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:text="125"
-                        android:textColor="@color/purple_700"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Username"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/userText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:text="0"
-                        android:textColor="@color/purple_700"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Travels"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:id="@+id/numberTravel"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="10dp"
-                        android:text="0"
-                        android:textColor="@color/purple_700"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
-
-                </LinearLayout>
-            </LinearLayout>
-
-        </androidx.cardview.widget.CardView>
+            android:orientation="vertical"/>
 
 
         <LinearLayout
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/travusername"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
@@ -191,7 +78,9 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -237,7 +126,9 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -290,7 +181,9 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -336,7 +229,9 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="15dp">
+                    app:cardCornerRadius="15dp"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    android:clickable="true">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -385,6 +280,7 @@
             android:layout_below="@+id/grid"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
+            android:layout_alignParentBottom="true"
             android:orientation="vertical"
             android:padding="16dp">
 

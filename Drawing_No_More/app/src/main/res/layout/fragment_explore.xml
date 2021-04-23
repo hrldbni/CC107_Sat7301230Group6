@@ -44,112 +44,52 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/findPlace"
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/exploreMoreBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Search Place..."
-            android:padding="16dp"
-            android:drawablePadding="16dp"
-            android:drawableLeft= "@drawable/location"
-            android:gravity="center_vertical"
-            android:layout_marginRight="16dp"
-            android:layout_marginLeft="16dp"
-            android:imeOptions="actionSearch"
-            android:background="@android:drawable/editbox_background"
-            />
-    </RelativeLayout>
+            app:cardCornerRadius="10dp"
+            app:cardElevation="5dp"
+            android:layout_margin="8dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:clickable="true">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Explore more"
+                android:padding="12dp"
+                style="@style/TextAppearance.AppCompat.Small"
+                android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"/>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.github.chrisbanes.photoview.PhotoView
-            android:id="@+id/placeImage"
-            android:layout_margin="16dp"
-            android:layout_width="match_parent"
-            android:src="@drawable/placeresult2"
-            android:scaleType="centerCrop"
-            android:layout_height="200dp"/>
         <TextView
-            android:id="@+id/placeTitle"
-            android:layout_below="@id/placeImage"
             android:layout_width="match_parent"
-            android:drawablePadding="16dp"
-            android:paddingBottom="16dp"
-            android:paddingRight="16dp"
-            android:paddingLeft="16dp"
-            android:textStyle="bold"
-            android:gravity="center_horizontal"
-            android:textAllCaps="true"
-            android:text=""
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/placeLocation"
-            android:layout_below="@id/placeTitle"
-            android:layout_width="match_parent"
-            android:drawablePadding="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:id="@+id/placeDescription"
-            android:layout_below="@id/placeLocation"
-            android:layout_width="match_parent"
-            android:drawablePadding="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:text=""
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/placeRating"
-            android:layout_below="@id/placeDescription"
-            android:layout_width="match_parent"
-            android:drawablePadding="16dp"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:text=""
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="Travels(0)"
+            android:paddingTop="12dp"
+            android:paddingRight="12dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="12dp"/>
 
     </RelativeLayout>
-
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/travelListsContainer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_marginBottom="?actionBarSize">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addToTravel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="16dp"
-            android:layout_marginRight="16dp"
-            android:tooltipText="Add this travel"
-            android:src="@drawable/plus"/>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/travelListsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/createOwnTravel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginBottom="16dp"
-            android:layout_marginRight="16dp"
-            android:layout_above="@+id/addToTravel"
-            android:src="@drawable/ic_baseline_create_24"
-            android:tooltipText="Create own Travel"
-            />
-
-
-    </RelativeLayout>
 </LinearLayout>

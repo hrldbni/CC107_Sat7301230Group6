@@ -67,5 +67,6 @@ dependencies {
 
     //noinspection GradleCompatible
     implementation 'com.android.support:design:29.0.0'
+    implementation 'com.google.android.gms:play-services-location:15.0.0'
 
 }

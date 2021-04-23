@@ -1,11 +1,15 @@
 package com.example.myapplication;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.app.DownloadManager;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
@@ -55,9 +59,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 import java.util.Map;
 
 public class FindPlace extends AppCompatActivity {
@@ -68,12 +75,15 @@ public class FindPlace extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     String searchText;
+    String placeLocation;
     ImageView backBtn;
-    PhotoView placeImage;
-    FloatingActionButton addToTravel, createOwnTravel;
-    TextView placeDescription, placeRating, placeTitle, placeLocation;
+    TextView totalResults;
     EditText findPlace;
     String placeTags;
+
+    RecyclerView exploreResultsRescyclerView;
+    AdapterExploreResults exploreResultsAdapter;
+    List<ModelExploreResults> modelExploreResultsList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,23 +94,8 @@ public class FindPlace extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Please wait for a moment...");
 
-        placeImage = (PhotoView) findViewById(R.id.placeImage);
         findPlace = (EditText) findViewById(R.id.findPlace);
-        placeDescription = (TextView) findViewById(R.id.placeDescription);
-        placeRating = (TextView) findViewById(R.id.placeRating);
-        placeTitle = (TextView) findViewById(R.id.placeTitle);
-        addToTravel = (FloatingActionButton) findViewById(R.id.addToTravel);
-        placeLocation = (TextView) findViewById(R.id.placeLocation);
-        createOwnTravel = findViewById(R.id.createOwnTravel);
-
-        createOwnTravel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent newintent;
-                newintent = new Intent(FindPlace.this, CreateOwnTravel.class);
-                startActivity(newintent);
-            }
-        });
+        totalResults = (TextView) findViewById(R.id.totalResults);
         backBtn = (ImageView) findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +125,16 @@ public class FindPlace extends AppCompatActivity {
 
         }
 
+        modelExploreResultsList = new ArrayList<>();
+
+        exploreResultsRescyclerView = (RecyclerView) findViewById(R.id.searchPlaceResultsRecyclerView);
+        exploreResultsRescyclerView.setHasFixedSize(true);
+        exploreResultsRescyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+//        modelExploreResultsList.add(new ModelExploreResults("","https://lh3.googleusercontent.com/proxy/VCw7phXxiZ2HDbTnrjHx3vNhnu12IuMQBM91h4HVizqr-Y1dgnd8HSPXJKQljLz6f4cLGz1bGzVXQ6OARqBQywzp80Vb7xTbPSoK7zJbCdO9S50CzEz0r6mMOozfTYxDbw","Baguiu","Bagui bagui000","Sa bagyio"));
+
+
+
     }
 
     @Override
@@ -138,36 +143,14 @@ public class FindPlace extends AppCompatActivity {
 
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 100 && resultCode == RESULT_OK){
-
             Place place = Autocomplete.getPlaceFromIntent(data);
-
-            findPlace.setText(place.getAddress());
-
-            String placeDesc = String.valueOf(place.getTypes());
-            placeDesc = placeDesc.replaceAll("\\[","");
-
-            String placeDesc2 = placeDesc;
-            placeDesc2 = placeDesc2.replaceAll("\\]","");
-
-            String finalDesc = placeDesc2;
-            finalDesc = finalDesc.replaceAll("_", " ");
+            findPlace.setText(place.getName());
+            searchText= place.getName();
+            placeLocation = place.getAddress();
+            placeTags = place.getName();
 
 
-
-            if (String.valueOf(place.getRating()) == "null"){
-                placeRating.setText("No Ratings Yet");
-                placeLocation.setText("Location : "+String.valueOf(place.getAddress()));
-                placeTitle.setText("Rating : " + String.valueOf(place.getName()));
-                placeTags = place.getName();
-            } else {
-                placeRating.setText("Rating : "+String.valueOf(place.getRating()));
-                placeLocation.setText("Location : "+String.valueOf(place.getAddress()));
-                placeTitle.setText(String.valueOf(place.getName()));
-                placeTags = place.getName();
-
-            }
-
-             addPhoto();
+            exploreResults();
 
         } else if (resultCode == AutocompleteActivity.RESULT_ERROR){
 
@@ -176,7 +159,7 @@ public class FindPlace extends AppCompatActivity {
         }
     }
 
-    private void addPhoto() {
+    private void exploreResults() {
 
         progressDialog.show();
         String tags = placeTags;
@@ -188,30 +171,31 @@ public class FindPlace extends AppCompatActivity {
             @Override
             public void onResponse(JSONObject response) {
                 progressDialog.dismiss();
-                String imageUrl = "";
+                modelExploreResultsList.clear();
                 String description = "";
-
                 try {
                     JSONArray jsonArray = response.getJSONArray("results");
-                    for (int i = 0; i < 1; i++) {
+
+                    totalResults.setText("Total Result(s) : "+String.valueOf(jsonArray.length()));
+
+                    for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject = jsonArray.getJSONObject(i);
 
                         if (jsonObject.getString("description").isEmpty() || jsonObject.getString("description") == "null"){
-                            placeDescription.setText("Description : " + jsonObject.getString("alt_description"));
+                           description = "Description : " + jsonObject.getString("alt_description");
                         } else {
-                            placeDescription.setText("Description : " + jsonObject.getString("description"));
+                            description = "Description : " + jsonObject.getString("description");
                         }
-
                         JSONObject jsonObjectImages = jsonObject.getJSONObject("urls");
+                        currentImageUrl = jsonObjectImages.getString("regular");
 
-                        currentImageUrl = jsonObjectImages.getString("raw");
 
-                       Glide.with(getApplicationContext())
-                                .load(jsonObjectImages.getString("raw"))
-                               .placeholder(R.drawable.progress_bar)
-                               .into(placeImage);
+                        modelExploreResultsList.add(new ModelExploreResults("", currentImageUrl, searchText, placeLocation, description));
 
                     }
+
+                    exploreResultsAdapter = new AdapterExploreResults(FindPlace.this, modelExploreResultsList);
+                    exploreResultsRescyclerView.setAdapter(exploreResultsAdapter);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -249,7 +233,5 @@ public class FindPlace extends AppCompatActivity {
         }
         return false;
     }
-
-
 
 }
