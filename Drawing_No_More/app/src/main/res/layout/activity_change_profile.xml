@@ -4,10 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="60dp"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingBottom="50dp"
     android:background="@drawable/gradientbackground"
     android:orientation="vertical"
     tools:context=".ChangeProfileActivity">
@@ -21,26 +17,33 @@
         <ImageButton
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
-            android:layout_height="44dp"
+            android:layout_height="?actionBarSize"
             android:layout_alignParentLeft="true"
             android:background="@color/white"
-            android:paddingLeft="15dp"
+            android:paddingLeft="13dp"
             android:paddingRight="15dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
             android:scaleType="center"
             app:srcCompat="@drawable/back" />
     </RelativeLayout>
 
 
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="367dp">
+        android:layout_height="match_parent"
+        android:padding="15dp"
+        android:layout_gravity="center_vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/radius"
             android:orientation="vertical"
-            android:paddingTop="20dp"
+            android:gravity="center"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
             android:paddingBottom="40dp">
 
             <ImageView
@@ -48,6 +51,7 @@
                 android:layout_width="171dp"
                 android:layout_height="166dp"
                 android:layout_gravity="center"
+                android:layout_margin="15dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

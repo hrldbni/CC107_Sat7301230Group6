@@ -98,14 +98,23 @@
             android:layout_marginRight="16dp"
             android:background="@android:drawable/editbox_dropdown_light_frame"/>
         <ImageView
+            android:id="@+id/addPhoto"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="16dp"
             android:layout_below="@+id/travelDescription"
             android:src="@drawable/placeresults"/>
 
-
-
+        <Spinner
+            android:id="@+id/privateOrPublic"
+            android:layout_below="@+id/addPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@android:drawable/editbox_dropdown_light_frame"
+            android:entries="@array/spinner_items2"/>
 
     </RelativeLayout>
 

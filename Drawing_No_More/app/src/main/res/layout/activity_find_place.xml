@@ -84,6 +84,7 @@
         android:layout_alignParentBottom="true">
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/createTravel"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             app:cardCornerRadius="10dp"

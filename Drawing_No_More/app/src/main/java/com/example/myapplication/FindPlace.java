@@ -3,6 +3,7 @@ package com.example.myapplication;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -80,6 +81,7 @@ public class FindPlace extends AppCompatActivity {
     TextView totalResults;
     EditText findPlace;
     String placeTags;
+    CardView createTravelBtn;
 
     RecyclerView exploreResultsRescyclerView;
     AdapterExploreResults exploreResultsAdapter;
@@ -130,10 +132,16 @@ public class FindPlace extends AppCompatActivity {
         exploreResultsRescyclerView = (RecyclerView) findViewById(R.id.searchPlaceResultsRecyclerView);
         exploreResultsRescyclerView.setHasFixedSize(true);
         exploreResultsRescyclerView.setLayoutManager(new LinearLayoutManager(this));
+        createTravelBtn = (CardView) findViewById(R.id.createTravel);
 
+
+        createTravelBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CreateOwnTravel.class));
+            }
+        });
 //        modelExploreResultsList.add(new ModelExploreResults("","https://lh3.googleusercontent.com/proxy/VCw7phXxiZ2HDbTnrjHx3vNhnu12IuMQBM91h4HVizqr-Y1dgnd8HSPXJKQljLz6f4cLGz1bGzVXQ6OARqBQywzp80Vb7xTbPSoK7zJbCdO9S50CzEz0r6mMOozfTYxDbw","Baguiu","Bagui bagui000","Sa bagyio"));
-
-
 
     }
 

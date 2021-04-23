@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="publicOrPrivateSelect">Public or Private</style>
+    <string-array name="spinner_items2">
+        <item>Private</item>
+        <item>Public</item>
+    </string-array>
+
+</resources>

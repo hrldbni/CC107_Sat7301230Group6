@@ -58,7 +58,7 @@ public class AdapterFriendsList extends RecyclerView.Adapter<AdapterFriendsList.
         holder.unfriendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+
                 //Start of friend Removal
 
                         String friend_user_id = String.valueOf(SharedPrefManager.getUid()).toString().trim();
@@ -98,7 +98,7 @@ public class AdapterFriendsList extends RecyclerView.Adapter<AdapterFriendsList.
 
                                 Map<String, String> params = new HashMap<>();
                                 params.put("friend_user_id", friend_user_id);
-                                params.put("friend_user_id", friend_user_id2);
+                                params.put("friend_user_id2", friend_user_id2);
                                 return params;
                             }
                         };
