@@ -13,14 +13,25 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdapterAddFriend extends RecyclerView.Adapter<AdapterAddFriend.AdapterAddFriendViewHolder> {
 
     private Context mCtx;
     List<ModelAddFriend> modelAddFriendList;
+    String addFriendUid;
 
     public AdapterAddFriend(Context mCtx, List<ModelAddFriend> modelAddFriendList) {
         this.mCtx = mCtx;
@@ -55,7 +66,58 @@ public class AdapterAddFriend extends RecyclerView.Adapter<AdapterAddFriend.Adap
             holder.addFriendBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(mCtx, "Cliked add friend", Toast.LENGTH_SHORT).show();
+                    //Start of Adding Friend
+
+                            String userid = String.valueOf(SharedPrefManager.getUid()).toString().trim();
+                            String request_to_userId = String.valueOf(modelAddFriend.getAddFriend_userId()).toString().trim();
+
+                            StringRequest stringRequest = new StringRequest(
+                                    Request.Method.POST,
+                                    Constants.URL_ADDFRIEND,
+                                    new Response.Listener<String>() {
+                                        @Override
+                                        public void onResponse(String response) {
+
+                                            try {
+                                                JSONObject jsonObject = new JSONObject(response);
+
+                                                Toast.makeText(mCtx, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
+
+
+                                            } catch (JSONException e) {
+                                                e.printStackTrace();
+                                                Toast.makeText(mCtx, "Error in Json" + e, Toast.LENGTH_LONG).show();
+                                            }
+
+
+                                        }
+                                    },
+                                    new Response.ErrorListener() {
+                                        @Override
+                                        public void onErrorResponse(VolleyError error) {
+                                            Toast.makeText(mCtx, error.getMessage(), Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+
+                            ){
+                                @Override
+                                protected Map<String, String> getParams() throws AuthFailureError {
+
+                                    Map<String, String> params = new HashMap<>();
+                                    params.put("user_id_by", userid);
+                                    params.put("user_id_to", request_to_userId);
+                                    return params;
+                                }
+                            };
+
+                            RequestHandler.getInstance(mCtx).addToRequestQueue(stringRequest);
+
+
+
+                    //End of addign Friend
+
+
+
                 }
             });
         }

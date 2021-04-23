@@ -24,6 +24,9 @@ public class Constants {
 
     public static final String URL_GETFRIENDS = ROOT_URL+"getFriends.php";
     public static final String URL_GETFRIENDREQUESTS = ROOT_URL+"getFriendRequest.php";
+    public static final String URL_ADDFRIEND = ROOT_URL+"friendRequest.php";
+
+    public static final String URL_REMOVEFRIEND = ROOT_URL+"removeFriend.php";
 
     public static final String URL_ACCEPTFRIENDS = ROOT_URL+"acceptRequest.php";
     public static final String URL_SEARCHFRIEND = ROOT_URL+"searchFriend.php";
