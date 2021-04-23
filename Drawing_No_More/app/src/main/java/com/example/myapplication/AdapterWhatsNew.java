@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.List;
 
@@ -40,11 +42,22 @@ public class AdapterWhatsNew extends RecyclerView.Adapter<AdapterWhatsNew.Adapte
 
         Glide.with(mCtx)
                 .load(modelWhatsNew.getImage())
+                .diskCacheStrategy(DiskCacheStrategy.NONE)
                 .placeholder(R.drawable.loader)
                 .into(holder.whatsNewImage);
 
         holder.whatsNewTitle.setText(modelWhatsNew.getPlaceTitle());
         holder.whatsNewLocation.setText(modelWhatsNew.getPlaceLocation());
+        holder.whatsNewImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent actnew = new Intent(mCtx, PreviewDestination.class);
+                actnew.putExtra("place_title", modelWhatsNew.getPlaceTitle());
+                actnew.putExtra("place_location", modelWhatsNew.getPlaceLocation());
+                actnew.putExtra("place_img", modelWhatsNew.getImage());
+                mCtx.startActivity(actnew);
+            }
+        });
     }
 
     @Override

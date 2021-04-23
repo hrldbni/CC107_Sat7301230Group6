@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,17 @@ public class Adapter extends PagerAdapter {
 
         placeTitle.setText(models.get(position).getPlaceTitle());
         placeLocation.setText(models.get(position).getPlaceLocation());
+
+        placeImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent actnew = new Intent(context, PreviewDestination.class);
+                actnew.putExtra("place_title", models.get(position).getPlaceTitle());
+                actnew.putExtra("place_location", models.get(position).getPlaceLocation());
+                actnew.putExtra("place_img", models.get(position).getImage());
+                context.startActivity(actnew);
+            }
+        });
 
         container.addView(view, 0);
         return view;

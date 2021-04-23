@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,7 +47,17 @@ public class AdapterExploreResults extends RecyclerView.Adapter<AdapterExploreRe
 
         holder.exploreResultTitle.setText(modelExploreResults.getExploreResultsTitle());
         holder.exploreResultsLocation.setText(modelExploreResults.getExploreResultsLocation());
-        holder.exploreResultsDescription.setText(modelExploreResults.getExploreResultsDescription());
+        holder.exploreResultsDescription.setText(modelExploreResults.getExploreResultsImage());
+        holder.exploreResultImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent actnew = new Intent(mCtx, PreviewDestination.class);
+                actnew.putExtra("place_title", modelExploreResults.getExploreResultsTitle());
+                actnew.putExtra("place_location", modelExploreResults.getExploreResultsLocation());
+                actnew.putExtra("place_img", modelExploreResults.getExploreResultsImage());
+                mCtx.startActivity(actnew);
+            }
+        });
 
     }
 
