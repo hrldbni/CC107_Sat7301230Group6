@@ -1,6 +1,8 @@
 package com.example.myapplication;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -82,7 +84,6 @@ public class AdapterAddFriend extends RecyclerView.Adapter<AdapterAddFriend.Adap
                                                 JSONObject jsonObject = new JSONObject(response);
 
                                                 Toast.makeText(mCtx, jsonObject.getString("message"), Toast.LENGTH_SHORT).show();
-
 
                                             } catch (JSONException e) {
                                                 e.printStackTrace();

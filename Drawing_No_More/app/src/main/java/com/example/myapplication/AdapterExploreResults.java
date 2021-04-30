@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -47,7 +48,8 @@ public class AdapterExploreResults extends RecyclerView.Adapter<AdapterExploreRe
 
         holder.exploreResultTitle.setText(modelExploreResults.getExploreResultsTitle());
         holder.exploreResultsLocation.setText(modelExploreResults.getExploreResultsLocation());
-        holder.exploreResultsDescription.setText(modelExploreResults.getExploreResultsImage());
+        holder.exploreResultsDescription.setText(modelExploreResults
+                .getExploreResultsImage());
         holder.exploreResultImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +58,7 @@ public class AdapterExploreResults extends RecyclerView.Adapter<AdapterExploreRe
                 actnew.putExtra("place_location", modelExploreResults.getExploreResultsLocation());
                 actnew.putExtra("place_img", modelExploreResults.getExploreResultsImage());
                 mCtx.startActivity(actnew);
+
             }
         });
 

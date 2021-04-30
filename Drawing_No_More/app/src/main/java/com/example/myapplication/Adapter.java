@@ -67,6 +67,8 @@ public class Adapter extends PagerAdapter {
                 actnew.putExtra("place_location", models.get(position).getPlaceLocation());
                 actnew.putExtra("place_img", models.get(position).getImage());
                 context.startActivity(actnew);
+
+
             }
         });
 

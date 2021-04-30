@@ -180,12 +180,12 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="16dp"/>
                     <EditText
+                        android:id="@+id/travelFund"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
                         android:background="@android:drawable/editbox_background"
                         android:hint="1000"
-
                         android:paddingRight="16dp"
                         android:paddingLeft="16dp"
                         android:paddingTop="5dp"
