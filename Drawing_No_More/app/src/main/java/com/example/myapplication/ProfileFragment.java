@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,6 +21,8 @@ import android.widget.Toast;
  * create an instance of this fragment.
  */
 public class ProfileFragment extends Fragment {
+
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,6 +56,10 @@ public class ProfileFragment extends Fragment {
         return fragment;
     }
 
+
+    Button btnnotification;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +77,19 @@ public class ProfileFragment extends Fragment {
 
         //Inititialize Buttons Here
 
+
+
         logoutBtn = view.findViewById(R.id.logoutBtn);
+
+        btnnotification= (Button) view.findViewById(R.id.btnnotification);
+
+        btnnotification.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                startActivity(new Intent(getContext(),NotificationsActivity.class));
+            }
+        });
+
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

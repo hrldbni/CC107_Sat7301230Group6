@@ -16,7 +16,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".InviteFriendActivity"></activity>
+        <activity android:name=".NotificationsActivity"></activity>
+        <activity android:name=".InviteFriendActivity" />
         <activity android:name=".TravelDetailsActivity" />
         <activity android:name=".PreviewDestination" />
         <activity android:name=".AddFriendActivity" />
