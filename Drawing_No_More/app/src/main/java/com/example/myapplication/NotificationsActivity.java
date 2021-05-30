@@ -5,6 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,13 +17,22 @@ public class NotificationsActivity extends AppCompatActivity {
     RecyclerView notificationRecyclerView;
     AdapterNotifications notificationsAdapter;
     List<ModelNotifications> modelNotificationsList;
+    ImageButton backBtn;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notifications);
+        getSupportActionBar().hide();
 
+        backBtn = findViewById(R.id.backBtn);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         modelNotificationsList = new ArrayList<>();
         notificationRecyclerView = (RecyclerView) findViewById(R.id.notificationRecyclerView);
@@ -34,7 +46,6 @@ public class NotificationsActivity extends AppCompatActivity {
 
         notificationsAdapter = new AdapterNotifications(NotificationsActivity.this, modelNotificationsList);
         notificationRecyclerView.setAdapter(notificationsAdapter);
-
 
 
     }
