@@ -30,4 +30,12 @@ public class Constants {
 
     public static final String URL_ACCEPTFRIENDS = ROOT_URL+"acceptRequest.php";
     public static final String URL_SEARCHFRIEND = ROOT_URL+"searchFriend.php";
+
+
+    public static final String URL_GETGROUPTRAVELCODE = ROOT_URL+"retrieveGroupTravelCode.php";
+
+
+
+
+
 }

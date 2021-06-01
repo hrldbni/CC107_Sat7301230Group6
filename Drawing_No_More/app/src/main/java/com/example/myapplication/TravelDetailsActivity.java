@@ -11,12 +11,16 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class TravelDetailsActivity extends AppCompatActivity {
 
     Dialog inviteFriendDialog;
     ImageView backBtn;
     Button inviteFriendsBtn;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +40,12 @@ public class TravelDetailsActivity extends AppCompatActivity {
         inviteFriendsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                String travelId = getIntent().getStringExtra("travelId");
                 Intent actnew = new Intent(TravelDetailsActivity.this, InviteFriendActivity.class);
+                actnew.putExtra("travel_id", travelId);
                 startActivity(actnew);
                // openInviteFriendDialog();
+
 
 
             }

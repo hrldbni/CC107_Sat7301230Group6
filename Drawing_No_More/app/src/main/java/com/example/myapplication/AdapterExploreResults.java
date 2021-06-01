@@ -54,10 +54,12 @@ public class AdapterExploreResults extends RecyclerView.Adapter<AdapterExploreRe
             @Override
             public void onClick(View v) {
                 Intent actnew = new Intent(mCtx, PreviewDestination.class);
+                actnew.putExtra("place_id", modelExploreResults.getExploreResultsId());
                 actnew.putExtra("place_title", modelExploreResults.getExploreResultsTitle());
                 actnew.putExtra("place_location", modelExploreResults.getExploreResultsLocation());
                 actnew.putExtra("place_img", modelExploreResults.getExploreResultsImage());
                 mCtx.startActivity(actnew);
+
 
             }
         });

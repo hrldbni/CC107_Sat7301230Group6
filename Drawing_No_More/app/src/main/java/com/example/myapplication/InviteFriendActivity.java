@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +26,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static java.sql.Types.NULL;
+
 public class InviteFriendActivity extends AppCompatActivity {
 
     ImageView backBtn;
@@ -37,6 +40,9 @@ public class InviteFriendActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_invite_friend);
         getSupportActionBar().hide();
+
+        storeTravelId(Integer.valueOf(getIntent().getStringExtra("travel_id")));
+
 
         backBtn = (ImageView) findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +62,13 @@ public class InviteFriendActivity extends AppCompatActivity {
         inviteFriendRecyclerView.setAdapter(inviteFriendAdapter);
 
 
+    }
 
+    private void storeTravelId(int travelId){
+        SharedPreferences mSharedPreferences = getSharedPreferences("TravelId", MODE_PRIVATE);
+        SharedPreferences.Editor mEditor = mSharedPreferences.edit();
+        mEditor.putInt("travelId", travelId);
+        mEditor.apply();
     }
 
     private void viewFriends() {

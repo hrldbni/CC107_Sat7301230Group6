@@ -63,8 +63,11 @@ public class AdapterUserTravels extends RecyclerView.Adapter<AdapterUserTravels.
         holder.previewTravelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String travelId = String.valueOf(modelUserTravels.getTravel_id());
                 Intent newIntent;
                 newIntent = new Intent(v.getRootView().getContext(), TravelDetailsActivity.class);
+                newIntent.putExtra("travelId", travelId);
                 mCtx.startActivity(newIntent);
 
             }
