@@ -213,7 +213,7 @@
                         </TextView>
 
                         <Button
-                            android:id="@+id/btnhistory"
+                            android:id="@+id/groupInvitationBtn"
                             android:layout_width="182dp"
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent">

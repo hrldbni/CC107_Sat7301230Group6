@@ -58,6 +58,7 @@ public class ProfileFragment extends Fragment {
 
 
     Button btnnotification;
+    Button groupInvitationBtn;
 
 
     @Override
@@ -77,7 +78,13 @@ public class ProfileFragment extends Fragment {
 
         //Inititialize Buttons Here
 
-
+        groupInvitationBtn = view.findViewById(R.id.groupInvitationBtn);
+        groupInvitationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), GroupInvitationsActivity.class));
+            }
+        });
 
         logoutBtn = view.findViewById(R.id.logoutBtn);
 
