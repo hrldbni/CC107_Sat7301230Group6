@@ -7,14 +7,25 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class AdapterGroupInvitations extends RecyclerView.Adapter<AdapterGroupInvitations.AdapterGroupInvitationsViewHolder>{
 
@@ -40,18 +51,51 @@ public class AdapterGroupInvitations extends RecyclerView.Adapter<AdapterGroupIn
     public void onBindViewHolder(@NonNull AdapterGroupInvitationsViewHolder holder, int position) {
         ModelGroupInvitations modelGroupInvitations = modelGroupInvitationsList.get(position);
 
+        //Getting the photo and name of the place given the Travel I
+        String travelId = String.valueOf(modelGroupInvitations.getTravelId()).trim();
 
-        Glide.with(mCtx)
-                .load("https://image.flaticon.com/icons/png/512/1647/1647547.png")
-                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                .placeholder(R.drawable.loader)
-                .into(holder.placeImage);
+                    StringRequest stringRequest = new StringRequest(
+                            Request.Method.POST,
+                            Constants.URL_GETTRAVELIMAGENAME,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
 
-        //holder.placeTitle.setText(modelGroupInvitations.get);
+                                    try {
+                                        JSONObject jsonObject = new JSONObject(response);
 
 
+                                        Glide.with(mCtx)
+                                                .load(jsonObject.getString("Travel Image"))
+                                                .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                                .placeholder(R.drawable.loader)
+                                                .into(holder.placeImage);
 
+                                         holder.placeTitle.setText(jsonObject.getString("Travel Destination"));
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                        Toast.makeText(mCtx, "Error in Json" + e, Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(mCtx, error.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
 
+                    ){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+
+                            Map<String, String> params = new HashMap<>();
+                            params.put("travelId",travelId);
+                            return params;
+                        }
+                    };
+
+                    RequestHandler.getInstance(mCtx).addToRequestQueue(stringRequest);
     }
 
     @Override

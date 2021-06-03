@@ -56,6 +56,8 @@ public class InviteFriendActivity extends AppCompatActivity {
         inviteFriendRecyclerView.setHasFixedSize(true);
         inviteFriendRecyclerView.setLayoutManager(new LinearLayoutManager(InviteFriendActivity.this));
 
+        //
+
         viewFriends();
         //modelInviteFriendList.add(new ModelInviteFriend(1,"Jason Marsh","https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTX4qAOZgCtMV8Y6MfK3P8bLIlIPVvbvIWm66jISmkSRcK-csis"));
         inviteFriendAdapter = new AdapterInviteFriend(InviteFriendActivity.this, modelInviteFriendList);
