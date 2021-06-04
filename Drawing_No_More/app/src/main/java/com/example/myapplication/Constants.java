@@ -34,6 +34,8 @@ public class Constants {
 
     public static final String URL_GETGROUPTRAVELCODE = ROOT_URL+"retrieveGroupTravelCode.php";
     public static final String URL_GETTRAVELIMAGENAME = ROOT_URL+"retrieveImageName.php";
+    public static final String URL_GETTRAVELINVITATIONS = ROOT_URL+"retrieveTravelInvitations.php";
+    public static final String URL_GETGROUPINVITATIONSDATA = ROOT_URL+"retrieveGroupInvitationsData.php";
 
 
 
