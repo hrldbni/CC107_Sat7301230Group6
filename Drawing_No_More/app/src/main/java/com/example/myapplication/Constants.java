@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-public class Constants {
+public class    Constants {
 
     private static final String ROOT_URL = "http://jaycabasag.online/main/v1/";
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
@@ -36,6 +36,7 @@ public class Constants {
     public static final String URL_GETTRAVELIMAGENAME = ROOT_URL+"retrieveImageName.php";
     public static final String URL_GETTRAVELINVITATIONS = ROOT_URL+"retrieveTravelInvitations.php";
     public static final String URL_GETGROUPINVITATIONSDATA = ROOT_URL+"retrieveGroupInvitationsData.php";
+    public static  final String URL_ACCEPTTRAVELINVITATION = ROOT_URL+"acceptTravelInvitation.php";
 
 
 

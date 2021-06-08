@@ -17,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -71,18 +72,20 @@ public class GroupInvitationsActivity extends AppCompatActivity {
                     public void onResponse(String response) {
 
                         try {
-                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray invites = new JSONArray(response);
 
-                            int reqId = Integer.parseInt(jsonObject.getString("Request Id"));
-                            String groupTravelId = jsonObject.getString("Group Travel Code");
-                            String groupTravelAdmin = jsonObject.getString("Group Travel Admin");
-                            String travelId = jsonObject.getString("Travel Id");
+                            for (int i = 0; i < invites.length(); i++){
+                                JSONObject invitestObject = invites.getJSONObject(i);
 
-                            modelGroupInvitationsList.add(new ModelGroupInvitations(reqId,groupTravelId,groupTravelAdmin,userid,travelId));
+                                int reqId = Integer.parseInt(invitestObject.getString("Request Id"));
+                                String groupTravelId = invitestObject.getString("Group Travel Code");
+                                String groupTravelAdmin = invitestObject.getString("Group Travel Admin");
+                                String travelId = invitestObject.getString("Travel Id");
 
+                                modelGroupInvitationsList.add(new ModelGroupInvitations(reqId,groupTravelId,groupTravelAdmin,userid,travelId));
+                            }
                             groupInvitationsAdapter = new AdapterGroupInvitations(GroupInvitationsActivity.this, modelGroupInvitationsList);
                             groupInvitationsRecyclerView.setAdapter(groupInvitationsAdapter);
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();

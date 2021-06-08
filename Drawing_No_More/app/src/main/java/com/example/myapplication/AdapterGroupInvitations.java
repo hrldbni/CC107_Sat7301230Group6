@@ -58,6 +58,7 @@ public class AdapterGroupInvitations extends RecyclerView.Adapter<AdapterGroupIn
 
 
         //Getting the photo and name of the place given the Travel I
+        String requestId = String.valueOf(modelGroupInvitations.getRequestId()).trim();
         String travelId = String.valueOf(modelGroupInvitations.getTravelId()).trim();
 
                     StringRequest stringRequest = new StringRequest(
@@ -103,64 +104,18 @@ public class AdapterGroupInvitations extends RecyclerView.Adapter<AdapterGroupIn
 
                     RequestHandler.getInstance(mCtx).addToRequestQueue(stringRequest);
 
+
+
+
                     holder.acceptTravelBtn.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
-
-
-                            //Start of new code
-
-                            String requestId = String.valueOf(modelGroupInvitations.getRequestId()).trim();
-
-                            StringRequest stringRequest1 = new StringRequest(
-                                    Request.Method.POST,
-                                    Constants.URL_GETGROUPINVITATIONSDATA,
-                                    new Response.Listener<String>() {
-                                        @Override
-                                        public void onResponse(String response) {
-
-                                            try {
-                                                JSONObject jsonObject = new JSONObject(response);
-
-                                                groupTravelId = jsonObject.getString("Group Travel Code");
-                                                groupTravelAdmin = jsonObject.getString("Group Travel Admin");
-                                                travelIdText = jsonObject.getString("Travel Id");
-                                                groupTravelToInvite = jsonObject.getString("'Group Travel To Invite");
-
-                                            } catch (JSONException e) {
-                                                e.printStackTrace();
-                                                Toast.makeText(mCtx, "Error in Json" + e, Toast.LENGTH_LONG).show();
-                                            }
-                                        }
-                                    },
-                                    new Response.ErrorListener() {
-                                        @Override
-                                        public void onErrorResponse(VolleyError error) {
-                                            Toast.makeText(mCtx, error.getMessage(), Toast.LENGTH_LONG).show();
-                                        }
-                                    }
-
-                            ){
-                                @Override
-                                protected Map<String, String> getParams() throws AuthFailureError {
-
-                                    Map<String, String> params = new HashMap<>();
-                                    params.put("requestId",requestId);
-                                    return params;
-                                }
-                            };
-
-                            RequestHandler.getInstance(mCtx).addToRequestQueue(stringRequest1);
-
-
-                            //Accept travel Invitation Code
 
                             String travelId = String.valueOf(modelGroupInvitations.getTravelId()).trim();
 
                             StringRequest stringRequest = new StringRequest(
                                     Request.Method.POST,
-                                    Constants.URL_GETTRAVELIMAGENAME,
+                                    Constants.URL_ACCEPTTRAVELINVITATION,
                                     new Response.Listener<String>() {
                                         @Override
                                         public void onResponse(String response) {
@@ -188,7 +143,7 @@ public class AdapterGroupInvitations extends RecyclerView.Adapter<AdapterGroupIn
                                 protected Map<String, String> getParams() throws AuthFailureError {
 
                                     Map<String, String> params = new HashMap<>();
-                                    params.put("request_id",requestId);
+                                    params.put("request_id", requestId);
                                     params.put("group_travel_code", groupTravelId);
                                     params.put("group_travel_admin", groupTravelAdmin);
                                     params.put("group_travel_to_invite", groupTravelToInvite);
@@ -234,5 +189,49 @@ public class AdapterGroupInvitations extends RecyclerView.Adapter<AdapterGroupIn
         }
     }
 
+    private void getTravelData(String requestIdText) {
+        String requestId = requestIdText;
+
+        StringRequest stringRequest1 = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GETGROUPINVITATIONSDATA,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+
+                            groupTravelId = jsonObject.getString("Group Travel Code");
+                            groupTravelAdmin = jsonObject.getString("Group Travel Admin");
+                            travelIdText = jsonObject.getString("Travel Id");
+                            groupTravelToInvite = jsonObject.getString("'Group Travel To Invite");
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(mCtx, "Error in Json" + e, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(mCtx, error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<>();
+                params.put("requestId",requestId);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(mCtx).addToRequestQueue(stringRequest1);
+
+    }
 
 }
