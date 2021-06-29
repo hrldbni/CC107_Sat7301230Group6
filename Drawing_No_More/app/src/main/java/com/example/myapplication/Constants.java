@@ -2,7 +2,7 @@ package com.example.myapplication;
 
 public class    Constants {
 
-    private static final String ROOT_URL = "http://jaycabasag.online/main/v1/";
+    private static final String ROOT_URL = "http://drawingnomore.000webhostapp.com//main/v1/";
     public static final String URL_REGISTER = ROOT_URL+"registerUser.php";
     public static final String URL_LOGIN = ROOT_URL+"userLogin.php";
     public static final String URL_PLACES = ROOT_URL+"myApi.php";
@@ -17,7 +17,7 @@ public class    Constants {
     public static final String URL_TOTALTRAVEL = ROOT_URL+"getTotalTravel.php";
     public static final String URL_FORGOTPASSWORD = ROOT_URL+"forgotPassword.php";
     public static final String URL_CHANGEPASSWORD = ROOT_URL+"changePassword.php";
-    public static final String URL_PROFILE = "http://jaycabasag.online/main/v1/uploads/images/";
+    public static final String URL_PROFILE = "http://drawingnomore.000webhostapp.com/main/v1/uploads/images/";
     public static final String URL_GETPLACEIMAGE = "https://api.unsplash.com/search/photos?per_page=15&query=";
     public static final String URL_GETPLACEIMAGE2 = "&client_id=2o-SUub22IIuq-7Dw7bTr-g6NI0nyfgqssklxD7nNVQ";
     public static final String URL_GETHOTTRAVELS = ROOT_URL+"getHotTravels.php";
