@@ -64,12 +64,27 @@
                 android:scaleType="centerCrop"
                 android:src="@drawable/mountain"/>
             <TextView
+                android:id="@+id/userTravelId"
+                android:textColor="#262626"
+                android:text="Travel Id:"
+                android:layout_below="@+id/userTravelImage"
+                style="@style/TextAppearance.AppCompat.Small.Inverse"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_width="match_parent"
+                android:paddingTop="8dp"
+                android:paddingLeft="8dp"
+                android:paddingBottom="8dp"
+                android:layout_height="wrap_content"/>
+
+            <TextView
                 android:id="@+id/userTravelLocation"
                 android:textColor="#262626"
                 android:text="Travel Title"
-                android:layout_below="@+id/userTravelImage"
+                android:layout_below="@+id/userTravelId"
                 style="@style/TextAppearance.AppCompat.Medium"
-                android:layout_marginTop="10dp"
+
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:layout_width="match_parent"
@@ -118,21 +133,40 @@
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:text="Friends to Join the Travel" />
-                <Button
-                    android:id="@+id/inviteFriendsBtn"
-                    android:layout_below="@+id/joinTravelText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Invite Friends"
-                    android:layout_centerHorizontal="true"
-                    />
+
                     <LinearLayout
-                        android:layout_below="@id/inviteFriendsBtn"
+                        android:id="@+id/joinTravelFriendsContainer"
+                        android:layout_below="@id/joinTravelText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/joinTravelFriendsLists"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/FriendsMayWantToInvite"
+                        android:layout_below="@+id/joinTravelFriendsContainer"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="16dp"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:text="Friends You May Want to Invite" />
+
+                    <LinearLayout
+                        android:id="@+id/FriendsYouMayWantToInviteContainer"
+                        android:layout_below="@id/FriendsMayWantToInvite"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/inviteFriendsRecyclerView"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"/>
 

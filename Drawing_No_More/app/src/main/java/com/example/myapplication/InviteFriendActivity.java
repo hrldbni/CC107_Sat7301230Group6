@@ -35,6 +35,7 @@ public class InviteFriendActivity extends AppCompatActivity {
     AdapterInviteFriend inviteFriendAdapter;
     List<ModelInviteFriend> modelInviteFriendList;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,7 +52,7 @@ public class InviteFriendActivity extends AppCompatActivity {
                 finish();
             }
         });
-        modelInviteFriendList = new ArrayList<>();
+         modelInviteFriendList = new ArrayList<>();
         inviteFriendRecyclerView = (RecyclerView) findViewById(R.id.inviteFriendsRecyclerView);
         inviteFriendRecyclerView.setHasFixedSize(true);
         inviteFriendRecyclerView.setLayoutManager(new LinearLayoutManager(InviteFriendActivity.this));

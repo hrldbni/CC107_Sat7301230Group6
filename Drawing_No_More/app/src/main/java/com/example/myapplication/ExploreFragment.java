@@ -83,8 +83,6 @@ public class ExploreFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
-
     }
 
     CardView exploreMoreBtn;
@@ -94,6 +92,8 @@ public class ExploreFragment extends Fragment {
     List<ModelUserTravels> modelUserTravelsList;
     private ProgressDialog progressDialog;
     TextView totalTravels;
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
