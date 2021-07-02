@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -13,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -20,6 +22,8 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,12 +39,17 @@ public class TravelDetailsActivity extends AppCompatActivity {
     Dialog inviteFriendDialog;
     ImageView backBtn;
 
+    ImageView userTravelImage;
+    TextView userTravelId;
+    TextView userTravelLocation;
+    TextView budgetText;
+    private ProgressDialog progressDialog;
+
     //Variables under This is for You may want to invite Friends
     RecyclerView inviteFriendRecyclerView;
     AdapterInviteFriend inviteFriendAdapter;
     List<ModelInviteFriend> modelInviteFriendList;
     //End
-
 
 
 
@@ -51,8 +60,6 @@ public class TravelDetailsActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         String travelId = getIntent().getStringExtra("travelId");
-
-        Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
 
         inviteFriendDialog = new Dialog(this);
         backBtn = (ImageView) findViewById(R.id.backBtn);
@@ -65,20 +72,69 @@ public class TravelDetailsActivity extends AppCompatActivity {
 
 
 
+        //Code to get info on a certain travel
+        userTravelImage = findViewById(R.id.userTravelImage);
+        userTravelId = findViewById(R.id.userTravelId);
+        userTravelLocation = findViewById(R.id.userTravelLocation);
+        budgetText = findViewById(R.id.budgetText);
+
+
+        progressDialog = new ProgressDialog(TravelDetailsActivity.this);
+        progressDialog.setMessage("Please wait while retrieving data...");
+
+        progressDialog.show();
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GETTRAVELDETAILS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+
+                            JSONObject travelDetails = new JSONObject(response);
+
+                            Glide.with(getApplicationContext())
+                                    .load(travelDetails.getString("placeimage"))
+                                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                                    .placeholder(R.drawable.loader)
+                                    .into(userTravelImage);
+                            userTravelId.setText("Travel ID: " + travelDetails.getString("travelId"));
+                            userTravelLocation.setText("Place Destination :" + travelDetails.getString("travelDestination"));
+                            budgetText.setText("Travel Budget: " + travelDetails.getString("travelFund"));
 
 
 
+                        } catch (JSONException e) {
+                            progressDialog.dismiss();
+                            Toast.makeText(TravelDetailsActivity.this, "Error JSON " + e, Toast.LENGTH_LONG).show();
+                        }
 
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(TravelDetailsActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
 
+        ) {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
 
+                Map<String, String> params = new HashMap<>();
+                params.put("travelId", travelId);
+                return params;
+            }
+        };
 
+        RequestHandler.getInstance(TravelDetailsActivity.this).addToRequestQueue(stringRequest);
 
+    // End of View Travel Details
 
-
-
-
-
-        //Viewing all friends
+    //Viewing all friends
 
         modelInviteFriendList = new ArrayList<>();
         inviteFriendRecyclerView = (RecyclerView) findViewById(R.id.inviteFriendsRecyclerView);
