@@ -4,15 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,6 +48,14 @@ public class TravelDetailsActivity extends AppCompatActivity {
     TextView userTravelId;
     TextView userTravelLocation;
     TextView budgetText;
+    TextView currentFundText;
+    ImageButton addFundButton;
+
+
+    private String travelStatus;
+    private  String currentFund;
+    private String travelBudget;
+
     private ProgressDialog progressDialog;
 
     //Variables under This is for You may want to invite Friends
@@ -71,13 +84,60 @@ public class TravelDetailsActivity extends AppCompatActivity {
         });
 
 
-
         //Code to get info on a certain travel
         userTravelImage = findViewById(R.id.userTravelImage);
         userTravelId = findViewById(R.id.userTravelId);
         userTravelLocation = findViewById(R.id.userTravelLocation);
         budgetText = findViewById(R.id.budgetText);
+        currentFundText = findViewById(R.id.currentFundText);
+        addFundButton = findViewById(R.id.addFundButton);
 
+        addFundButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                AlertDialog.Builder addFundDialog = new AlertDialog.Builder(TravelDetailsActivity.this);
+                View mView = getLayoutInflater().inflate(R.layout.dialog_addfund, null);
+                EditText dialogCurrentFund = (EditText) mView.findViewById(R.id.dFundToAddText);
+                Button addFundButton = (Button) mView.findViewById(R.id.dConfirmAddFund);
+                Button deductButton = (Button) mView.findViewById(R.id.dConfirmDeductFund);
+                ImageButton closeDialog = (ImageButton) mView.findViewById(R.id.closeDialogButton);
+
+                addFundDialog.setView(mView);
+                AlertDialog dialog = addFundDialog.create();
+
+                closeDialog.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+                addFundButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(TravelDetailsActivity.this, "Adding ", Toast.LENGTH_SHORT).show();
+                        addFund();
+                        dialog.dismiss();
+                    }
+
+                });
+
+
+                deductButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Toast.makeText(TravelDetailsActivity.this, "Deducting", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                    }
+                });
+
+
+                dialog.show();
+
+
+            }
+        });
 
         progressDialog = new ProgressDialog(TravelDetailsActivity.this);
         progressDialog.setMessage("Please wait while retrieving data...");
@@ -102,7 +162,10 @@ public class TravelDetailsActivity extends AppCompatActivity {
                             userTravelId.setText("Travel ID: " + travelDetails.getString("travelId"));
                             userTravelLocation.setText("Place Destination :" + travelDetails.getString("travelDestination"));
                             budgetText.setText("Travel Budget: " + travelDetails.getString("travelFund"));
-
+                            currentFundText.setText("Current Fund: " + travelDetails.getString("currentFund"));
+                            travelStatus = travelDetails.getString("travelStatus");
+                            currentFund = travelDetails.getString("currentFund");
+                            travelBudget = travelDetails.getString("travelFund");
 
 
                         } catch (JSONException e) {
@@ -165,6 +228,7 @@ public class TravelDetailsActivity extends AppCompatActivity {
                                 String friendName = placesObject.getString("friendName");
                                 String friendImage = placesObject.getString("friendImage");
 
+
                                 modelInviteFriendList.add(new ModelInviteFriend(friend_userId,friendName ,friendImage));
 
                             }
@@ -198,6 +262,67 @@ public class TravelDetailsActivity extends AppCompatActivity {
         };
 
         RequestHandler.getInstance(TravelDetailsActivity.this).addToRequestQueue(stringRequest);
+
+    }
+
+    public void addFund() {
+
+        String travelid = getIntent().getStringExtra("travelId");
+        String currentFunds = String.valueOf(currentFund);
+        String travelStats =  travelStatus;
+
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_ADDFUNDS,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject obj = new JSONObject(response);
+
+                            AlertDialog alertDialog1 = new AlertDialog.Builder(
+                                    TravelDetailsActivity.this).create();
+
+
+                            alertDialog1.setMessage(obj.getString("message"));
+                            alertDialog1.setButton("OK", new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+
+                            alertDialog1.show();
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "Error Jason" + e, Toast.LENGTH_LONG).show();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("travelid", travelid);
+                params.put("currentFund", currentFunds);
+                params.put("travelStatus", travelStats);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(this).addToRequestQueue(stringRequest);
+
 
     }
 

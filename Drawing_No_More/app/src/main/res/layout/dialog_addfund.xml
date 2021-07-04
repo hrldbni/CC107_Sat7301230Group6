@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+
+        <ImageButton
+            android:id="@+id/closeDialogButton"
+            android:layout_width="?actionBarSize"
+            android:layout_height="?actionBarSize"
+            android:layout_alignParentRight="true"
+            android:background="@color/white"
+
+            app:srcCompat="@drawable/ic_baseline_close_24" />
+
+        <TextView
+            android:id="@+id/dCurrentFundText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Current Fund : 0"
+            android:textAlignment="center"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            style="@style/TextAppearance.AppCompat.Medium"/>
+
+        <TextView
+            android:id="@+id/dText"
+            android:layout_below="@+id/dCurrentFundText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please enter the amount you add : "
+            android:padding="5dp"/>
+
+        <EditText
+            android:id="@+id/dFundToAddText"
+            android:layout_below="@+id/dText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Amount"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:inputType="number"
+            style="@style/Widget.AppCompat.EditText"/>
+
+        <Button
+            android:id="@+id/dConfirmAddFund"
+            android:layout_below="@+id/dFundToAddText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add Fund"/>
+
+            <Button
+                android:id="@+id/dConfirmDeductFund"
+                android:layout_below="@+id/dFundToAddText"
+                android:layout_toRightOf="@+id/dConfirmAddFund"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deduct Fund"
+                android:layout_marginLeft="20dp"/>
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>
