@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/img"
-        android:layout_width="match_parent"
-        android:layout_height="800dp"
+        android:layout_width="442dp"
+        android:layout_height="1201dp"
         android:scaleType="centerCrop"
         android:src="@drawable/travel111"
         app:layout_constraintBottom_toBottomOf="parent"
