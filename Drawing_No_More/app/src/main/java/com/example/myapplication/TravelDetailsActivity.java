@@ -54,7 +54,7 @@ public class TravelDetailsActivity extends AppCompatActivity {
 
     private String travelStatus;
     private  String currentFund;
-    private String travelBudget;
+    private int travelBudget;
 
     private ProgressDialog progressDialog;
 
@@ -104,6 +104,7 @@ public class TravelDetailsActivity extends AppCompatActivity {
                 Button deductButton = (Button) mView.findViewById(R.id.dConfirmDeductFund);
                 ImageButton closeDialog = (ImageButton) mView.findViewById(R.id.closeDialogButton);
 
+
                 addFundDialog.setView(mView);
                 AlertDialog dialog = addFundDialog.create();
 
@@ -116,7 +117,8 @@ public class TravelDetailsActivity extends AppCompatActivity {
                 addFundButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(TravelDetailsActivity.this, "Adding ", Toast.LENGTH_SHORT).show();
+
+                        travelBudget = Integer.valueOf(currentFund) + Integer.parseInt(String.valueOf(dialogCurrentFund.getText()));
                         addFund();
                         dialog.dismiss();
                     }
@@ -165,7 +167,7 @@ public class TravelDetailsActivity extends AppCompatActivity {
                             currentFundText.setText("Current Fund: " + travelDetails.getString("currentFund"));
                             travelStatus = travelDetails.getString("travelStatus");
                             currentFund = travelDetails.getString("currentFund");
-                            travelBudget = travelDetails.getString("travelFund");
+                            travelBudget = travelDetails.getInt("travelFund");
 
 
                         } catch (JSONException e) {
@@ -268,8 +270,9 @@ public class TravelDetailsActivity extends AppCompatActivity {
     public void addFund() {
 
         String travelid = getIntent().getStringExtra("travelId");
-        String currentFunds = String.valueOf(currentFund);
+        String currentFunds = String.valueOf(travelBudget);
         String travelStats =  travelStatus;
+
 
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
