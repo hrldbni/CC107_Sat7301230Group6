@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -35,11 +36,8 @@ import static java.sql.Types.NULL;
 
 public class AdapterInviteFriend extends RecyclerView.Adapter<AdapterInviteFriend.AdapterInviteFriendViewHolder> {
 
-    public String travelId = "";
-    public String groupTravelCode = "";
     Context mCtx;
     List<ModelInviteFriend> modelInviteFriendList;
-
 
     public AdapterInviteFriend(Context mCtx, List<ModelInviteFriend> modelInviteFriendList) {
         this.mCtx = mCtx;
@@ -70,9 +68,57 @@ public class AdapterInviteFriend extends RecyclerView.Adapter<AdapterInviteFrien
             @Override
             public void onClick(View v) {
 
-                Toast.makeText(mCtx, ""+travelId, Toast.LENGTH_SHORT).show();
+                //THis is where the set up to send data to database starts
 
+                String group_code = String.valueOf(ModelCurrentTravelId.getGroupCode());
+                String group_travel_admin =  String.valueOf(SharedPrefManager.getUid());
+                String group_travel_to_invite = String.valueOf(modelInviteFriend.getInviteFriendId());
+                String travel_id = String.valueOf(ModelCurrentTravelId.getTravelId());
 
+                if (group_code == "null" || group_travel_admin == "null" || group_travel_to_invite == "null" || travel_id == "null"){
+                    Toast.makeText(mCtx, "Some data needs to be reloaded, please refresh the page", Toast.LENGTH_SHORT).show();
+                } else {
+                    StringRequest stringRequest = new StringRequest(
+                            Request.Method.POST,
+                            Constants.URL_INVITEFRIEND,
+                            new Response.Listener<String>() {
+                                @Override
+                                public void onResponse(String response) {
+                                    try {
+
+                                        JSONObject respondObj = new JSONObject(response);
+                                        Toast.makeText(mCtx, respondObj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                                    } catch (JSONException e) {
+
+                                        Toast.makeText(mCtx, "Error JSON " + e, Toast.LENGTH_LONG).show();
+                                    }
+
+                                }
+                            },
+                            new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Toast.makeText(mCtx, error.getMessage(), Toast.LENGTH_LONG).show();
+                                }
+                            }
+
+                    ){
+                        @Override
+                        protected Map<String, String> getParams() throws AuthFailureError {
+
+                            Map<String, String> params = new HashMap<>();
+                            params.put("group_travel_code", group_code);
+                            params.put("group_travel_admin", group_travel_admin);
+                            params.put("group_travel_to_invite", group_travel_to_invite);
+                            params.put("travel_id", travel_id);
+                            return params;
+                        }
+                    };
+
+                    RequestHandler.getInstance(mCtx).addToRequestQueue(stringRequest);
+
+                }
             }
         });
     }

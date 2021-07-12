@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -85,12 +86,18 @@ public class FriendsFragment extends Fragment {
     List<ModelFriendRequest> modelFriendRequestList;
 
     FloatingActionButton goToAddFriend;
+    private ProgressDialog progressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View friendsFragment = inflater.inflate(R.layout.fragment_friends, container, false);
+
+
+        progressDialog = new ProgressDialog(friendsFragment.getContext());
+        progressDialog.setMessage("Please wait for a moment...");
+
 
             goToAddFriend = friendsFragment.findViewById(R.id.goToAddFriend);
             goToAddFriend.setOnClickListener(new View.OnClickListener() {
@@ -122,12 +129,16 @@ public class FriendsFragment extends Fragment {
     }
 
     private void viewFriendRequests() {
+        progressDialog.show();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_GETFRIENDREQUESTS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        progressDialog.dismiss();
+
                         try {
                             JSONArray places = new JSONArray(response);
 
@@ -147,6 +158,7 @@ public class FriendsFragment extends Fragment {
                             recyclerViewFriendRequest.setAdapter(friendRequestAdapter);
 
                         } catch (JSONException e) {
+                            progressDialog.dismiss();
                             Toast.makeText(getContext(), "Error JSON "+ e, Toast.LENGTH_LONG).show();
                         }
 
@@ -155,6 +167,7 @@ public class FriendsFragment extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+                        progressDialog.dismiss();
                         Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 }

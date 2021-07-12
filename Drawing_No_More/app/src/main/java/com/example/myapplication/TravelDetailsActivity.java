@@ -62,6 +62,8 @@ public class TravelDetailsActivity extends AppCompatActivity {
     RecyclerView inviteFriendRecyclerView;
     AdapterInviteFriend inviteFriendAdapter;
     List<ModelInviteFriend> modelInviteFriendList;
+    ModelCurrentTravelId modelCurrentTravelId;
+
     //End
 
 
@@ -73,7 +75,6 @@ public class TravelDetailsActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         String travelId = getIntent().getStringExtra("travelId");
-
         inviteFriendDialog = new Dialog(this);
         backBtn = (ImageView) findViewById(R.id.backBtn);
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -143,13 +144,16 @@ public class TravelDetailsActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(TravelDetailsActivity.this);
         progressDialog.setMessage("Please wait while retrieving data...");
-
+        modelCurrentTravelId = new ModelCurrentTravelId();
         progressDialog.show();
+
+
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_GETTRAVELDETAILS,
                 new Response.Listener<String>() {
                     @Override
+
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
@@ -162,6 +166,7 @@ public class TravelDetailsActivity extends AppCompatActivity {
                                     .placeholder(R.drawable.loader)
                                     .into(userTravelImage);
                             userTravelId.setText("Travel ID: " + travelDetails.getString("travelId"));
+                            modelCurrentTravelId.setTravelId(travelDetails.getString("travelId"));
                             userTravelLocation.setText("Place Destination :" + travelDetails.getString("travelDestination"));
                             budgetText.setText("Travel Budget: " + travelDetails.getString("travelFund"));
                             currentFundText.setText("Current Fund: " + travelDetails.getString("currentFund"));
@@ -206,19 +211,68 @@ public class TravelDetailsActivity extends AppCompatActivity {
         inviteFriendRecyclerView.setHasFixedSize(true);
         inviteFriendRecyclerView.setLayoutManager(new LinearLayoutManager(TravelDetailsActivity.this));
         viewFriends();
+        groupCode();
         inviteFriendAdapter = new AdapterInviteFriend(TravelDetailsActivity.this, modelInviteFriendList);
         inviteFriendRecyclerView.setAdapter(inviteFriendAdapter);
 
 
     }
-    private void viewFriends() {
 
+    private void groupCode() {
+        progressDialog.setMessage("Retrieving Additional data, Please wait");
+        progressDialog.show();
+
+        String travelId = getIntent().getStringExtra("travelId");
+        StringRequest stringRequest = new StringRequest(
+                Request.Method.POST,
+                Constants.URL_GETGROUPTRAVELCODE,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        progressDialog.dismiss();
+                        try {
+
+                            JSONObject travelDetails = new JSONObject(response);
+                            modelCurrentTravelId.setGroupCode(travelDetails.getString("message"));
+
+                        } catch (JSONException e) {
+
+                            Toast.makeText(TravelDetailsActivity.this, "Error JSON " + e, Toast.LENGTH_LONG).show();
+                        }
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(TravelDetailsActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+
+        ){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+
+                Map<String, String> params = new HashMap<>();
+                params.put("travel_id", travelId);
+                return params;
+            }
+        };
+
+        RequestHandler.getInstance(TravelDetailsActivity.this).addToRequestQueue(stringRequest);
+    }
+
+
+    private void viewFriends() {
+        progressDialog.setMessage("Retriveing Friends, please wait");
+        progressDialog.show();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
                 Constants.URL_GETFRIENDS,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.dismiss();
                         try {
                             JSONArray places = new JSONArray(response);
 
@@ -229,9 +283,8 @@ public class TravelDetailsActivity extends AppCompatActivity {
                                 int friend_userId = placesObject.getInt("friend_userId");
                                 String friendName = placesObject.getString("friendName");
                                 String friendImage = placesObject.getString("friendImage");
-
-
                                 modelInviteFriendList.add(new ModelInviteFriend(friend_userId,friendName ,friendImage));
+
 
                             }
 
@@ -268,7 +321,8 @@ public class TravelDetailsActivity extends AppCompatActivity {
     }
 
     public void addFund() {
-
+        progressDialog.setMessage("Adding Fund");
+        progressDialog.show();
         String travelid = getIntent().getStringExtra("travelId");
         String currentFunds = String.valueOf(travelBudget);
         String travelStats =  travelStatus;
@@ -280,6 +334,7 @@ public class TravelDetailsActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+                        progressDialog.dismiss();
                         try {
                             JSONObject obj = new JSONObject(response);
 
