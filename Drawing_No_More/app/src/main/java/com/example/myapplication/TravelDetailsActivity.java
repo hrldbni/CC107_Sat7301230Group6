@@ -50,11 +50,13 @@ public class TravelDetailsActivity extends AppCompatActivity {
     TextView budgetText;
     TextView currentFundText;
     ImageButton addFundButton;
+    TextView textFund;
 
 
     private String travelStatus;
     private  String currentFund;
     private int travelBudget;
+    String groupTravelCode = "";
 
     private ProgressDialog progressDialog;
 
@@ -63,9 +65,12 @@ public class TravelDetailsActivity extends AppCompatActivity {
     AdapterInviteFriend inviteFriendAdapter;
     List<ModelInviteFriend> modelInviteFriendList;
     ModelCurrentTravelId modelCurrentTravelId;
-
     //End
-
+    //Variable under this is to view all friends joined the travel.
+    RecyclerView friendJoinedRecyclerView;
+    AdapterFriendsJoined friendsJoinedAdapter;
+    List<ModelFriendsJoined> modelFriendsJoinedList;
+    //End
 
 
     @Override
@@ -92,6 +97,7 @@ public class TravelDetailsActivity extends AppCompatActivity {
         budgetText = findViewById(R.id.budgetText);
         currentFundText = findViewById(R.id.currentFundText);
         addFundButton = findViewById(R.id.addFundButton);
+        textFund = findViewById(R.id.fundText);
 
         addFundButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,9 +161,8 @@ public class TravelDetailsActivity extends AppCompatActivity {
                     @Override
 
                     public void onResponse(String response) {
-                        progressDialog.dismiss();
                         try {
-
+                            progressDialog.dismiss();
                             JSONObject travelDetails = new JSONObject(response);
 
                             Glide.with(getApplicationContext())
@@ -169,10 +174,14 @@ public class TravelDetailsActivity extends AppCompatActivity {
                             modelCurrentTravelId.setTravelId(travelDetails.getString("travelId"));
                             userTravelLocation.setText("Place Destination :" + travelDetails.getString("travelDestination"));
                             budgetText.setText("Travel Budget: " + travelDetails.getString("travelFund"));
-                            currentFundText.setText("Current Fund: " + travelDetails.getString("currentFund"));
+                            textFund.setText("Php " + travelDetails.getString("currentFund")+".00 ");
                             travelStatus = travelDetails.getString("travelStatus");
                             currentFund = travelDetails.getString("currentFund");
                             travelBudget = travelDetails.getInt("travelFund");
+                            groupTravelCode = travelDetails.getString("groupTravelCode");
+                            modelCurrentTravelId.setGroupCode(groupTravelCode);
+                            viewJoinedFriends();
+
 
 
                         } catch (JSONException e) {
@@ -204,40 +213,59 @@ public class TravelDetailsActivity extends AppCompatActivity {
 
     // End of View Travel Details
 
+    // List of Friends joined the Travel
+
+
+
     //Viewing all friends
 
         modelInviteFriendList = new ArrayList<>();
         inviteFriendRecyclerView = (RecyclerView) findViewById(R.id.inviteFriendsRecyclerView);
         inviteFriendRecyclerView.setHasFixedSize(true);
-        inviteFriendRecyclerView.setLayoutManager(new LinearLayoutManager(TravelDetailsActivity.this));
+        inviteFriendRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         viewFriends();
-        groupCode();
         inviteFriendAdapter = new AdapterInviteFriend(TravelDetailsActivity.this, modelInviteFriendList);
         inviteFriendRecyclerView.setAdapter(inviteFriendAdapter);
 
+    //Viewing all friends Joined
+        modelFriendsJoinedList = new ArrayList<>();
+        friendJoinedRecyclerView = (RecyclerView) findViewById(R.id.joinTravelFriendsLists);
+        friendJoinedRecyclerView.setHasFixedSize(true);
+        friendJoinedRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
     }
 
-    private void groupCode() {
-        progressDialog.setMessage("Retrieving Additional data, Please wait");
+    private void viewJoinedFriends() {
+
+        progressDialog.setMessage("Retrieving Friends, please wait");
         progressDialog.show();
 
-        String travelId = getIntent().getStringExtra("travelId");
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
-                Constants.URL_GETGROUPTRAVELCODE,
+                Constants.URL_GETFRIENDSJOINED,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
+                            JSONArray places = new JSONArray(response);
 
-                            JSONObject travelDetails = new JSONObject(response);
-                            modelCurrentTravelId.setGroupCode(travelDetails.getString("message"));
+                            for (int i = 0; i < places.length(); i++){
+                                JSONObject joinedFriendObj = places.getJSONObject(i);
+
+                                int travelId = joinedFriendObj.getInt("travel_id");
+                                int userTravelId =  joinedFriendObj.getInt("user_travel_id");
+                                String groupTravelCode = joinedFriendObj.getString("group_travel_code");
+                                String friendJoinedProfile =  joinedFriendObj.getString("friend_profile");
+                                String friendJoinedName = joinedFriendObj.getString("friend_name");
+                                modelFriendsJoinedList.add(new ModelFriendsJoined(travelId,userTravelId,groupTravelCode,friendJoinedProfile, friendJoinedName));
+                            }
+
+                            friendsJoinedAdapter = new AdapterFriendsJoined(TravelDetailsActivity.this, modelFriendsJoinedList);
+                            friendJoinedRecyclerView.setAdapter(friendsJoinedAdapter);
 
                         } catch (JSONException e) {
-
-                            Toast.makeText(TravelDetailsActivity.this, "Error JSON " + e, Toast.LENGTH_LONG).show();
+                            Toast.makeText(TravelDetailsActivity.this, "Error JSON "+ e, Toast.LENGTH_LONG).show();
                         }
 
                     }
@@ -253,18 +281,22 @@ public class TravelDetailsActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
 
+                String userid = String.valueOf(SharedPrefManager.getUid());
+                String groupTravelCode = modelCurrentTravelId.getGroupCode().toString();
                 Map<String, String> params = new HashMap<>();
-                params.put("travel_id", travelId);
+                params.put("user_id", userid);
+                params.put("group_travel_code", groupTravelCode);
                 return params;
             }
         };
 
         RequestHandler.getInstance(TravelDetailsActivity.this).addToRequestQueue(stringRequest);
+
     }
 
 
     private void viewFriends() {
-        progressDialog.setMessage("Retriveing Friends, please wait");
+        progressDialog.setMessage("Retrieving Friends, please wait");
         progressDialog.show();
         StringRequest stringRequest = new StringRequest(
                 Request.Method.POST,
@@ -351,8 +383,6 @@ public class TravelDetailsActivity extends AppCompatActivity {
                             });
 
                             alertDialog1.show();
-
-
 
                         } catch (JSONException e) {
                             e.printStackTrace();

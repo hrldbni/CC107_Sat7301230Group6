@@ -40,6 +40,7 @@ public class    Constants {
     public static final String URL_GETGROUPINVITATIONSDATA = ROOT_URL+"retrieveGroupInvitationsData.php";
     public static  final String URL_ACCEPTTRAVELINVITATION = ROOT_URL+"acceptTravelInvitation.php";
     public static final String URL_INVITEFRIEND = ROOT_URL+"inviteFriend.php";
+    public static final String URL_GETFRIENDSJOINED = ROOT_URL+"getFriendsJoined.php";
 
 
 

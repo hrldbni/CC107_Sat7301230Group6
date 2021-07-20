@@ -3,38 +3,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:padding="16dp">
+    android:paddingLeft="16dp">
+
+
+    <ImageButton
+        android:id="@+id/closeDialogButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@color/white"
+        app:srcCompat="@drawable/ic_baseline_close_24"/>
 
     <androidx.cardview.widget.CardView
+        android:layout_below="@+id/closeDialogButton"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginRight="16dp"
+        app:cardElevation="0dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp">
+            android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/dCurrentFundText"
+                style="@style/TextAppearance.AppCompat.Medium"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="16dp"
+                android:text="Add Fund "
+                android:textAlignment="center" />
 
-        <ImageButton
-            android:id="@+id/closeDialogButton"
-            android:layout_width="?actionBarSize"
-            android:layout_height="?actionBarSize"
-            android:layout_alignParentRight="true"
-            android:background="@color/white"
-
-            app:srcCompat="@drawable/ic_baseline_close_24" />
-
-        <TextView
-            android:id="@+id/dCurrentFundText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Current Fund : 0"
-            android:textAlignment="center"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            style="@style/TextAppearance.AppCompat.Medium"/>
-
-        <TextView
+            <TextView
             android:id="@+id/dText"
             android:layout_below="@+id/dCurrentFundText"
             android:layout_width="match_parent"
@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Deduct Fund"
-                android:layout_marginLeft="20dp"/>
+                android:layout_marginLeft="70dp"/>
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
