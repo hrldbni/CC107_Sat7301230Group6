@@ -87,18 +87,15 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View home = inflater.inflate(R.layout.fragment_home, container, false);
 
         models = new ArrayList<>();
 
        loadHotTravels();
 
-        //models.add(new Model("https://gttp.imgix.net/222331/x/0/top-15-must-visit-tourist-spots-in-the-philippines-9.jpg?auto=compress%2Cformat&ch=Width%2CDPR&dpr=1&ixlib=php-3.3.0&w=883", "La Libertad", "Place Description"));
 
-//        adapter = new Adapter(models, home.getContext());
         viewPager = home.findViewById(R.id.hotTravelsPage);
-//        viewPager.setAdapter(adapter);
+
         viewPager.setPadding(16, 0,16, 0);
 
 
@@ -132,6 +129,8 @@ public class HomeFragment extends Fragment {
 
             }
         });
+
+
 
         modelWhatsNewList = new ArrayList<>();
         recyclerView = (RecyclerView) home.findViewById(R.id.whatsNewRecyclerView);

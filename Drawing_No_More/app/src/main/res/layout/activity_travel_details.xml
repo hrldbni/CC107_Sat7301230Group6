@@ -133,7 +133,6 @@
                             android:layout_centerInParent="true"
                             android:layout_toRightOf="@+id/fundText"
                             android:layout_height="wrap_content"
-                            android:paddingTop="15dp"
                             android:paddingBottom="15dp"
                             android:paddingRight="15dp"
                             app:srcCompat="@drawable/ic_baseline_add_circle_outline_24"
@@ -145,14 +144,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:labelFor="@id/addFundButton"
-                            android:paddingTop="15dp"
-                            android:paddingBottom="19dp"
-                            android:paddingRight="5dp"
-                            android:layout_marginTop="5dp"
+                            android:paddingBottom="14dp"
+                            android:paddingRight="2dp"
                             android:textStyle="bold"
                             android:textColor="@color/purple_200"
                             android:textSize="30dp"
-                            android:text="1000"/>
+                            android:text="Php 1000.00"/>
 
 
                     </RelativeLayout>
@@ -160,12 +157,92 @@
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
+            <RelativeLayout
+                android:id="@+id/actionsContainer"
+                android:layout_below="@+id/budgetsContainer"
+                android:layout_width="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <RelativeLayout
+                    android:id="@+id/notifyMeButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/notifyBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/ic_baseline_circle_notifications_24"/>
+                    <TextView
+                        android:layout_below="@id/notifyBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notify Me"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/addToCalendarButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/notifyMeButton">
+
+                    <ImageButton
+                        android:id="@+id/addToCalendarBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/ic_baseline_edit_calendar_24"/>
+                    <TextView
+                        android:layout_below="@+id/addToCalendarBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Add Event"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"/>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_marginLeft="20dp"
+                    android:id="@+id/removeTravelButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/addToCalendarButton">
+
+                    <ImageButton
+                        android:id="@+id/removeBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@drawable/ic_baseline_delete_forever_24"/>
+                    <TextView
+                        android:layout_below="@+id/removeBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Remove"
+                        android:textAlignment="center"
+                        android:textAllCaps="true"/>
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/addFriendToTravelContainer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/budgetsContainer">
+                android:layout_below="@+id/actionsContainer">
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">

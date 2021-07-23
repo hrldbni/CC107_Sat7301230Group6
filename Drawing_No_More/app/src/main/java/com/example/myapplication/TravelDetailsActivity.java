@@ -103,7 +103,6 @@ public class TravelDetailsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
                 AlertDialog.Builder addFundDialog = new AlertDialog.Builder(TravelDetailsActivity.this);
                 View mView = getLayoutInflater().inflate(R.layout.dialog_addfund, null);
                 EditText dialogCurrentFund = (EditText) mView.findViewById(R.id.dFundToAddText);

@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -18,6 +21,11 @@ public class CreateOwnTravel extends AppCompatActivity implements AdapterView.On
     Spinner travelType;
     ImageView backBtn;
     FloatingActionButton addToTravel;
+    String selectedTravelType;
+    EditText travelTitleText, travelAddress1,travelAddress2, travelDescription, travelBudget, travelDate;
+    String travelTypeText;
+    Button saveButton;
+    TextView privateText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +44,38 @@ public class CreateOwnTravel extends AppCompatActivity implements AdapterView.On
             }
         });
 
-        addToTravel = findViewById(R.id.addToTravel);
-        addToTravel.setOnClickListener(new View.OnClickListener() {
+        privateText = findViewById(R.id.privateText);
+        privateText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent newintent;
-                newintent = new Intent(CreateOwnTravel.this, SetTravelActivity.class);
-                startActivity(newintent);
+                Toast.makeText(CreateOwnTravel.this, "Private Travels means, it cannot be seen by other travelers.", Toast.LENGTH_SHORT).show();
             }
         });
+        travelTitleText = findViewById(R.id.travelTitle);
+        travelAddress1 = findViewById(R.id.travelLocationFirstLine);
+        travelAddress2 = findViewById(R.id.travelLocationSecondLine);
+        travelDescription = findViewById(R.id.travelDescription);
+        travelBudget = findViewById(R.id.travelBudget);
+        travelDate = findViewById(R.id.travelDate);
+        travelTypeText = String.valueOf(selectedTravelType);
+        saveButton = findViewById(R.id.saveTravelButton);
+
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Hello "+ travelTitleText.getText().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
     }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
-        Toast.makeText(this, adapterView.getSelectedItem().toString(), Toast.LENGTH_SHORT).show();
+        selectedTravelType = adapterView.getSelectedItem().toString();
+
     }
 
     @Override
